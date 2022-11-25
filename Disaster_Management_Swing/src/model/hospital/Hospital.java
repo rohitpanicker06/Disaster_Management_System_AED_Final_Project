@@ -7,6 +7,7 @@ package hospital;
 import doctor.Doctor;
 import doctor.DoctorDirectory;
 import java.util.ArrayList;
+import patient.Patient;
 import us.state.city.community.Community;
 
 /**
@@ -19,7 +20,7 @@ private String hospitalName;
 private Community community;
 private int hospitalId;
 private ArrayList<Doctor> doctorList = new ArrayList<>();
-
+private ArrayList<Patient> patientList = new ArrayList<>();
 
     public ArrayList<Doctor> getDoctorList() {
         return doctorList;
@@ -29,7 +30,13 @@ private ArrayList<Doctor> doctorList = new ArrayList<>();
         this.doctorList = doctorList;
     }
 
-   
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public void setPatientList(ArrayList<Patient> patientList) {
+        this.patientList = patientList;
+    }
 
     public Hospital(String hospitalName, Community community, int hospitalId) {
         this.hospitalName = hospitalName;
