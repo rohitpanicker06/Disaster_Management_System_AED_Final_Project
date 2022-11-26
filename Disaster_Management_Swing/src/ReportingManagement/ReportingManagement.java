@@ -4,11 +4,36 @@
  */
 package ReportingManagement;
 
+
+//A reportingManagement enterprise class will have a SiteManagementAndReporting organization attribute.
 /**
  *
  * @author Rohit Paul G
  */
 public class ReportingManagement {
+    private long siteMangmntOrgRevenue;
+    private SiteManagementAndReporting siteManagementAndReporting; 
+
+    public long getSiteMangmntOrgRevenue() {
+        return siteMangmntOrgRevenue;
+    }
+
+    public void setSiteMangmntOrgRevenue(long siteMangmntOrgRevenue) {
+        this.siteMangmntOrgRevenue = siteMangmntOrgRevenue;
+    }
+
+    public SiteManagementAndReporting getSiteManagementAndReporting() {
+        return siteManagementAndReporting;
+    }
+
+    public void setSiteManagementAndReporting(SiteManagementAndReporting siteManagementAndReporting) {
+        this.siteManagementAndReporting = siteManagementAndReporting;
+    }
+
+  //to write method for calculating revenue: 
+    
+    //new mthod
+    
     
     
     
