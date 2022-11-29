@@ -11,16 +11,8 @@ package ReportingManagement;
  * @author Rohit Paul G
  */
 public class ReportingManagement {
-    private long siteMangmntOrgRevenue;
+//    private long siteMangmntOrgRevenue;
     private SiteManagementAndReporting siteManagementAndReporting; 
-
-    public long getSiteMangmntOrgRevenue() {
-        return siteMangmntOrgRevenue;
-    }
-
-    public void setSiteMangmntOrgRevenue(long siteMangmntOrgRevenue) {
-        this.siteMangmntOrgRevenue = siteMangmntOrgRevenue;
-    }
 
     public SiteManagementAndReporting getSiteManagementAndReporting() {
         return siteManagementAndReporting;

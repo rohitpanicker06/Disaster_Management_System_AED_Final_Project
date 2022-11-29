@@ -5,6 +5,7 @@
 package ReportingManagement;
 
 import Disaster.DisasterDirectory;
+import person.Person;
 
 /**
  *
@@ -13,10 +14,11 @@ import Disaster.DisasterDirectory;
 public class SiteReportingEmployee {
     
     private int empId;
-    private String empFullName;
-    private String gender;
-    private long mobileNo;
-    private String emailId;
+//    private String empFullName;
+//    private String gender;
+//    private long mobileNo;
+//    private String emailId;
+    private Person person;
     private DisasterDirectory disDir;
     
 
@@ -28,44 +30,21 @@ public class SiteReportingEmployee {
         this.empId = empId;
     }
 
-    public String getEmpFullName() {
-        return empFullName;
-    }
-
-    public void setEmpFullName(String empFullName) {
-        this.empFullName = empFullName;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public long getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(long mobileNo) {
-        this.mobileNo = mobileNo;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
+   
     public DisasterDirectory getDisDir() {
         return disDir;
     }
 
     public void setDisDir(DisasterDirectory disDir) {
         this.disDir = disDir;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
     
     

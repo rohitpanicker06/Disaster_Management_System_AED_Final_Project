@@ -13,11 +13,7 @@ import java.util.ArrayList;
  */
 public class SiteManagementAndReporting {
     private int siteMangmntOrgID;
-    private String organizationLocation;
     private String noOfEmployees;
-    private int noOfDisasterEventsReported;
-//    private String disasterEvents; 
-    
     private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
 
     public int getSiteMangmntOrgID() {
@@ -28,14 +24,6 @@ public class SiteManagementAndReporting {
         this.siteMangmntOrgID = siteMangmntOrgID;
     }
 
-    public String getOrganizationLocation() {
-        return organizationLocation;
-    }
-
-    public void setOrganizationLocation(String organizationLocation) {
-        this.organizationLocation = organizationLocation;
-    }
-
     public String getNoOfEmployees() {
         return noOfEmployees;
     }
@@ -44,13 +32,7 @@ public class SiteManagementAndReporting {
         this.noOfEmployees = noOfEmployees;
     }
 
-    public int getNoOfDisasterEventsReported() {
-        return noOfDisasterEventsReported;
-    }
-
-    public void setNoOfDisasterEventsReported(int noOfDisasterEventsReported) {
-        this.noOfDisasterEventsReported = noOfDisasterEventsReported;
-    }
+   
 
 //    public String getDisasterEvents() {
 //        return disasterEvents;
