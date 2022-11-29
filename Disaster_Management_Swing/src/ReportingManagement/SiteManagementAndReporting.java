@@ -4,6 +4,9 @@
  */
 package ReportingManagement;
 //A SiteManagementAndReporting organization class will have employees attribute. To be modelled further..
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Rohit Paul G
@@ -13,7 +16,9 @@ public class SiteManagementAndReporting {
     private String organizationLocation;
     private String noOfEmployees;
     private int noOfDisasterEventsReported;
-    private String disasterEvents;
+//    private String disasterEvents; 
+    
+    private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
 
     public int getSiteMangmntOrgID() {
         return siteMangmntOrgID;
@@ -47,17 +52,28 @@ public class SiteManagementAndReporting {
         this.noOfDisasterEventsReported = noOfDisasterEventsReported;
     }
 
-    public String getDisasterEvents() {
-        return disasterEvents;
+//    public String getDisasterEvents() {
+//        return disasterEvents;
+//    }
+//
+//    public void setDisasterEvents(String disasterEvents) {
+//        this.disasterEvents = disasterEvents;
+//    }
+
+    public static ArrayList<SiteReportingEmployee> getSiteReportingEmpList() {
+        return siteReportingEmpList;
     }
 
-    public void setDisasterEvents(String disasterEvents) {
-        this.disasterEvents = disasterEvents;
+    public static void setSiteReportingEmpList(ArrayList<SiteReportingEmployee> siteReportingEmpList) {
+        SiteManagementAndReporting.siteReportingEmpList = siteReportingEmpList;
+    }
+    
+    public void addNewSiteReportingEmployee(SiteReportingEmployee siteRepEmp){
+        siteReportingEmpList.add(siteRepEmp);
     }
     
     
-    
-    
+    //to ask doubt whether a method to remove employee should be specified here
         
     
 }
