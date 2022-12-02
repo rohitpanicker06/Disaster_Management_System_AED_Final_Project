@@ -1,25 +1,25 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
 
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
-import java.util.ArrayList;
+import static ui.DisasterReportingJFrame.disDir;
 
 /**
  *
  * @author Rohit Paul G
  */
-public class DisasterReportingJFrame extends javax.swing.JFrame {
+public class DisasterReportingNEWJPanel extends javax.swing.JPanel {
     
     public static DisasterDirectory disDir = new DisasterDirectory();
 
     /**
-     * Creates new form DisasterReportingJFrame
+     * Creates new form NewJPanel
      */
-    public DisasterReportingJFrame() {
+    public DisasterReportingNEWJPanel() {
         initComponents();
     }
 
@@ -32,9 +32,6 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        DisasterToolBar = new javax.swing.JPanel();
-        btnExit = new javax.swing.JButton();
         DisasterReportingWorkArea = new javax.swing.JPanel();
         DisasterReporting = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
@@ -77,37 +74,6 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
         btnView = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-
-        DisasterToolBar.setBackground(new java.awt.Color(255, 218, 220));
-
-        btnExit.setText("Exit");
-        btnExit.setOpaque(true);
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout DisasterToolBarLayout = new javax.swing.GroupLayout(DisasterToolBar);
-        DisasterToolBar.setLayout(DisasterToolBarLayout);
-        DisasterToolBarLayout.setHorizontalGroup(
-            DisasterToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DisasterToolBarLayout.createSequentialGroup()
-                .addComponent(btnExit)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        DisasterToolBarLayout.setVerticalGroup(
-            DisasterToolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DisasterToolBarLayout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(btnExit)
-                .addContainerGap(463, Short.MAX_VALUE))
-        );
-
-        jSplitPane1.setLeftComponent(DisasterToolBar);
 
         DisasterReportingWorkArea.setLayout(new java.awt.CardLayout());
 
@@ -257,9 +223,6 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
                                 .addGap(150, 150, 150)
                                 .addComponent(btnViewDisaster))))))
         );
-
-        ManageDisasterWorkspaceLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBack, btnSaveDisaster, btnViewDisaster});
-
         ManageDisasterWorkspaceLayout.setVerticalGroup(
             ManageDisasterWorkspaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageDisasterWorkspaceLayout.createSequentialGroup()
@@ -443,27 +406,57 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
 
         DisasterReportingWorkArea.add(ViewDisasterArea, "card4");
 
-        jSplitPane1.setRightComponent(DisasterReportingWorkArea);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGap(0, 823, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(DisasterReportingWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, 823, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addGap(0, 771, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(DisasterReportingWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-
-        pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+    private void btnDisasterWorkspaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisasterWorkspaceMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnExitMouseClicked
+
+        DisasterReportingWorkArea.removeAll();
+        DisasterReportingWorkArea.add(ManageDisasterWorkspace);
+        DisasterReportingWorkArea.repaint();
+        DisasterReportingWorkArea.revalidate();
+    }//GEN-LAST:event_btnDisasterWorkspaceMouseClicked
+
+    private void btnSaveDisasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveDisasterMouseClicked
+        // TODO add your handling code here:
+
+        Disaster disas = new Disaster();
+
+        disas.setDisasterId(Integer.parseInt(txtDisasterId.getText()));
+        disas.setDisasterEvent(txtDisasterEvent.getText());
+        disas.setDisasterTime(txtDisasterTime.getText());
+        disas.setDisasterDate(txtDisasterDate.getText());
+        disas.setDisasterLocation(txtDisasterLocation.getText());
+        disas.setDisasterCoordinates(txtDisasterCoordinates.getText());
+
+        disDir.addNewDisaster(disas);
+
+        vanishDataInDisasterCreation();
+
+        //        ArrayList<Disaster> disasterList = DisasterDirectory.getDisasterList();
+        //        disasterList.add(disas);
+
+    }//GEN-LAST:event_btnSaveDisasterMouseClicked
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         // TODO add your handling code here:
@@ -473,93 +466,24 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
         DisasterReportingWorkArea.revalidate();
     }//GEN-LAST:event_btnBackMouseClicked
 
-    private void btnDisasterWorkspaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDisasterWorkspaceMouseClicked
-        // TODO add your handling code here:
-        
-        DisasterReportingWorkArea.removeAll();
-        DisasterReportingWorkArea.add(ManageDisasterWorkspace);
-        DisasterReportingWorkArea.repaint();
-        DisasterReportingWorkArea.revalidate();
-    }//GEN-LAST:event_btnDisasterWorkspaceMouseClicked
-
-    private void btnSaveDisasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveDisasterMouseClicked
-        // TODO add your handling code here:
-        
-        Disaster disas = new Disaster();
-        
-        
-        
-        disas.setDisasterId(Integer.parseInt(txtDisasterId.getText()));
-        disas.setDisasterEvent(txtDisasterEvent.getText());
-        disas.setDisasterTime(txtDisasterTime.getText());
-        disas.setDisasterDate(txtDisasterDate.getText());
-        disas.setDisasterLocation(txtDisasterLocation.getText());
-        disas.setDisasterCoordinates(txtDisasterCoordinates.getText());
-        
-        disDir.addNewDisaster(disas);
-        
-        vanishDataInDisasterCreation();
-        
-//        ArrayList<Disaster> disasterList = DisasterDirectory.getDisasterList();
-//        disasterList.add(disas);
-
-        
-    }//GEN-LAST:event_btnSaveDisasterMouseClicked
-
     private void btnViewDisasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewDisasterMouseClicked
         // TODO add your handling code here:
         DisasterReportingWorkArea.removeAll();
         DisasterReportingWorkArea.add(ViewDisasterArea);
         DisasterReportingWorkArea.repaint();
         DisasterReportingWorkArea.revalidate();
-        
+
     }//GEN-LAST:event_btnViewDisasterMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DisasterReportingJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DisasterReportingJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DisasterReportingJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DisasterReportingJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DisasterReportingJFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisasterCollectionjTable;
     private javax.swing.JPanel DisasterReporting;
     private javax.swing.JPanel DisasterReportingWorkArea;
-    private javax.swing.JPanel DisasterToolBar;
     private javax.swing.JPanel ManageDisasterWorkspace;
     private javax.swing.JPanel ViewDisasterArea;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDisasterWorkspace;
-    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnReportingManagementWorkspace;
     private javax.swing.JButton btnSaveDisaster;
     private javax.swing.JButton btnSiteManagementWorkspace;
@@ -568,7 +492,6 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblDisasterCoordinates;
     private javax.swing.JLabel lblDisasterDate;
     private javax.swing.JLabel lblDisasterEvent;
@@ -599,7 +522,6 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void vanishDataInDisasterCreation() {
-        
         txtDisasterId.setText("");
         txtDisasterEvent.setText("");
         txtDisasterTime.setText("");

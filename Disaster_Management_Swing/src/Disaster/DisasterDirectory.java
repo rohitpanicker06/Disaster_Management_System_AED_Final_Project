@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class DisasterDirectory {
     
-    private static ArrayList<Disaster> disasterList = new ArrayList<>();
+    private static ArrayList<Disaster> disasterList = new ArrayList<>(); 
 
     public static ArrayList<Disaster> getDisasterList() {
         return disasterList;
@@ -25,6 +25,7 @@ public class DisasterDirectory {
     public void addNewDisaster(Disaster dis){
         disasterList.add(dis);
     }
+    
     
     //to ask doubt whether a method to remove disaster should be specified here
     

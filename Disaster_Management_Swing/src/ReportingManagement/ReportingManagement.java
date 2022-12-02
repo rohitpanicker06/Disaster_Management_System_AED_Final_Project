@@ -21,6 +21,8 @@ public class ReportingManagement {
     public void setSiteManagementAndReporting(SiteManagementAndReporting siteManagementAndReporting) {
         this.siteManagementAndReporting = siteManagementAndReporting;
     }
+    
+    
 
   //to write method for calculating revenue: 
     

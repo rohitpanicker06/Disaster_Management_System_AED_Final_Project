@@ -65,5 +65,5 @@ public class Disaster {
         this.disasterCoordinates = disasterCoordinates;
     }
     
-    
+        
 }
