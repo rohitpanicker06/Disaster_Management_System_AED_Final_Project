@@ -92,7 +92,7 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
-        userTypeDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Patient", "Doctor", "Hospital Admin", "Community Admin" }));
+        userTypeDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Patient", "Doctor", "Hospital Admin", "Community Admin", "Event Reporting", "Disaster Head", "Fund Head", "Civil Response Head" }));
 
         loginButton.setBackground(new java.awt.Color(173, 79, 79));
         loginButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
