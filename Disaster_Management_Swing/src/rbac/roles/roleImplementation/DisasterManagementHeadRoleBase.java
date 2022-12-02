@@ -10,6 +10,6 @@ import rbac.roles.roleInterface.DisasterMangementHeadRoleInterface;
  *
  * @author rohitpanicker
  */
-public class DisasterManagementRoleBase extends Role implements DisasterMangementHeadRoleInterface{
+public class DisasterManagementHeadRoleBase extends Role implements DisasterMangementHeadRoleInterface{
     
 }

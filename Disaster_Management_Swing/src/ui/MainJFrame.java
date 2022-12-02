@@ -30,21 +30,31 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        loginPanel1 = new ui.LoginPanel();
+        signupPanel1 = new ui.SignupPanel();
+        fundRaiserPanel1 = new ui.fundraiser.FundRaiserPanel();
+        createNewFundRaiserPanel1 = new ui.fundraiser.CreateNewFundRaiserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         mainPanel.setLayout(new java.awt.CardLayout());
+        mainPanel.add(loginPanel1, "card2");
+        mainPanel.add(signupPanel1, "card3");
+        mainPanel.add(fundRaiserPanel1, "card4");
+        mainPanel.add(createNewFundRaiserPanel1, "card5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -87,6 +97,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
+    private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
+    private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
+    private ui.SignupPanel signupPanel1;
     // End of variables declaration//GEN-END:variables
 }

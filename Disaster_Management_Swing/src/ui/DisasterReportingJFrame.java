@@ -215,8 +215,8 @@ public class DisasterReportingJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel DisasterReporting;
-    private javax.swing.JPanel DisasterReportingWorkArea;
+    public static javax.swing.JPanel DisasterReporting;
+    public static javax.swing.JPanel DisasterReportingWorkArea;
     private javax.swing.JPanel DisasterToolBar;
     private javax.swing.JPanel ManageDisasterWorkspace;
     private javax.swing.JButton btnDisasterWorkspace;
