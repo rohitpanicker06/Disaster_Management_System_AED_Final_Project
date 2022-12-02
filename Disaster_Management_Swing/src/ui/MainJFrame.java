@@ -30,27 +30,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        loginPanel1 = new ui.LoginPanel();
-        signupPanel1 = new ui.SignupPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         mainPanel.setLayout(new java.awt.CardLayout());
-        mainPanel.add(loginPanel1, "card2");
-
-        javax.swing.GroupLayout signupPanel1Layout = new javax.swing.GroupLayout(signupPanel1);
-        signupPanel1.setLayout(signupPanel1Layout);
-        signupPanel1Layout.setHorizontalGroup(
-            signupPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1043, Short.MAX_VALUE)
-        );
-        signupPanel1Layout.setVerticalGroup(
-            signupPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 835, Short.MAX_VALUE)
-        );
-
-        mainPanel.add(signupPanel1, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,8 +87,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
-    private ui.SignupPanel signupPanel1;
     // End of variables declaration//GEN-END:variables
 }
