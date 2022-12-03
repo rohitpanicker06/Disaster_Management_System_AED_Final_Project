@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SiteManagementAndReporting {
     private int siteMangmntOrgID;
-    private String noOfEmployees;
+    private int noOfEmployees;
     private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
 
     public int getSiteMangmntOrgID() {
@@ -24,11 +24,11 @@ public class SiteManagementAndReporting {
         this.siteMangmntOrgID = siteMangmntOrgID;
     }
 
-    public String getNoOfEmployees() {
+    public int getNoOfEmployees() {
         return noOfEmployees;
     }
 
-    public void setNoOfEmployees(String noOfEmployees) {
+    public void setNoOfEmployees(int noOfEmployees) {
         this.noOfEmployees = noOfEmployees;
     }
 
@@ -53,6 +53,7 @@ public class SiteManagementAndReporting {
     public void addNewSiteReportingEmployee(SiteReportingEmployee siteRepEmp){
         siteReportingEmpList.add(siteRepEmp);
     }
+    
     
     
     //to ask doubt whether a method to remove employee should be specified here
