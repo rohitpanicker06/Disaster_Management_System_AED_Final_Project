@@ -65,5 +65,10 @@ public class Disaster {
         this.disasterCoordinates = disasterCoordinates;
     }
     
+    @Override
+    public String toString()
+    {
+        return this.disasterEvent;
+    }
         
 }

@@ -14,11 +14,11 @@ public class DisasterDirectory {
     
     private static ArrayList<Disaster> disasterList = new ArrayList<>(); 
 
-    public static ArrayList<Disaster> getDisasterList() {
+    public ArrayList<Disaster> getDisasterList() {  //change public static to public
         return disasterList;
     }
 
-    public static void setDisasterList(ArrayList<Disaster> disasterList) {
+    public void setDisasterList(ArrayList<Disaster> disasterList) { //change public static void to public void
         DisasterDirectory.disasterList = disasterList;
     }
     

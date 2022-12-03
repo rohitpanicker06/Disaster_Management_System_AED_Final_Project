@@ -267,7 +267,8 @@ String userName = userNameTextField.getText();
     private void signUpLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMousePressed
         // TODO add your handling code here:
        MainJFrame.mainPanel.removeAll();
-       MainJFrame.mainPanel.add(new SignupPanel());
+       //MainJFrame.mainPanel.add(new SignupPanel());
+       MainJFrame.mainPanel.add(new DisasterReportingDashboardPanel());
        MainJFrame.mainPanel.repaint();
        MainJFrame.mainPanel.revalidate();
        
