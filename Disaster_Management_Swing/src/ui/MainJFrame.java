@@ -29,18 +29,29 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel1 = new ui.LoginPanel();
+       
         mainPanel = new javax.swing.JPanel();
-        loginPanel2 = new ui.LoginPanel();
+
+        
         signupPanel1 = new ui.SignupPanel();
+        fundRaiserPanel1 = new ui.fundraiser.FundRaiserPanel();
+        createNewFundRaiserPanel1 = new ui.fundraiser.CreateNewFundRaiserPanel();
+
+        loginPanel2 = new ui.LoginPanel();
+       
         disasterReportingDashboardPanel1 = new ui.DisasterReportingDashboardPanel();
         manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
         viewDisasterPanel2 = new ui.ViewDisasterPanel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         mainPanel.setLayout(new java.awt.CardLayout());
+        mainPanel.add(loginPanel1, "card2");
+        mainPanel.add(signupPanel1, "card3");
+        mainPanel.add(fundRaiserPanel1, "card4");
+        mainPanel.add(createNewFundRaiserPanel1, "card5");
 
         loginPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -63,11 +74,15 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -118,12 +133,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ui.DisasterReportingDashboardPanel disasterReportingDashboardPanel1;
-    private ui.LoginPanel loginPanel1;
-    private ui.LoginPanel loginPanel2;
+
+    private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
+    private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
     public static javax.swing.JPanel mainPanel;
+    
+    private ui.DisasterReportingDashboardPanel disasterReportingDashboardPanel1;
+    private ui.LoginPanel loginPanel2;
     private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
     private ui.SignupPanel signupPanel1;
     private ui.ViewDisasterPanel viewDisasterPanel2;
+
     // End of variables declaration//GEN-END:variables
 }
