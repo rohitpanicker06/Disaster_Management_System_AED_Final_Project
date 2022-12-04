@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="ui.LoginPanel" name="loginPanel1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
@@ -44,7 +48,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Component class="ui.LoginPanel" name="loginPanel1">
+
+        <Component class="ui.LoginPanel" name="loginPanel2">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="loginPanel2KeyPressed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
@@ -58,17 +66,32 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="ui.fundraiser.FundRaiserPanel" name="fundRaiserPanel1">
+
+        <Component class="ui.DisasterReportingDashboardPanel" name="disasterReportingDashboardPanel1">
+
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card4"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="ui.fundraiser.CreateNewFundRaiserPanel" name="createNewFundRaiserPanel1">
+
+        <Component class="ui.ManageDisasterWorkspacePanel" name="manageDisasterWorkspacePanel1">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="manageDisasterWorkspacePanel1MouseClicked"/>
+          </Events>
+
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card5"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+
+        <Component class="ui.ViewDisasterPanel" name="viewDisasterPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card6"/>
             </Constraint>
           </Constraints>
         </Component>

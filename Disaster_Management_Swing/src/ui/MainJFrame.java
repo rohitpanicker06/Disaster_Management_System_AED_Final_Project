@@ -29,11 +29,20 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+       
         mainPanel = new javax.swing.JPanel();
-        loginPanel1 = new ui.LoginPanel();
+
+        
         signupPanel1 = new ui.SignupPanel();
         fundRaiserPanel1 = new ui.fundraiser.FundRaiserPanel();
         createNewFundRaiserPanel1 = new ui.fundraiser.CreateNewFundRaiserPanel();
+
+        loginPanel2 = new ui.LoginPanel();
+       
+        disasterReportingDashboardPanel1 = new ui.DisasterReportingDashboardPanel();
+        manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
+        viewDisasterPanel2 = new ui.ViewDisasterPanel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -44,11 +53,30 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.add(fundRaiserPanel1, "card4");
         mainPanel.add(createNewFundRaiserPanel1, "card5");
 
+        loginPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginPanel2KeyPressed(evt);
+            }
+        });
+        mainPanel.add(loginPanel2, "card2");
+        mainPanel.add(signupPanel1, "card3");
+        mainPanel.add(disasterReportingDashboardPanel1, "card4");
+
+        manageDisasterWorkspacePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageDisasterWorkspacePanel1MouseClicked(evt);
+            }
+        });
+        mainPanel.add(manageDisasterWorkspacePanel1, "card5");
+        mainPanel.add(viewDisasterPanel2, "card6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,6 +88,14 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginPanel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginPanel2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginPanel2KeyPressed
+
+    private void manageDisasterWorkspacePanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageDisasterWorkspacePanel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageDisasterWorkspacePanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -97,10 +133,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
     private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
-    private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
+    
+    private ui.DisasterReportingDashboardPanel disasterReportingDashboardPanel1;
+    private ui.LoginPanel loginPanel2;
+    private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
     private ui.SignupPanel signupPanel1;
+    private ui.ViewDisasterPanel viewDisasterPanel2;
+
     // End of variables declaration//GEN-END:variables
 }
