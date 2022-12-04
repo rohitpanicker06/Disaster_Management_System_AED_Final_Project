@@ -12,9 +12,66 @@ import Disaster.Disaster;
  */
 public class DisasterFundRaiser {
     
-    Disaster disaster;
+     Disaster disaster;
     String currency;
-    long amount;
+    private long targetAmount;
+    private long amountRaisedSoFar;
+
+    public Disaster getDisaster() {
+        return disaster;
+    }
+
+    public void setDisaster(Disaster disaster) {
+        this.disaster = disaster;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public long getTargetAmount() {
+        return targetAmount;
+    }
+
+    public void setTargetAmount(long targetAmount) {
+        this.targetAmount = targetAmount;
+    }
+
+    public long getAmountRaisedSoFar() {
+        return amountRaisedSoFar;
+    }
+
+    public void setAmountRaisedSoFar(long amountRaisedSoFar) {
+        this.amountRaisedSoFar = amountRaisedSoFar;
+    }
+
+    public TelevisionFundRaisingDept getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(TelevisionFundRaisingDept television) {
+        this.television = television;
+    }
+
+    public SocialMediaFundRaisingDept getSocialMedia() {
+        return socialMedia;
+    }
+
+    public void setSocialMedia(SocialMediaFundRaisingDept socialMedia) {
+        this.socialMedia = socialMedia;
+    }
+
+    public RadioFundRaisingDept getRadioFundRaisingDept() {
+        return radioFundRaisingDept;
+    }
+
+    public void setRadioFundRaisingDept(RadioFundRaisingDept radioFundRaisingDept) {
+        this.radioFundRaisingDept = radioFundRaisingDept;
+    }
 
     public DisasterFundRaiser() {
     }
@@ -22,7 +79,7 @@ public class DisasterFundRaiser {
     public DisasterFundRaiser(Disaster disaster, String currency, long amount, TelevisionFundRaisingDept television, SocialMediaFundRaisingDept socialMedia, RadioFundRaisingDept radioFundRaisingDept) {
         this.disaster = disaster;
         this.currency = currency;
-        this.amount = amount;
+        this.targetAmount = amount;
         this.television = television;
         this.socialMedia = socialMedia;
         this.radioFundRaisingDept = radioFundRaisingDept;
@@ -34,6 +91,6 @@ public class DisasterFundRaiser {
     public DisasterFundRaiser(Disaster disaster, String currency, long amount) {
         this.disaster = disaster;
         this.currency = currency;
-        this.amount = amount;
+        this.targetAmount = amount;
     }
 }

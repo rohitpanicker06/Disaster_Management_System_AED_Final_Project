@@ -46,7 +46,7 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
     public void populateComboBox()
     {   
         disasterComboBox.removeAllItems();
-        for(Disaster disaster: DisasterDirectory.getDisasterList())
+        for(Disaster disaster: new DisasterDirectory().getDisasterList())
         {
             disasterComboBox.addItem(disaster.toString());
 

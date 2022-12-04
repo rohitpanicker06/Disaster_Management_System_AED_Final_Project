@@ -18,7 +18,7 @@ public class FundRaiserDirectory {
     
     ArrayList<DisasterFundRaiser> fundRaiserDirectory = new ArrayList<>();
     ArrayList<FundRaisingEmployee> employeeDirectory = new ArrayList<>();
-    ArrayList<Disaster> disasterDirectory = DisasterDirectory.getDisasterList();
+    ArrayList<Disaster> disasterDirectory = new DisasterDirectory().getDisasterList();
     
     
     
