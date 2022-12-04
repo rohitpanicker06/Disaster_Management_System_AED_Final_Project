@@ -257,7 +257,7 @@ String userName = userNameTextField.getText();
                 case 1:
                     role = new SiteReportingEmployeeRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    comp = new DisasterReportingJFrame().DisasterReportingWorkArea;
+                   
                     break;
                 case 2:
                     role = new DisasterManagementHeadRoleBase();
