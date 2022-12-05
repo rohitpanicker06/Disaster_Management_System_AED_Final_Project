@@ -33,6 +33,13 @@ public class MainJFrame extends javax.swing.JFrame {
         loginPanel1 = new ui.LoginPanel();
         signupPanel1 = new ui.SignupPanel();
         otpVerificationPanel1 = new ui.OtpVerificationPanel();
+        manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
+        siteManagementWorkspacePanel1 = new ui.SiteManagementWorkspacePanel();
+        viewDisasterPanel1 = new ui.ViewDisasterPanel();
+        fundRaiserPanel1 = new ui.fundraiser.FundRaiserPanel();
+        donateFundsPanel1 = new ui.fundraiser.DonateFundsPanel();
+        createNewFundRaiserPanel1 = new ui.fundraiser.CreateNewFundRaiserPanel();
+        homeScreen1 = new ui.hospital.HospitalHomeScreen();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -41,6 +48,13 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.add(loginPanel1, "card2");
         mainPanel.add(signupPanel1, "card3");
         mainPanel.add(otpVerificationPanel1, "card4");
+        mainPanel.add(manageDisasterWorkspacePanel1, "card5");
+        mainPanel.add(siteManagementWorkspacePanel1, "card6");
+        mainPanel.add(viewDisasterPanel1, "card7");
+        mainPanel.add(fundRaiserPanel1, "card8");
+        mainPanel.add(donateFundsPanel1, "card9");
+        mainPanel.add(createNewFundRaiserPanel1, "card10");
+        mainPanel.add(homeScreen1, "card11");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,9 +117,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
+    private ui.fundraiser.DonateFundsPanel donateFundsPanel1;
+    private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
+    private ui.hospital.HospitalHomeScreen homeScreen1;
     private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
+    private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
     private ui.OtpVerificationPanel otpVerificationPanel1;
     private ui.SignupPanel signupPanel1;
+    private ui.SiteManagementWorkspacePanel siteManagementWorkspacePanel1;
+    private ui.ViewDisasterPanel viewDisasterPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,9 +14,12 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.fundraiser.DisasterFundRaiser;
+import model.fundraiser.FundRaiserDirectory;
 import model.fundraiser.RadioFundRaisingDept;
 import model.fundraiser.SocialMediaFundRaisingDept;
 import model.fundraiser.TelevisionFundRaisingDept;
+import ui.MainJFrame;
+import ui.SignupPanel;
 
 /**
  *
@@ -252,10 +255,11 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         
-        Disaster name = (Disaster) disasterComboBox.getSelectedItem();
+        String name = (String) disasterComboBox.getSelectedItem();
+        Disaster event = getDisasterEventFromName(name);
         String currency = (String)currencyComboBox.getSelectedItem();
         long amount = Integer.valueOf(currencyAmountTxtBox.getText());
-        DisasterFundRaiser fundRaiser = new DisasterFundRaiser(name,currency,amount);
+        DisasterFundRaiser fundRaiser = new DisasterFundRaiser(event,currency,amount);
         if(televisionCheckBox.isSelected())
         {
             TelevisionFundRaisingDept.fundRaisingRequest.add(fundRaiser);
@@ -270,7 +274,12 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         {
            SocialMediaFundRaisingDept.fundRaisingRequest.add(fundRaiser); 
         }
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser);
         JOptionPane.showMessageDialog(this, "Fund Raising Request published Successfully");
+         MainJFrame.mainPanel.removeAll();
+       MainJFrame.mainPanel.add(new DonateFundsPanel());
+       MainJFrame.mainPanel.repaint();
+       MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void radioCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheckBoxActionPerformed
@@ -308,4 +317,16 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
     private javax.swing.JButton submitBtn;
     private javax.swing.JCheckBox televisionCheckBox;
     // End of variables declaration//GEN-END:variables
+
+    private Disaster getDisasterEventFromName(String name) {
+        for(Disaster disaster : new DisasterDirectory().getDisasterList())
+        {
+            if(disaster.getDisasterEvent().equals(name))
+            {
+                return disaster;
+            }
+        }
+        
+        return null;
+    }
 }

@@ -14,6 +14,8 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.fundraiser.DisasterFundRaiser;
+import model.fundraiser.FundRaiserDirectory;
+import ui.MainJFrame;
 
 /**
  *
@@ -36,8 +38,8 @@ public class DonateFundsPanel extends javax.swing.JPanel {
     public DonateFundsPanel() {
         initComponents();
         setOpaque(false);
-        progressBar.setValue(0);
-        progressBar.setVisible(false);
+        setLabels(false);
+
         populateComboBox();
         
     }
@@ -84,17 +86,18 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         disasterComboBox = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        currencyLabel = new javax.swing.JLabel();
         currencyComboBox = new javax.swing.JComboBox<>();
         currencyAmountTxtBox = new javax.swing.JTextField();
         progressBar = new javax.swing.JProgressBar();
-        jLabel1 = new javax.swing.JLabel();
+        moneyRaisedLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         donateBtn = new javax.swing.JButton();
         televisionCheckBox = new javax.swing.JCheckBox();
         radioCheckBox = new javax.swing.JCheckBox();
         socialMediaCheckBox = new javax.swing.JCheckBox();
-        jLabel5 = new javax.swing.JLabel();
+        whereLabel = new javax.swing.JLabel();
+        goBtn = new javax.swing.JButton();
 
         jPanel1.setOpaque(false);
 
@@ -103,16 +106,21 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         jLabel2.setText("Disaster ");
 
         disasterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        disasterComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                disasterComboBoxItemStateChanged(evt);
+            }
+        });
         disasterComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disasterComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Currency");
+        currencyLabel.setBackground(new java.awt.Color(255, 255, 255));
+        currencyLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        currencyLabel.setForeground(new java.awt.Color(255, 255, 255));
+        currencyLabel.setText("Currency");
 
         currencyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -122,9 +130,9 @@ public class DonateFundsPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Money Raised");
+        moneyRaisedLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        moneyRaisedLabel.setForeground(new java.awt.Color(255, 255, 255));
+        moneyRaisedLabel.setText("Money Raised");
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,9 +173,16 @@ public class DonateFundsPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Where did you know about thie event? ");
+        whereLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        whereLabel.setForeground(new java.awt.Color(255, 255, 255));
+        whereLabel.setText("Where did you know about thie event? ");
+
+        goBtn.setText("Go");
+        goBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,14 +194,13 @@ public class DonateFundsPanel extends javax.swing.JPanel {
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(currencyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(moneyRaisedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                            .addComponent(whereLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(322, 322, 322)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,42 +212,50 @@ public class DonateFundsPanel extends javax.swing.JPanel {
                                         .addComponent(radioCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(socialMediaCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(currencyAmountTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(currencyAmountTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(donateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(goBtn))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(48, 48, 48)
-                    .addComponent(disasterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(disasterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(260, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(41, 41, 41)
+                .addComponent(goBtn)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(currencyAmountTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(currencyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(currencyLabel))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(televisionCheckBox)
+                    .addComponent(radioCheckBox)
+                    .addComponent(socialMediaCheckBox)
+                    .addComponent(whereLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(televisionCheckBox)
-                            .addComponent(radioCheckBox)
-                            .addComponent(socialMediaCheckBox)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(97, 97, 97)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(moneyRaisedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                 .addGap(55, 55, 55)
                 .addComponent(donateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -243,7 +265,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(disasterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(393, Short.MAX_VALUE)))
+                    .addContainerGap(477, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -252,29 +274,34 @@ public class DonateFundsPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void disasterComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disasterComboBoxActionPerformed
         // TODO add your handling code here:
-        /*Disaster disaster = (Disaster) disasterComboBox.getSelectedItem();
-        DisasterFundRaiser fundraiser = getDisasterFundRaiser(disaster);
-        long amountRaised = Long.parseLong(currencyAmountTxtBox.getText());
+        
+       /* String disaster = (String) disasterComboBox.getSelectedItem();
+        Disaster event = getDisasterEventFromName(disaster);
+        DisasterFundRaiser fundraiser = getDisasterFundRaiser(event);
+        
+        if(fundraiser != null){
+        
+        long amountRaised = fundraiser.getAmountRaisedSoFar();
+        
         long targetAmountNeeded = fundraiser.getTargetAmount();
         double percentageReached = (amountRaised/targetAmountNeeded)*100;
         
         progressBar.setVisible(true);
         progressBar.setValue((int) percentageReached);
-        progressBar.setStringPainted(true);*/
+        progressBar.setStringPainted(true);
+        }*/
+        
         
     }//GEN-LAST:event_disasterComboBoxActionPerformed
 
@@ -284,11 +311,17 @@ public class DonateFundsPanel extends javax.swing.JPanel {
 
     private void donateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateBtnActionPerformed
         // TODO add your handling code here:
-        Disaster disaster = (Disaster) disasterComboBox.getSelectedItem();
-        DisasterFundRaiser fundraiser = getDisasterFundRaiser(disaster);
+        String disaster = (String) disasterComboBox.getSelectedItem();
+        Disaster event = getDisasterEventFromName(disaster);
+        DisasterFundRaiser fundraiser = getDisasterFundRaiser(event);
        long amountRaised = Long.parseLong(currencyAmountTxtBox.getText());
        fundraiser.setAmountRaisedSoFar(fundraiser.getAmountRaisedSoFar()+amountRaised);
        JOptionPane.showMessageDialog(this, "Amount Donated Successfuly");
+       MainJFrame.mainPanel.removeAll();
+       MainJFrame.mainPanel.add(new DonateFundsPanel());
+       MainJFrame.mainPanel.repaint();
+       MainJFrame.mainPanel.revalidate();
+       
     }//GEN-LAST:event_donateBtnActionPerformed
 
     private void televisionCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_televisionCheckBoxActionPerformed
@@ -303,25 +336,101 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_socialMediaCheckBoxActionPerformed
 
+    private void disasterComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_disasterComboBoxItemStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_disasterComboBoxItemStateChanged
+
+    private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
+        // TODO add your handling code here:
+        setLabels(true);
+        setProgressBar();
+        goBtn.setVisible(true);
+    }//GEN-LAST:event_goBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField currencyAmountTxtBox;
     private javax.swing.JComboBox<String> currencyComboBox;
+    private javax.swing.JLabel currencyLabel;
     private javax.swing.JComboBox<String> disasterComboBox;
     private javax.swing.JButton donateBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton goBtn;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel moneyRaisedLabel;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JCheckBox radioCheckBox;
     private javax.swing.JCheckBox socialMediaCheckBox;
     private javax.swing.JCheckBox televisionCheckBox;
+    private javax.swing.JLabel whereLabel;
     // End of variables declaration//GEN-END:variables
 
     private DisasterFundRaiser getDisasterFundRaiser(Disaster disaster) {
-      return null;
+        ArrayList<DisasterFundRaiser> al = FundRaiserDirectory.fundRaiserDirectory;
+     for(DisasterFundRaiser fundRaiser: al){
+         
+         if(fundRaiser.getDisaster().getDisasterEvent().equals(disaster.getDisasterEvent()))
+         {
+             return fundRaiser;
+         }
+     
     }
+    return null;
+    
+}
+
+   private Disaster getDisasterEventFromName(String name) {
+        for(Disaster disaster : new DisasterDirectory().getDisasterList())
+        {
+            if(disaster.getDisasterEvent().equals(name))
+            {
+                return disaster;
+            }
+        }
+        
+        return null;
+    }
+
+    private void setLabels(boolean value) {
+      
+    currencyLabel.setVisible(value);
+    whereLabel.setVisible(value);
+    moneyRaisedLabel.setVisible(value);
+    progressBar.setVisible(value);
+    televisionCheckBox.setVisible(value);
+    radioCheckBox.setVisible(value);
+    socialMediaCheckBox.setVisible(value);
+    donateBtn.setVisible(value);
+    currencyAmountTxtBox.setVisible(value);
+    currencyComboBox.setVisible(value);
+   
+    }
+
+    private void setProgressBar() {
+      
+        String disaster = (String) disasterComboBox.getSelectedItem();
+        Disaster event = getDisasterEventFromName(disaster);
+        DisasterFundRaiser fundraiser = getDisasterFundRaiser(event);
+        
+        if(fundraiser != null){
+        
+        long amountRaised = fundraiser.getAmountRaisedSoFar();
+        
+        long targetAmountNeeded = fundraiser.getTargetAmount();
+        double percentageReached = (((double)amountRaised)/((double)targetAmountNeeded))*100;
+        int val = (int) percentageReached;
+        
+        progressBar.setValue(val);
+        progressBar.setStringPainted(true);
+    }
+}
+    
+    /*public static void main(String[] args) {
+        long amount = 5000;
+        long target = 50000;
+         double val = (((double)amount)/((double)target))*100;
+        System.out.println((int)val);
+    }*/
 }
