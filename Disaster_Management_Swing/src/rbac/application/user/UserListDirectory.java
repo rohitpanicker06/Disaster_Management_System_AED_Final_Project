@@ -7,6 +7,7 @@ package rbac.application.user;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import person.Person;
 
 
 
@@ -22,6 +23,11 @@ public class UserListDirectory {
     private static ArrayList<User> systemAdminList = new ArrayList<>();
     private static ArrayList<User> doctorUserList = new ArrayList<>();
     private static ArrayList<User> hospitalAdminList = new ArrayList<>();
+     private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
+
+    public static HashMap<String, Person> getUserNameToPersonMap() {
+        return userNameToPersonMap;
+    }
 
 
     public static ArrayList<User> getUserList() {
