@@ -13,6 +13,7 @@ import java.awt.RenderingHints;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,17 +28,19 @@ public class OtpVerificationPanel extends javax.swing.JPanel {
     private Integer otp = null;
     String userName=null;
     String password = null;
+    String emailId = null;
     public OtpVerificationPanel() {
         initComponents();
         setOpaque(false);
     }
     
-    public OtpVerificationPanel(int otp, String userName, String password) {
+    public OtpVerificationPanel(int otp, String userName, String password, String emailId) {
         initComponents();
         setOpaque(false);
         this.otp= otp;
         this.userName = userName;
         this.password = password;
+        this.emailId = emailId;
     }
        
     
@@ -90,6 +93,11 @@ public class OtpVerificationPanel extends javax.swing.JPanel {
         jLabel2.setText("Enter the OTP sent to your email for verifying your account");
 
         jButton1.setText("Resend OTP");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,6 +175,35 @@ public class OtpVerificationPanel extends javax.swing.JPanel {
         }
           return;     
     }//GEN-LAST:event_VerifyBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        try {
+            int newOtp = emailSendingService.SendEmail.sendEmail(userName, emailId);
+            this.otp = newOtp;
+            
+            Integer otp =Integer.valueOf(optTxtField.getText());
+        if(otp.intValue() == this.otp.intValue())
+        {
+            JOptionPane.showMessageDialog(this, "Sign Up Successfull");
+             try {
+                QueryExecutor.signupUser(userName,password);
+                MainJFrame.mainPanel.removeAll();
+                 MainJFrame.mainPanel.add(new LoginPanel());
+                MainJFrame.mainPanel.repaint();
+                MainJFrame.mainPanel.revalidate();
+            } catch (SQLException ex) {
+                Logger.getLogger(OtpVerificationPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+             JOptionPane.showMessageDialog(this, "Otp Incorrect, Please re-enter");
+        }   
+    }    
+         catch (MessagingException ex) {
+            Logger.getLogger(OtpVerificationPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
