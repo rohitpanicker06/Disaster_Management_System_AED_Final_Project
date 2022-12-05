@@ -24,6 +24,7 @@ import rbac.roles.roleImplementation.CivilResponseRoleBase;
 import rbac.roles.roleImplementation.CommunityAdminRoleBase;
 import rbac.roles.roleImplementation.DisasterManagementHeadRoleBase;
 import rbac.roles.roleImplementation.DoctorRoleBase;
+import rbac.roles.roleImplementation.DonoRoleBase;
 import rbac.roles.roleImplementation.FundRaiserRoleBase;
 import rbac.roles.roleImplementation.HospitalAdminRoleBase;
 import rbac.roles.roleImplementation.PatientRoleBase;
@@ -31,6 +32,7 @@ import rbac.roles.roleImplementation.PharmacyRoleBase;
 import rbac.roles.roleImplementation.RecordsRoleBase;
 import rbac.roles.roleImplementation.SiteReportingEmployeeRoleBase;
 import rbac.roles.roleImplementation.SystemAdminRoleBase;
+import ui.fundraiser.DonateFundsPanel;
 import ui.fundraiser.FundRaiserPanel;
 
 /**
@@ -56,6 +58,7 @@ public class LoginPanel extends javax.swing.JPanel {
         roles.add("Doctor");
         roles.add("Pharmacy");
         roles.add("Records");
+        roles.add("Donor");
         
     }
     public LoginPanel() {
@@ -313,6 +316,11 @@ String userName = userNameTextField.getText();
                         rbacApplicationContext.setRoleContext(role);
                         // comp = new CommunityAdminPanel();
                         break;
+                        
+                    case 10:
+                        role = new DonoRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        comp=new DonateFundsPanel();
                         
                         
                     default:
