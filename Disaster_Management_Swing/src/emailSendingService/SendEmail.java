@@ -21,7 +21,7 @@ public class SendEmail {
     
     static SessionConfiguration session = SessionConfiguration.getInstance();
     
-    public static void sendEmail(String message, String to) throws AddressException, MessagingException
+    public static int sendEmail(String message, String to) throws AddressException, MessagingException
     {
         Random random = new Random();
         String from="rohit.panicker16@vit.edu";
@@ -40,12 +40,10 @@ public class SendEmail {
       msg.setSentDate(new Date());
       Transport.send(msg);
       System.out.println("Message sent.");
+      return Integer.parseInt(emailBodyGenerator.getOTP());
     }
     
-    public static void main(String[] args) throws MessagingException
-    {
-        sendEmail("Rohit Paul :", "rohitpaulgerard@gmail.com");
-    }
+   
     
     
 }

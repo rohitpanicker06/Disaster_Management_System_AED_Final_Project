@@ -12,7 +12,7 @@ import java.sql.*;
  */
 public class DataBaseConnection {
    private static String url ="jdbc:mysql://localhost:3306/";
-   private static String databaseName="DMDD";
+   private static String databaseName="AED_FINAL_PROJECT";
    private static boolean verifyServerCertificate = false;
    private static boolean useSSL = true;
    static Connection con = null;

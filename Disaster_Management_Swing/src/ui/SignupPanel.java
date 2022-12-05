@@ -12,8 +12,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.io.File;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.HashMap;
+import javax.mail.MessagingException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.state.city.community.CommunityDirectory;
 import person.Person;
 import person.PersonDirectory;
@@ -32,6 +39,8 @@ public class SignupPanel extends javax.swing.JPanel {
     /**
      * Creates new form SignupPanel
      */
+    private Image globalImage=null;
+    private String selectedImage;
     public SignupPanel() {
         initComponents();
         setOpaque(false);
@@ -503,12 +512,28 @@ public class SignupPanel extends javax.swing.JPanel {
             clearAllTxtFields();
             }
               } catch (MessagingException ex) {
-            Logger.getLogger(SignupPanel.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
     }//GEN-LAST:event_signUpBtnActionPerformed
 
-
+private void clearAllTxtFields()
+    {
+        addressTxtField.setText("");
+        ageTxtField.setText("");
+        cityTxtField.setText("");
+        communityNameTxtField.setText("");
+        countryTxtField.setText("");
+        emailIdTxtField.setText("");
+        genderTxtField.setText("");
+        insuranceIdTxtField.setText("");
+        nameTxtField.setText("");
+        passwordTxtField.setText("");
+        phnNumberTxtField.setText("");
+        stateTxtField.setText("");
+        userNameTxtField1.setText("");
+        zipCodeTxtField.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTxtField;
