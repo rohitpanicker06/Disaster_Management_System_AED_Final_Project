@@ -506,7 +506,7 @@ public class SignupPanel extends javax.swing.JPanel {
             
             int otp = SendEmail.sendEmail(userName, emailId);
             MainJFrame.mainPanel.removeAll();
-            MainJFrame.mainPanel.add(new OtpVerificationPanel(otp, userName,password));
+            MainJFrame.mainPanel.add(new OtpVerificationPanel(otp, userName,password, emailId));
             MainJFrame.mainPanel.repaint();
             MainJFrame.mainPanel.revalidate();
             clearAllTxtFields();
