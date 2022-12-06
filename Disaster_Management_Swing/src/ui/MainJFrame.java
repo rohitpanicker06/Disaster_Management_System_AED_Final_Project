@@ -29,45 +29,30 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPanel1 = new ui.LoginPanel();
         mainPanel = new javax.swing.JPanel();
-        loginPanel2 = new ui.LoginPanel();
+        loginPanel1 = new ui.LoginPanel();
         signupPanel1 = new ui.SignupPanel();
-        disasterReportingDashboardPanel1 = new ui.DisasterReportingDashboardPanel();
-        manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
-        viewDisasterPanel2 = new ui.ViewDisasterPanel();
+        otpVerificationPanel1 = new ui.OtpVerificationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         mainPanel.setLayout(new java.awt.CardLayout());
-
-        loginPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                loginPanel2KeyPressed(evt);
-            }
-        });
-        mainPanel.add(loginPanel2, "card2");
+        mainPanel.add(loginPanel1, "card2");
         mainPanel.add(signupPanel1, "card3");
-        mainPanel.add(disasterReportingDashboardPanel1, "card4");
-
-        manageDisasterWorkspacePanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                manageDisasterWorkspacePanel1MouseClicked(evt);
-            }
-        });
-        mainPanel.add(manageDisasterWorkspacePanel1, "card5");
-        mainPanel.add(viewDisasterPanel2, "card6");
+        mainPanel.add(otpVerificationPanel1, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -118,12 +103,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ui.DisasterReportingDashboardPanel disasterReportingDashboardPanel1;
     private ui.LoginPanel loginPanel1;
-    private ui.LoginPanel loginPanel2;
     public static javax.swing.JPanel mainPanel;
-    private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
+    private ui.OtpVerificationPanel otpVerificationPanel1;
     private ui.SignupPanel signupPanel1;
-    private ui.ViewDisasterPanel viewDisasterPanel2;
     // End of variables declaration//GEN-END:variables
 }

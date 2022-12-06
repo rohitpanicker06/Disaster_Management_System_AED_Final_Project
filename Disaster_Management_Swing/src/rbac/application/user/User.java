@@ -4,6 +4,8 @@
  */
 package rbac.application.user;
 
+import person.Person;
+
 
 
 /**
@@ -14,6 +16,13 @@ public class User {
     
     private String userName;
     private String password;
+
+    public User(String userName, String password, Person person) {
+        this.userName = userName;
+        this.password = password;
+        this.person = person;
+    }
+    private Person person;
     
 
     public String getUserName() {

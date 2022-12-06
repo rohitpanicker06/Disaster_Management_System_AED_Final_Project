@@ -4,12 +4,31 @@
  */
 package ui;
 
+import emailSendingService.SendEmail;
+import house.House;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.io.File;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.util.HashMap;
+import javax.mail.MessagingException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import model.state.city.community.CommunityDirectory;
+import person.Person;
+import person.PersonDirectory;
+import rbac.application.user.User;
+import rbac.application.user.UserListDirectory;
+import us.state.city.City;
+import us.state.city.community.Community;
+import utility.ValidationHelper;
 
 /**
  *
@@ -20,6 +39,8 @@ public class SignupPanel extends javax.swing.JPanel {
     /**
      * Creates new form SignupPanel
      */
+    private Image globalImage=null;
+    private String selectedImage;
     public SignupPanel() {
         initComponents();
         setOpaque(false);
@@ -330,7 +351,7 @@ public class SignupPanel extends javax.swing.JPanel {
     private void browseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseImageActionPerformed
         // TODO add your handling code here:
 
-        /*globalImage = null;
+        globalImage = null;
         JFileChooser jFileChooser = new JFileChooser();
         FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter("Choose your extension", "jpg");
         jFileChooser.setFileFilter(fileNameExtensionFilter);
@@ -351,7 +372,7 @@ public class SignupPanel extends javax.swing.JPanel {
             }
         } catch (Exception e) {
             System.out.println("Exception occured while choosing image e= " + e.getMessage());
-        }*/
+        }
     }//GEN-LAST:event_browseImageActionPerformed
 
     private void userNameTxtField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtField1ActionPerformed
@@ -359,7 +380,6 @@ public class SignupPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameTxtField1ActionPerformed
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
-        // TODO add your handling code here:
         int errorCount =0;
         StringBuffer errorNotifier = new StringBuffer();
         String id = null, name = null, emailId = null, phoneNumber = null, cityName = null, state = null,
@@ -368,128 +388,109 @@ public class SignupPanel extends javax.swing.JPanel {
         Image image= null;
 
         String hospitalName= null;
-/*
-        if(ValidationHelper.isInteger(idTxtField.getText()))
-        {
-            id = idTxtField.getText();
-        }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Hospital ID should be an Integer\n");
-        }
-        if(ValidationHelper.isValidName(nameTxtField.getText()))
-        {
+        
+        try {
+            if(ValidationHelper.isValidName(nameTxtField.getText()))
+            {
             name = nameTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Name should be a String\n");
-        }
-        if(ValidationHelper.isValidEmailID(emailIdTxtField.getText())){
+            }
+            if(ValidationHelper.isValidEmailID(emailIdTxtField.getText())){
             emailId = emailIdTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Email Id should be in xyz@gmail.com format\n");
-        }
-        if(ValidationHelper.checkPhoneNumberWith10Digits(phnNumberTxtField.getText())){
+            }
+            if(ValidationHelper.checkPhoneNumberWith10Digits(phnNumberTxtField.getText())){
             phoneNumber = phnNumberTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Phone number should be of 10 digits\n");
-        }
-        if(ValidationHelper.isValidName(cityTxtField.getText())){
+            }
+            if(ValidationHelper.isValidName(cityTxtField.getText())){
             cityName = cityTxtField.getText();
-        }else{
+            }else{
             errorCount++;
-            errorNotifier.append(errorCount).append(". Phone number should be a String\n");
-        }
-        if(ValidationHelper.isValidName(stateTxtField.getText()))
-        {
+            errorNotifier.append(errorCount).append(". City number should be a String\n");
+            }
+            if(ValidationHelper.isValidName(stateTxtField.getText()))
+            {
             state = stateTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". State should be a String\n");
-        }
-
-        if(ValidationHelper.isValidName(countryTxtField.getText())){
+            }
+            
+            if(ValidationHelper.isValidName(countryTxtField.getText())){
             country = countryTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Country should be a String\n");
-        }
-        if(ValidationHelper.isValidName(genderTxtField.getText())){
+            }
+            if(ValidationHelper.isValidName(genderTxtField.getText())){
             gender = genderTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Gender should be a String\n");
-        }
-        if(ValidationHelper.isInteger(ageTxtField.getText())){
+            }
+            if(ValidationHelper.isInteger(ageTxtField.getText())){
             age = ageTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Age should be an Integer\n");
-        }
-
-        if(userTypeComboBox.getSelectedIndex() == 1){
-            if(ValidationHelper.isInteger(insuranceIdTxtField.getText())){
-                insuranceId = insuranceIdTxtField.getText();
-            }else{
-                errorCount++;
-                errorNotifier.append(errorCount).append(". Insurance ID should be an Integer\n");
             }
-        }
-
-        if(userTypeComboBox.getSelectedIndex() == 1 || userTypeComboBox.getSelectedIndex() ==2){
-            hospitalName = (String)hospitalNameComboBox.getSelectedItem();
-        }
-
-        if(ValidationHelper.isValidName(communityNameTxtField.getText())){
+            
+            if(ValidationHelper.isValidName(communityNameTxtField.getText())){
             communityName = communityNameTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Community Name should be a String\n");
-        }
-        if(ValidationHelper.isInteger(zipCodeTxtField.getText())){
+            }
+            if(ValidationHelper.isInteger(zipCodeTxtField.getText())){
             zipCode = zipCodeTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Zipcode should be an Integer\n");
-        }
-        if(ValidationHelper.isValidName(addressTxtField.getText())){
+            }
+            if(ValidationHelper.isValidName(addressTxtField.getText())){
             address = addressTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Address should be a String\n");
-        }
-
-        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), userTypeComboBox.getSelectedIndex()))
-        {
+            }
+            
+            if(!userNameTxtField1.getText().isBlank() && !userNameTxtField1.getText().isEmpty())
+            {
             userName = userNameTxtField1.getText();
-        }else{
+            }else{
             errorCount++;
-            errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
-        }
-
-        if(passwordTxtField.getText()!= null)
-        {
+            errorNotifier.append(errorCount).append(". Re-Enter properly\n");
+            }
+            
+            if(passwordTxtField.getText()!= null)
+            {
             password = passwordTxtField.getText();
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Please enter password\n");
-        }
-
-        if(this.globalImage != null)
-        {
+            }
+            
+            if(this.globalImage != null)
+            {
             image= globalImage;
-        }else{
+            }else{
             errorCount++;
             errorNotifier.append(errorCount).append(". Please upload a  picture\n");
-        }
-
-        if(errorCount > 0 )
-        {
+            }
+            
+            if(errorCount > 0 )
+            {
             JOptionPane.showMessageDialog(this, errorNotifier.toString());
             return;
-        }else{
-
+            }else{
+            
             int selectedIndex = userTypeComboBox.getSelectedIndex();
 
             City city = new City(state, country,  cityName);
@@ -500,43 +501,39 @@ public class SignupPanel extends javax.swing.JPanel {
             PersonDirectory.personList.add(person);
             User newUser = new User(userName, password, person);
             // System Admin, Patient, Doctor, Hospital Admin, Community Admin
-            switch (selectedIndex) {
-                case 0:
-                UserListDirectory.getSystemAdminList().add(newUser);
-                break;
-                case 1:
-                UserListDirectory.getPatientList().add(newUser);
-                Hospital hospital_x = new HospitalDirectory().findHospitalByName(hospitalName);
-                Patient newPatient = new Patient(person, null, Integer.parseInt(insuranceId),hospital_x, null);
-                hospital_x.getPatientList().add(newPatient);
-                PatientDirectory.patientList.add(newPatient);
-                break;
-                case 2:
-                Hospital hospital = new HospitalDirectory().findHospitalByName(hospitalName);
-                Doctor doctor = new Doctor(person,hospital);
-                hospital.getDoctorList().add(doctor);
-                DoctorDirectory.doctorList.add(doctor);
-                UserListDirectory.getDoctorUserList().add(newUser);
-                break;
-                case 3:
-                UserListDirectory.getHospitalAdminList().add(newUser);
-                break;
-                case 4:
-                UserListDirectory.getCommunityAdminList().add(newUser);
-                break;
-                default:
-                break;
-            }
             HashMap<String,Person> personToUserName =UserListDirectory.getUserNameToPersonMap();
             personToUserName.put(userName, person);
-            JOptionPane.showMessageDialog(this,"Sign Up Successful");
+            
+            int otp = SendEmail.sendEmail(userName, emailId);
+            MainJFrame.mainPanel.removeAll();
+            MainJFrame.mainPanel.add(new OtpVerificationPanel(otp, userName,password, emailId));
+            MainJFrame.mainPanel.repaint();
+            MainJFrame.mainPanel.revalidate();
             clearAllTxtFields();
-            HomeScreen.homeScreen.getjSplitPane1().setRightComponent(loginJpanel);
+            }
+              } catch (MessagingException ex) {
+            
         }
-*/
+
     }//GEN-LAST:event_signUpBtnActionPerformed
 
-
+private void clearAllTxtFields()
+    {
+        addressTxtField.setText("");
+        ageTxtField.setText("");
+        cityTxtField.setText("");
+        communityNameTxtField.setText("");
+        countryTxtField.setText("");
+        emailIdTxtField.setText("");
+        genderTxtField.setText("");
+        insuranceIdTxtField.setText("");
+        nameTxtField.setText("");
+        passwordTxtField.setText("");
+        phnNumberTxtField.setText("");
+        stateTxtField.setText("");
+        userNameTxtField1.setText("");
+        zipCodeTxtField.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTxtField;

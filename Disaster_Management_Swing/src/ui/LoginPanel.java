@@ -4,21 +4,34 @@
  */
 package ui;
 
+import database.connectivity.QueryExecutor;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rbac.application.user.UserListDirectory;
 import rbac.context.RbacApplicationContext;
 import rbac.role.Role;
+import rbac.roles.roleImplementation.CivilResponseRoleBase;
 import rbac.roles.roleImplementation.CommunityAdminRoleBase;
+import rbac.roles.roleImplementation.DisasterManagementHeadRoleBase;
 import rbac.roles.roleImplementation.DoctorRoleBase;
+import rbac.roles.roleImplementation.FundRaiserRoleBase;
 import rbac.roles.roleImplementation.HospitalAdminRoleBase;
 import rbac.roles.roleImplementation.PatientRoleBase;
+import rbac.roles.roleImplementation.PharmacyRoleBase;
+import rbac.roles.roleImplementation.RecordsRoleBase;
+import rbac.roles.roleImplementation.SiteReportingEmployeeRoleBase;
 import rbac.roles.roleImplementation.SystemAdminRoleBase;
+import ui.fundraiser.FundRaiserPanel;
 
 /**
  *
@@ -29,9 +42,35 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
+    
+    static ArrayList<String> roles = new ArrayList<>();
+    
+    static{
+        roles.add("System Admin");
+        roles.add("Site/Event Reporting ");
+        roles.add("Disaster Head");
+        roles.add("Civil Response ");
+        roles.add("Fund Raising");
+        roles.add("Hopsital Admin");
+        roles.add("Patient");
+        roles.add("Doctor");
+        roles.add("Pharmacy");
+        roles.add("Records");
+        
+    }
     public LoginPanel() {
         initComponents();
+        populateComboBox();
      setOpaque(false);
+    }
+    
+    public void populateComboBox(){
+        
+        userTypeDropBox.removeAllItems();
+        for(String role:roles)
+        {
+            userTypeDropBox.addItem(role);
+        }
     }
     
     public static void main(String[] args) {
@@ -92,7 +131,7 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
-        userTypeDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Patient", "Doctor", "Hospital Admin", "Community Admin" }));
+        userTypeDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Patient", "Doctor", "Hospital Admin", "Community Admin", "Event Reporting", "Disaster Head", "Fund Head", "Civil Response Head" }));
 
         loginButton.setBackground(new java.awt.Color(173, 79, 79));
         loginButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -204,53 +243,100 @@ public class LoginPanel extends javax.swing.JPanel {
 String userName = userNameTextField.getText();
         String password = passwordField.getText();
         int userTypeIndex = userTypeDropBox.getSelectedIndex();
-        UserListDirectory userListDirectory = new UserListDirectory();
-        System.out.println("index = " +userTypeIndex);
+       // UserListDirectory userListDirectory = new UserListDirectory();
+       // System.out.println("index = " +userTypeIndex);
         Role role = null;
         Component comp = null;
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         boolean checkuserValidation = false;
         
-        if(userListDirectory.checkUserValidation(userName,password, userTypeIndex))
-        {
-            switch (userTypeIndex) {
-                case 0:
-                    role = new SystemAdminRoleBase();
-                    rbacApplicationContext.setRoleContext(role);
-                    //comp= new AllDirectoriesPanel();
-                    break;
-                case 1:
-                    role = new PatientRoleBase();
-                    rbacApplicationContext.setRoleContext(role);
-                    //comp= new PatientPanel();
-                    break;
-                case 2:
-                    role = new DoctorRoleBase();
-                    rbacApplicationContext.setRoleContext(role);
-                   // comp= new DoctorPanel();
-                    break;
-                case 3:
-                    role = new HospitalAdminRoleBase();
-                    rbacApplicationContext.setRoleContext(role);
-                   // comp = new HospitalAdminPanel();
-                    break;
-                case 4:
-                    role = new CommunityAdminRoleBase();
-                    rbacApplicationContext.setRoleContext(role);
-                   // comp = new CommunityAdminPanel();
-                    break;
-                default:
-                    
-                    break;
+        try {
+            if(QueryExecutor.validateCreds(userName, password))
+            {
+                switch (userTypeIndex) {
+                    case 0:
+                        role = new SystemAdminRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        //comp= new AllDirectoriesPanel();
+                        break;
+                    case 1:
+                        role = new SiteReportingEmployeeRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        
+                        break;
+                    case 2:
+                        role = new DisasterManagementHeadRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp= new DoctorPanel();
+                        break;
+                    case 3:
+                        role = new CivilResponseRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new HospitalAdminPanel();
+                        break;
+                    case 4:
+                        role = new FundRaiserRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        comp = new FundRaiserPanel();
+                        break;
+                        
+                    case 5:
+                        role = new HospitalAdminRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new CommunityAdminPanel();
+                        break;
+                        
+                        
+                    case 6:
+                        role = new PatientRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new CommunityAdminPanel();
+                        break;
+                        
+                        
+                    case 7:
+                        role = new DoctorRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new CommunityAdminPanel();
+                        break;
+                        
+                    case 8:
+                        role = new PharmacyRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new CommunityAdminPanel();
+                        break;
+                        
+                        
+                    case 9:
+                        role = new RecordsRoleBase();
+                        rbacApplicationContext.setRoleContext(role);
+                        // comp = new CommunityAdminPanel();
+                        break;
+                        
+                        
+                    default:
+                        
+                        break;
+                }
+                
+                // rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                
+                JOptionPane.showMessageDialog(this, "Login Successful");
+                
+                
+                MainJFrame.mainPanel.removeAll();
+                // MainJFrame.mainPanel.add(new SignupPanel());
+                MainJFrame.mainPanel.add(comp);
+                MainJFrame.mainPanel.repaint();
+                MainJFrame.mainPanel.revalidate();
+                
+                
+                
+            } else{
+                JOptionPane.showMessageDialog(this, "Login Failed try again");
             }
-            
-            rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
-            
-            JOptionPane.showMessageDialog(this, "Login Successful");
-            
-            
-        } else{
-            JOptionPane.showMessageDialog(this, "Login Failed try again");
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
         } 
            
 
@@ -267,8 +353,7 @@ String userName = userNameTextField.getText();
     private void signUpLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMousePressed
         // TODO add your handling code here:
        MainJFrame.mainPanel.removeAll();
-       //MainJFrame.mainPanel.add(new SignupPanel());
-       MainJFrame.mainPanel.add(new DisasterReportingDashboardPanel());
+       MainJFrame.mainPanel.add(new SignupPanel());
        MainJFrame.mainPanel.repaint();
        MainJFrame.mainPanel.revalidate();
        
