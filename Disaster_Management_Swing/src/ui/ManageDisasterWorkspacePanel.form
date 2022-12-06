@@ -52,15 +52,21 @@
                                   <Component id="txtDisasterId" max="32767" attributes="0"/>
                                   <Component id="txtDisasterEvent" max="32767" attributes="0"/>
                                   <Component id="txtDisasterTime" max="32767" attributes="0"/>
-                                  <Component id="txtDisasterDate" max="32767" attributes="0"/>
-                                  <Component id="txtDisasterLocation" max="32767" attributes="0"/>
                                   <Component id="txtDisasterCoordinates" max="32767" attributes="0"/>
+                                  <Component id="txtDisasterDate" alignment="0" pref="166" max="32767" attributes="0"/>
+                                  <Component id="txtDisasterLocation" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="252" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="msgLabel1" pref="171" max="32767" attributes="0"/>
+                  <Component id="msgLabel2" max="32767" attributes="0"/>
+                  <Component id="msgLabel3" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -74,30 +80,41 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDisasterId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDisasterId" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDisasterEvent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDisasterEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDisasterId" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDisasterId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="msgLabel1" min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDisasterEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDisasterEvent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="msgLabel2" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDisasterTime" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDisasterTime" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDisasterDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDisasterDate" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDisasterLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDisasterLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblDisasterDate" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDisasterDate" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDisasterLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDisasterLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="msgLabel3" min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -195,14 +212,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDisasterId">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisasterIdKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDisasterEvent">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisasterEventKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDisasterTime">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDisasterDate">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDisasterLocation">
     </Component>
     <Component class="javax.swing.JTextField" name="txtDisasterCoordinates">
     </Component>
@@ -229,6 +248,43 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnViewDisasterMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtDisasterDate">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDisasterLocation">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisasterLocationKeyReleased"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="msgLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="2"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="msgLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="2"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="msgLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="2"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
