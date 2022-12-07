@@ -12,17 +12,17 @@ import java.util.ArrayList;
  * @author Rohit Paul G
  */
 public class SiteManagementAndReporting {
-    private int siteMangmntOrgID;
+    //private int siteMangmntOrgID;
     private int noOfEmployees;
     private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
 
-    public int getSiteMangmntOrgID() {
-        return siteMangmntOrgID;
-    }
+    //public int getSiteMangmntOrgID() {
+      //  return siteMangmntOrgID;
+    //}
 
-    public void setSiteMangmntOrgID(int siteMangmntOrgID) {
-        this.siteMangmntOrgID = siteMangmntOrgID;
-    }
+    //public void setSiteMangmntOrgID(int siteMangmntOrgID) {
+      //  this.siteMangmntOrgID = siteMangmntOrgID;
+    //}
 
     public int getNoOfEmployees() {
         return noOfEmployees;

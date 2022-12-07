@@ -20,7 +20,10 @@ public class SiteReportingEmployee {
 //    private String emailId;
     private Person person;
     private DisasterDirectory disDir;
-    
+    private int killCount;
+    private int injuryCount;
+    private String reportText;
+    private String casualtyBox;
 
     public int getEmpId() {
         return empId;
@@ -46,6 +49,39 @@ public class SiteReportingEmployee {
     public void setPerson(Person person) {
         this.person = person;
     }
+
+    public int getKillCount() {
+        return killCount;
+    }
+
+    public void setKillCount(int killCount) {
+        this.killCount = killCount;
+    }
+
+    public int getInjuryCount() {
+        return injuryCount;
+    }
+
+    public void setInjuryCount(int injuryCount) {
+        this.injuryCount = injuryCount;
+    }
+
+    public String getReportText() {
+        return reportText;
+    }
+
+    public void setReportText(String reportText) {
+        this.reportText = reportText;
+    }
+
+    public String getCasualtyBox() {
+        return casualtyBox;
+    }
+
+    public void setCasualtyBox(String casualtyBox) {
+        this.casualtyBox = casualtyBox;
+    }
+    
     
     
     

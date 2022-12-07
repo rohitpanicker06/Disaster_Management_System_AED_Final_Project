@@ -32,7 +32,6 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         loginPanel1 = new ui.LoginPanel();
         signupPanel1 = new ui.SignupPanel();
-        otpVerificationPanel1 = new ui.OtpVerificationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -40,7 +39,6 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.setLayout(new java.awt.CardLayout());
         mainPanel.add(loginPanel1, "card2");
         mainPanel.add(signupPanel1, "card3");
-        mainPanel.add(otpVerificationPanel1, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +103,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
-    private ui.OtpVerificationPanel otpVerificationPanel1;
     private ui.SignupPanel signupPanel1;
     // End of variables declaration//GEN-END:variables
 }

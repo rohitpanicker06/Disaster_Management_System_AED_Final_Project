@@ -18,7 +18,7 @@ public class DataBaseConnection {
    static Connection con = null;
    private static DataBaseConnection dbConn;
    private String userName = "root";
-   private String password = "Welcometopune18@";
+   private String password = "Gersharori@1234";
    
    private DataBaseConnection(){
        

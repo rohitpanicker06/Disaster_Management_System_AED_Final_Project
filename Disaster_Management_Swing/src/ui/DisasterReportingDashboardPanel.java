@@ -49,6 +49,11 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         });
 
         btnSiteManagementWorkspace.setText("Site Management Workspace");
+        btnSiteManagementWorkspace.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSiteManagementWorkspaceMouseClicked(evt);
+            }
+        });
 
         btnReportingManagementWorkspace.setText("Reporting Management Workspace");
 
@@ -96,6 +101,14 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
         
     }//GEN-LAST:event_btnDisasterWorkspaceMouseClicked
+
+    private void btnSiteManagementWorkspaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiteManagementWorkspaceMouseClicked
+        // TODO add your handling code here:
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new SiteManagementWorkspacePanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_btnSiteManagementWorkspaceMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

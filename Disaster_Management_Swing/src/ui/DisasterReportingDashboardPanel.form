@@ -80,6 +80,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Site Management Workspace"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSiteManagementWorkspaceMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnReportingManagementWorkspace">
       <Properties>
