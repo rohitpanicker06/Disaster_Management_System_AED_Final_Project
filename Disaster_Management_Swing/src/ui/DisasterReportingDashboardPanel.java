@@ -4,6 +4,12 @@
  */
 package ui;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 /**
  *
  * @author Rohit Paul G
@@ -15,10 +21,24 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
      */
     public DisasterReportingDashboardPanel() {
         initComponents();
+        setOpaque(false);
     }
     
     public static void main(String[] args) {
         
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth(), h = getHeight();
+        Color color1 = Color.RED;
+        Color color2 = Color.BLACK;
+        GradientPaint gp = new GradientPaint(0, 0, color1, w, h, color2);
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
     }
 
     /**
@@ -34,8 +54,6 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         btnDisasterWorkspace = new javax.swing.JButton();
         btnSiteManagementWorkspace = new javax.swing.JButton();
         btnReportingManagementWorkspace = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(179, 0, 8));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
