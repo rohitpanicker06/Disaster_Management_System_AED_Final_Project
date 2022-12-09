@@ -4,6 +4,20 @@
  */
 package ui;
 
+import Disaster.Disaster;
+import ReportingManagement.InjuryKilledCasualties;
+import ReportingManagement.SiteManagementAndReporting;
+import ReportingManagement.SiteReportingEmployee;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import person.Person;
+import static ui.ManageDisasterWorkspacePanel.disDir;
+
 /**
  *
  * @author Rohit Paul G
@@ -13,8 +27,28 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     /**
      * Creates new form SiteManagementWorkspacePanel
      */
+    
+    public static SiteManagementAndReporting mgmtList = new SiteManagementAndReporting();
+    
     public SiteManagementWorkspacePanel() {
         initComponents();
+        populateTableinSiteMngmt();
+        vanishDataForMissingCasualty();
+        vanishDataForInjuredKilledCasualty();
+        setOpaque(false);
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth(), h = getHeight();
+        Color color1 = Color.RED;
+        Color color2 = Color.BLACK;
+        GradientPaint gp = new GradientPaint(0, 0, color1, w, h, color2);
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
     }
 
     /**
@@ -27,33 +61,371 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(179, 0, 8));
+        lblCasualtyBox = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblPhoneNumber = new javax.swing.JLabel();
+        lblEmailID = new javax.swing.JLabel();
+        lblSubTitle = new javax.swing.JLabel();
+        lblSubTitle2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DisasterjTableSiteMngmt = new javax.swing.JTable();
+        casualtyTypeComboBox = new javax.swing.JComboBox<>();
+        txtName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
+        txtEmailID = new javax.swing.JTextField();
+        lblInjuryCount = new javax.swing.JLabel();
+        lblKillCount = new javax.swing.JLabel();
+        txtInjuryCount = new javax.swing.JTextField();
+        txtKillCount = new javax.swing.JTextField();
+        btnSaveInfo = new javax.swing.JButton();
+        btnViewReports = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("~ Site Management Workspace ~");
+
+        lblCasualtyBox.setForeground(new java.awt.Color(255, 255, 255));
+        lblCasualtyBox.setText("Casualty Type:");
+
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("Full Name:");
+
+        lblAge.setForeground(new java.awt.Color(255, 255, 255));
+        lblAge.setText("Age:");
+
+        lblPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhoneNumber.setText("Phone Number:");
+
+        lblEmailID.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmailID.setText("Email ID:");
+
+        lblSubTitle.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        lblSubTitle.setForeground(java.awt.SystemColor.control);
+        lblSubTitle.setText("Disaster Casualties");
+
+        lblSubTitle2.setFont(new java.awt.Font("Yu Gothic Medium", 0, 18)); // NOI18N
+        lblSubTitle2.setForeground(java.awt.SystemColor.control);
+        lblSubTitle2.setText("Disaster List");
+
+        DisasterjTableSiteMngmt.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Disaster Event", "Disaster ID", "Disaster Time", "Disaster Date", "Disaster Location"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(DisasterjTableSiteMngmt);
+
+        casualtyTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Missing", "Injured/Killed" }));
+        casualtyTypeComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                casualtyTypeComboBoxItemStateChanged(evt);
+            }
+        });
+
+        lblInjuryCount.setForeground(new java.awt.Color(255, 255, 255));
+        lblInjuryCount.setText("Injury Count:");
+
+        lblKillCount.setForeground(new java.awt.Color(255, 255, 255));
+        lblKillCount.setText("Kill Count:");
+
+        btnSaveInfo.setBackground(new java.awt.Color(51, 204, 0));
+        btnSaveInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSaveInfo.setText("Save");
+        btnSaveInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveInfoMouseClicked(evt);
+            }
+        });
+        btnSaveInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveInfoActionPerformed(evt);
+            }
+        });
+
+        btnViewReports.setBackground(new java.awt.Color(255, 255, 204));
+        btnViewReports.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnViewReports.setText("View Reports >>");
+        btnViewReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewReportsActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(184, 184, 184)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblName)
+                    .addComponent(lblCasualtyBox)
+                    .addComponent(lblAge)
+                    .addComponent(lblPhoneNumber)
+                    .addComponent(lblEmailID))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName)
+                    .addComponent(txtPhoneNumber)
+                    .addComponent(txtEmailID, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblInjuryCount)
+                    .addComponent(lblKillCount))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtInjuryCount, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(txtKillCount))
+                .addContainerGap(249, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSubTitle)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblSubTitle2)
+                                .addGap(30, 30, 30)))
+                        .addGap(330, 330, 330))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSaveInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnViewReports)
+                        .addGap(146, 146, 146))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(365, 365, 365))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitle)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(179, 179, 179))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSaveInfo, btnViewReports});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addComponent(lblTitle)
-                .addContainerGap(695, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(lblSubTitle)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCasualtyBox)
+                            .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblInjuryCount)
+                            .addComponent(txtInjuryCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addComponent(lblName))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblKillCount)
+                        .addComponent(txtKillCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAge)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaveInfo)
+                    .addComponent(btnViewReports))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhoneNumber)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmailID)
+                    .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(lblSubTitle2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBack)
+                .addGap(96, 96, 96))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void casualtyTypeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_casualtyTypeComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if(casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
+            lblInjuryCount.setVisible(false);
+            txtInjuryCount.setVisible(false);
+            lblKillCount.setVisible(false);
+            txtKillCount.setVisible(false);
+        }
+        else if (casualtyTypeComboBox.getSelectedItem().toString().equals("Injured/Killed")){
+            lblInjuryCount.setVisible(true);
+            txtInjuryCount.setVisible(true);
+            lblKillCount.setVisible(true);
+            txtKillCount.setVisible(true);
+            lblName.setVisible(false);
+            txtName.setVisible(false);
+            lblAge.setVisible(false);
+            txtAge.setVisible(false);
+            lblPhoneNumber.setVisible(false);
+            txtPhoneNumber.setVisible(false);
+            lblEmailID.setVisible(false);
+            txtEmailID.setVisible(false);
+        }
+        else if(casualtyTypeComboBox.getSelectedItem().toString().equals("Select")){
+            lblInjuryCount.setVisible(true);
+            txtInjuryCount.setVisible(true);
+            lblKillCount.setVisible(true);
+            txtKillCount.setVisible(true);
+            lblName.setVisible(true);
+            txtName.setVisible(true);
+            lblAge.setVisible(true);
+            txtAge.setVisible(true);
+            lblPhoneNumber.setVisible(true);
+            txtPhoneNumber.setVisible(true);
+            lblEmailID.setVisible(true);
+            txtEmailID.setVisible(true);
+        }
+    }//GEN-LAST:event_casualtyTypeComboBoxItemStateChanged
+
+    private void btnSaveInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveInfoMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnSaveInfoMouseClicked
+
+    private void btnSaveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveInfoActionPerformed
+        // TODO add your handling code here:
+        if (casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
+            SiteReportingEmployee site = new SiteReportingEmployee();
+            site.setCasualtyName(txtName.getText());
+            site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
+            site.setCasualtyPhn(Long.parseLong(txtPhoneNumber.getText()));
+            site.setCasualtyEmail(txtEmailID.getText());
+            
+            mgmtList.addNewSiteReportingEmployee(site);
+            JOptionPane.showMessageDialog(this, "Missing casualties saved!");
+            vanishDataForMissingCasualty();
+        }
+        
+        else if (casualtyTypeComboBox.getSelectedItem().toString().equals("Injured/Killed")){
+            InjuryKilledCasualties inj = new InjuryKilledCasualties();
+            inj.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
+            inj.setKillCount(Integer.parseInt(txtKillCount.getText()));
+            //SiteReportingEmployee site2 = new SiteReportingEmployee();
+            //site2.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
+            //site2.setKillCount(Integer.parseInt(txtKillCount.getText()));
+            //site2.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
+            //site2.setKillCount(Integer.parseInt(txtKillCount.getText()));
+            
+            mgmtList.addNewInjuredKilledCasualties(inj);
+            
+            JOptionPane.showMessageDialog(this, "Injured or Killed casualties saved!");
+            vanishDataForInjuredKilledCasualty();
+            
+        }
+    }//GEN-LAST:event_btnSaveInfoActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new DisasterReportingDashboardPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReportsActionPerformed
+        // TODO add your handling code here:
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new ViewReportsPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_btnViewReportsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable DisasterjTableSiteMngmt;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSaveInfo;
+    private javax.swing.JButton btnViewReports;
+    private javax.swing.JComboBox<String> casualtyTypeComboBox;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblCasualtyBox;
+    private javax.swing.JLabel lblEmailID;
+    private javax.swing.JLabel lblInjuryCount;
+    private javax.swing.JLabel lblKillCount;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblSubTitle;
+    private javax.swing.JLabel lblSubTitle2;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtEmailID;
+    private javax.swing.JTextField txtInjuryCount;
+    private javax.swing.JTextField txtKillCount;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTableinSiteMngmt() {
+        DefaultTableModel model = (DefaultTableModel)DisasterjTableSiteMngmt.getModel();
+        model.setRowCount(0);
+        
+        if(disDir.getDisasterList()!=null){
+            for(Disaster dis:disDir.getDisasterList()){
+                Object[] ro = new Object[5];
+                ro[0] = dis;
+                ro[1] = dis.getDisasterId();
+                ro[2] = dis.getDisasterTime();
+                ro[3] = dis.getDisasterDate();
+                ro[4] = dis.getDisasterLocation();
+                
+                model.addRow(ro);
+            }
+        }
+    }
+
+    private void vanishDataForMissingCasualty() {
+        txtName.setText("");
+        txtAge.setText("");
+        txtPhoneNumber.setText("");
+        txtEmailID.setText("");
+    }
+
+    private void vanishDataForInjuredKilledCasualty() {
+        txtInjuryCount.setText("");
+        txtKillCount.setText("");
+    }
+
+    
+
 }

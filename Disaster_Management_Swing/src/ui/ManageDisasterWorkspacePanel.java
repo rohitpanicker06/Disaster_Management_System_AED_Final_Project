@@ -6,6 +6,11 @@ package ui;
 
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -24,10 +29,24 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     
     public ManageDisasterWorkspacePanel() {
         initComponents();
+        setOpaque(false);
     }
     
     public static void main(String[] args) {
         
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        int w = getWidth(), h = getHeight();
+        Color color1 = Color.RED;
+        Color color2 = Color.BLACK;
+        GradientPaint gp = new GradientPaint(0, 0, color1, w, h, color2);
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, w, h);
     }
 
     /**
@@ -58,8 +77,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         msgLabel1 = new javax.swing.JLabel();
         msgLabel2 = new javax.swing.JLabel();
         msgLabel3 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(179, 0, 8));
 
         lblTitle1.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,31 +166,30 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnViewDisaster))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTitle1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(244, 244, 244)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDisasterCoordinates)
-                                            .addComponent(lblDisasterDate, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDisasterTime, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addComponent(lblDisasterEvent, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDisasterId, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDisasterLocation, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(38, 38, 38)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDisasterId)
-                                    .addComponent(txtDisasterEvent)
-                                    .addComponent(txtDisasterTime)
-                                    .addComponent(txtDisasterCoordinates)
-                                    .addComponent(txtDisasterDate, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .addComponent(txtDisasterLocation))))))
+                                    .addComponent(lblDisasterCoordinates)
+                                    .addComponent(lblDisasterDate, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDisasterTime, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(lblDisasterEvent, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDisasterId, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDisasterLocation, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtDisasterId)
+                            .addComponent(txtDisasterEvent)
+                            .addComponent(txtDisasterTime)
+                            .addComponent(txtDisasterCoordinates)
+                            .addComponent(txtDisasterDate, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(txtDisasterLocation)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(lblTitle1)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msgLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(msgLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                     .addComponent(msgLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(msgLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
@@ -185,9 +201,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addComponent(lblTitle1)
-                .addGap(95, 95, 95)
+                .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
