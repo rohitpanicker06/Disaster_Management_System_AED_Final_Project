@@ -7,6 +7,7 @@ package ui;
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
 import javax.swing.JOptionPane;
+import rbac.context.RbacApplicationContext;
 
 /**
  *
@@ -53,6 +54,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         btnSaveDisaster = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnViewDisaster = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(179, 0, 8));
 
@@ -105,6 +107,15 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,7 +150,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                                     .addComponent(txtDisasterDate)
                                     .addComponent(txtDisasterLocation)
                                     .addComponent(txtDisasterCoordinates))))))
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addComponent(logoutLabel)
+                .addGap(43, 43, 43))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnBack)
@@ -149,7 +162,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(lblTitle1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitle1)
+                    .addComponent(logoutLabel))
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterId)
@@ -229,6 +244,18 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnViewDisasterMouseClicked
 
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -241,6 +268,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitle1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterCoordinates;
     private javax.swing.JTextField txtDisasterDate;
     private javax.swing.JTextField txtDisasterEvent;

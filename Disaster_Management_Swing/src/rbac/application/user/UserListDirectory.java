@@ -24,11 +24,14 @@ public class UserListDirectory {
     private static ArrayList<User> doctorUserList = new ArrayList<>();
     private static ArrayList<User> hospitalAdminList = new ArrayList<>();
      private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
+     private static ArrayList<User> communityAdminList = new ArrayList<>();
 
     public static HashMap<String, Person> getUserNameToPersonMap() {
         return userNameToPersonMap;
     }
-
+ public static ArrayList<User> getCommunityAdminList() {
+        return communityAdminList;
+    }
 
     public static ArrayList<User> getUserList() {
         return userList;
@@ -89,10 +92,10 @@ public class UserListDirectory {
     {
          User user = null;
         switch (selectedIndex) {
-            case 0 -> user = getUser(name, systemAdminList);
-            case 1 -> user = getUser(name, patientList);
-            case 2 -> user = getUser(name, doctorUserList);
-            case 3 -> user = getUser(name, hospitalAdminList);
+            //case 0 -> user = getUser(name, systemAdminList);
+            case 6 -> user = getUser(name, patientList);
+            case 7 -> user = getUser(name, doctorUserList);
+            case 5 -> user = getUser(name, hospitalAdminList);
            
             default -> {
             }

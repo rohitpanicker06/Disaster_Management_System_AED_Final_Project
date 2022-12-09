@@ -34,6 +34,12 @@ import rbac.roles.roleImplementation.SiteReportingEmployeeRoleBase;
 import rbac.roles.roleImplementation.SystemAdminRoleBase;
 import ui.fundraiser.DonateFundsPanel;
 import ui.fundraiser.FundRaiserPanel;
+import ui.hospital.CommunityAdminPanel;
+import ui.hospital.DoctorPanel;
+import ui.hospital.DoctorPanel;
+import ui.hospital.HospitalAdminPanel;
+import ui.hospital.PatientPanel;
+import ui.hospital.PharmacyPanel;
 
 /**
  *
@@ -59,6 +65,7 @@ public class LoginPanel extends javax.swing.JPanel {
         roles.add("Pharmacy");
         roles.add("Records");
         roles.add("Donor");
+        roles.add("Comunity Admin");
         
     }
     public LoginPanel() {
@@ -246,107 +253,111 @@ public class LoginPanel extends javax.swing.JPanel {
 String userName = userNameTextField.getText();
         String password = passwordField.getText();
         int userTypeIndex = userTypeDropBox.getSelectedIndex();
-       // UserListDirectory userListDirectory = new UserListDirectory();
+        UserListDirectory userListDirectory = new UserListDirectory();
        // System.out.println("index = " +userTypeIndex);
         Role role = null;
         Component comp = null;
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         boolean checkuserValidation = false;
         
-        try {
-            if(QueryExecutor.validateCreds(userName, password))
-            {
-                switch (userTypeIndex) {
-                    case 0:
-                        role = new SystemAdminRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        //comp= new AllDirectoriesPanel();
-                        break;
-                    case 1:
-                        role = new SiteReportingEmployeeRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        comp = new ManageDisasterWorkspacePanel();
-                        
-                        break;
-                    case 2:
-                        role = new DisasterManagementHeadRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp= new DoctorPanel();
-                        break;
-                    case 3:
-                        role = new CivilResponseRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new HospitalAdminPanel();
-                        break;
-                    case 4:
-                        role = new FundRaiserRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        comp = new FundRaiserPanel();
-                        break;
-                        
-                    case 5:
-                        role = new HospitalAdminRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new CommunityAdminPanel();
-                        break;
-                        
-                        
-                    case 6:
-                        role = new PatientRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new CommunityAdminPanel();
-                        break;
-                        
-                        
-                    case 7:
-                        role = new DoctorRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new CommunityAdminPanel();
-                        break;
-                        
-                    case 8:
-                        role = new PharmacyRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new CommunityAdminPanel();
-                        break;
-                        
-                        
-                    case 9:
-                        role = new RecordsRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        // comp = new CommunityAdminPanel();
-                        break;
-                        
-                    case 10:
-                        role = new DonoRoleBase();
-                        rbacApplicationContext.setRoleContext(role);
-                        comp=new DonateFundsPanel();
-                        
-                        
-                    default:
-                        
-                        break;
-                }
-                
-                // rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
-                
-                JOptionPane.showMessageDialog(this, "Login Successful");
-                
-                
-                MainJFrame.mainPanel.removeAll();
-                // MainJFrame.mainPanel.add(new SignupPanel());
-                MainJFrame.mainPanel.add(comp);
-                MainJFrame.mainPanel.repaint();
-                MainJFrame.mainPanel.revalidate();
-                
-                
-                
-            } else{
-                JOptionPane.showMessageDialog(this, "Login Failed try again");
+        //if(QueryExecutor.validateCreds(userName, password))
+        if(true)
+        {
+            switch (userTypeIndex) {
+                case 0:
+                    role = new SystemAdminRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    //comp= new AllDirectoriesPanel();
+                    break;
+                case 1:
+                    role = new SiteReportingEmployeeRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new ManageDisasterWorkspacePanel();
+                    
+                    break;
+                case 2:
+                    role = new DisasterManagementHeadRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    // comp= new DoctorPanel();
+                    break;
+                case 3:
+                    role = new CivilResponseRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    // comp = new HospitalAdminPanel();
+                    break;
+                case 4:
+                    role = new FundRaiserRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new FundRaiserPanel();
+                    break;
+                    
+                case 5:
+                    role = new HospitalAdminRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new HospitalAdminPanel();
+                    break;
+                    
+                    
+                case 6:
+                    role = new PatientRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new PatientPanel();
+                    break;
+                    
+                    
+                case 7:
+                    role = new DoctorRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new DoctorPanel();
+                    break;
+                    
+                case 8:
+                    role = new PharmacyRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new PharmacyPanel();
+                    break;
+                    
+                    
+                case 9:
+                    role = new RecordsRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    // comp = new CommunityAdminPanel();
+                    break;
+                    
+                case 10:
+                    role = new DonoRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp=new DonateFundsPanel();
+                    break;
+                    
+                case 11:
+                    role = new CommunityAdminRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp=new CommunityAdminPanel();
+                    break;
+                    
+                    
+                default:
+                    
+                    break;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            
+            rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+             
+            JOptionPane.showMessageDialog(this, "Login Successful");
+            
+            
+            MainJFrame.mainPanel.removeAll();
+            // MainJFrame.mainPanel.add(new SignupPanel());
+            MainJFrame.mainPanel.add(comp);
+            MainJFrame.mainPanel.repaint();
+            MainJFrame.mainPanel.revalidate();
+            
+            
+            
+        } else{
+            JOptionPane.showMessageDialog(this, "Login Failed try again");
+        }
            
 
     }//GEN-LAST:event_loginButtonActionPerformed

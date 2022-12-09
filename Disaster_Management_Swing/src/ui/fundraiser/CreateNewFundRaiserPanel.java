@@ -18,6 +18,8 @@ import model.fundraiser.FundRaiserDirectory;
 import model.fundraiser.RadioFundRaisingDept;
 import model.fundraiser.SocialMediaFundRaisingDept;
 import model.fundraiser.TelevisionFundRaisingDept;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
 import ui.SignupPanel;
 
@@ -101,6 +103,8 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         socialMediaCheckBox = new javax.swing.JCheckBox();
         radioCheckBox = new javax.swing.JCheckBox();
         submitBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -172,6 +176,13 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("<<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -201,12 +212,13 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(socialMediaCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(televisionCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(radioCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,9 +242,20 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(socialMediaCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(54, 54, 54))
         );
+
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -242,11 +265,17 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(35, 35, 35)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(66, Short.MAX_VALUE))
         );
@@ -276,10 +305,7 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         }
         FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser);
         JOptionPane.showMessageDialog(this, "Fund Raising Request published Successfully");
-         MainJFrame.mainPanel.removeAll();
-       MainJFrame.mainPanel.add(new DonateFundsPanel());
-       MainJFrame.mainPanel.repaint();
-       MainJFrame.mainPanel.revalidate();
+        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void radioCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheckBoxActionPerformed
@@ -302,16 +328,40 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_disasterComboBoxActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                MainJFrame.mainPanel.removeAll();
+                 MainJFrame.mainPanel.add(new FundRaiserPanel());
+                MainJFrame.mainPanel.repaint();
+                MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+
+    }//GEN-LAST:event_logoutLabelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField currencyAmountTxtBox;
     private javax.swing.JComboBox<String> currencyComboBox;
     private javax.swing.JComboBox<String> disasterComboBox;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JCheckBox radioCheckBox;
     private javax.swing.JCheckBox socialMediaCheckBox;
     private javax.swing.JButton submitBtn;

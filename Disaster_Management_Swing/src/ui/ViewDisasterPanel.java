@@ -53,6 +53,7 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
         lblDisasterCoordinates = new javax.swing.JLabel();
         txtDisasterCoordinates = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(179, 0, 8));
 
@@ -119,6 +120,10 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,7 +131,9 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(280, 280, 280)
                 .addComponent(lblTitle)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutLabel)
+                .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -174,7 +181,9 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(lblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitle)
+                    .addComponent(logoutLabel))
                 .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -258,6 +267,7 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterCoordinates;
     private javax.swing.JTextField txtDisasterDate;
     private javax.swing.JTextField txtDisasterEvent;

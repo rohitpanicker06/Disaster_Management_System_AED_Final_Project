@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.fundraiser.DisasterFundRaiser;
 import model.fundraiser.FundRaiserDirectory;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
 
 /**
@@ -98,6 +100,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         socialMediaCheckBox = new javax.swing.JCheckBox();
         whereLabel = new javax.swing.JLabel();
         goBtn = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -184,6 +187,15 @@ public class DonateFundsPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -221,8 +233,14 @@ public class DonateFundsPanel extends javax.swing.JPanel {
                         .addComponent(donateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(139, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(goBtn))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(goBtn)
+                        .addGap(153, 153, 153))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -234,9 +252,11 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(goBtn)
-                .addGap(63, 63, 63)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(currencyAmountTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(currencyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,10 +337,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
        long amountRaised = Long.parseLong(currencyAmountTxtBox.getText());
        fundraiser.setAmountRaisedSoFar(fundraiser.getAmountRaisedSoFar()+amountRaised);
        JOptionPane.showMessageDialog(this, "Amount Donated Successfuly");
-       MainJFrame.mainPanel.removeAll();
-       MainJFrame.mainPanel.add(new DonateFundsPanel());
-       MainJFrame.mainPanel.repaint();
-       MainJFrame.mainPanel.revalidate();
+       
        
     }//GEN-LAST:event_donateBtnActionPerformed
 
@@ -348,6 +365,19 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         goBtn.setVisible(true);
     }//GEN-LAST:event_goBtnActionPerformed
 
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField currencyAmountTxtBox;
@@ -359,6 +389,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JLabel moneyRaisedLabel;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JCheckBox radioCheckBox;

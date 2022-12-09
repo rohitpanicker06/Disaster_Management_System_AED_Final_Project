@@ -17,10 +17,10 @@ import twitter4j.auth.AccessToken;
 
 public class Twitter {
     
-    static String consumerKeyStr = "uOk3VPz2MfmN18FDcbKegzvTr";
-	static String consumerSecretStr = "tlRkfidPteyQPh5qVKMtyd10h4hpViC9Nf1GRz8tRn61xkY82E";
-	static String accessTokenStr = "1583522101733904384-N87zLJOVGnHqQfORqmuF5naR2i0uOe";
-	static String accessTokenSecretStr = "ctHEw04fm9jOfHSXcVbP9Gz6KBGPkruov6B9S3AcJSlrN";
+    static String consumerKeyStr = "rtMYzP8qEg2QsBpDat9yNDjii";
+	static String consumerSecretStr = "wERgfCeHy4bpOHrtrCjDgmLe3HLbZSABaOmz4R3r8kQkiFdnkN";
+	static String accessTokenStr = "1587902707729195008-sTbIMiukJkv9auQ8NuMkAXvgvT1qgQ";
+	static String accessTokenSecretStr = "CYiep7SOuzW9MiVUq7mYGiuqlt2wtaO1Y22nuwV4CDrLu";
 
     
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Twitter {
 
 			twitter.setOAuthAccessToken(accessToken);
 
-			twitter.updateStatus("Post using Twitter4J Again");
+			twitter.updateStatus("Test Tweet using Twitter4J");
 
 			System.out.println("Successfully updated the status in Twitter.");
 		} catch (TwitterException te) {
