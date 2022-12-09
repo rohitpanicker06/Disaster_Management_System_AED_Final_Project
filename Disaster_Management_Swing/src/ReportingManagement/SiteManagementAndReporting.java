@@ -12,47 +12,38 @@ import java.util.ArrayList;
  * @author Rohit Paul G
  */
 public class SiteManagementAndReporting {
-    private int siteMangmntOrgID;
-    private int noOfEmployees;
+    //private int siteMangmntOrgID;
     private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
+    private static ArrayList<InjuryKilledCasualties> injuryKilledList = new ArrayList<>();
 
-    public int getSiteMangmntOrgID() {
-        return siteMangmntOrgID;
-    }
-
-    public void setSiteMangmntOrgID(int siteMangmntOrgID) {
-        this.siteMangmntOrgID = siteMangmntOrgID;
-    }
-
-    public int getNoOfEmployees() {
-        return noOfEmployees;
-    }
-
-    public void setNoOfEmployees(int noOfEmployees) {
-        this.noOfEmployees = noOfEmployees;
-    }
-
-   
-
-//    public String getDisasterEvents() {
-//        return disasterEvents;
-//    }
-//
-//    public void setDisasterEvents(String disasterEvents) {
-//        this.disasterEvents = disasterEvents;
-//    }
-
-    public static ArrayList<SiteReportingEmployee> getSiteReportingEmpList() {
+    public ArrayList<SiteReportingEmployee> getSiteReportingEmpList() { //deleted "static" before the ArrayList word
         return siteReportingEmpList;
     }
 
-    public static void setSiteReportingEmpList(ArrayList<SiteReportingEmployee> siteReportingEmpList) {
+    public void setSiteReportingEmpList(ArrayList<SiteReportingEmployee> siteReportingEmpList) {  //deleted "static" before the Void word
         SiteManagementAndReporting.siteReportingEmpList = siteReportingEmpList;
     }
+
+    public ArrayList<InjuryKilledCasualties> getInjuryKilledList() {
+        return injuryKilledList;
+    }
+
+    public void setInjuryKilledList(ArrayList<InjuryKilledCasualties> injuryKilledList) {
+        SiteManagementAndReporting.injuryKilledList = injuryKilledList;
+    }
+    
+    
+
     
     public void addNewSiteReportingEmployee(SiteReportingEmployee siteRepEmp){
         siteReportingEmpList.add(siteRepEmp);
     }
+    
+    public void addNewInjuredKilledCasualties(InjuryKilledCasualties injkilled){
+        injuryKilledList.add(injkilled);
+    }
+    
+    
     
     
     

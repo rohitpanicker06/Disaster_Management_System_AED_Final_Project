@@ -272,8 +272,7 @@ String userName = userNameTextField.getText();
                 case 1:
                     role = new SiteReportingEmployeeRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    comp = new ManageDisasterWorkspacePanel();
-                    
+                    comp = new DisasterReportingDashboardPanel();
                     break;
                 case 2:
                     role = new DisasterManagementHeadRoleBase();
@@ -336,14 +335,14 @@ String userName = userNameTextField.getText();
                     comp=new CommunityAdminPanel();
                     break;
                     
-                    
                 default:
                     
                     break;
             }
             
+
             rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
-             
+
             JOptionPane.showMessageDialog(this, "Login Successful");
             
             

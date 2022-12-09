@@ -33,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         loginPanel1 = new ui.LoginPanel();
         signupPanel1 = new ui.SignupPanel();
+
         otpVerificationPanel1 = new ui.OtpVerificationPanel();
         manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
         siteManagementWorkspacePanel1 = new ui.SiteManagementWorkspacePanel();
@@ -51,6 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
         pieChartPanel1 = new ui.fundraiser.PieChartPanel();
         prescriptionPanel1 = new ui.hospital.PrescriptionPanel();
         pharmacyPanel1 = new ui.hospital.PharmacyPanel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -92,6 +94,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.add(pieChartPanel1, "card18");
         mainPanel.add(prescriptionPanel1, "card19");
         mainPanel.add(pharmacyPanel1, "card20");
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
