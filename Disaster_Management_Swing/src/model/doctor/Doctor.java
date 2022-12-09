@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package doctor;
+package model.doctor;
 
-import hospital.Hospital;
+import model.hospital.*;
 import person.Person;
 
 /**
@@ -51,3 +51,4 @@ public class Doctor {
     }
     
 }
+

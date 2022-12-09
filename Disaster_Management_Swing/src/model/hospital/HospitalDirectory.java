@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package hospital;
+package model.hospital;
 
-import doctor.Doctor;
-import doctor.DoctorDirectory;
+import model.doctor.Doctor;
+import model.doctor.DoctorDirectory;
 import house.House;
 import java.util.ArrayList;
 import person.Person;
-
+import rbac.application.user.User;
 import us.state.city.City;
 import us.state.city.community.Community;
 
@@ -49,3 +49,4 @@ public class HospitalDirectory {
             return null; 
          }
 }
+

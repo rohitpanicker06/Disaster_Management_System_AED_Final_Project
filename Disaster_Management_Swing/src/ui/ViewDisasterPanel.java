@@ -72,6 +72,7 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
         lblDisasterCoordinates = new javax.swing.JLabel();
         txtDisasterCoordinates = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         DisasterjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,11 +137,16 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
                 .addGap(110, 110, 110)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -275,6 +281,7 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterCoordinates;
     private javax.swing.JTextField txtDisasterDate;
     private javax.swing.JTextField txtDisasterEvent;

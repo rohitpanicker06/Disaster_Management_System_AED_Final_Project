@@ -23,6 +23,10 @@ public class User {
         this.person = person;
     }
     private Person person;
+
+    public Person getPerson() {
+        return person;
+    }
     
 
     public String getUserName() {

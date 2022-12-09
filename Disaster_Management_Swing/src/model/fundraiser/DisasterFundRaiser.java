@@ -13,9 +13,9 @@ import Disaster.Disaster;
 public class DisasterFundRaiser {
     
      Disaster disaster;
-    String currency;
-    private long targetAmount;
-    private long amountRaisedSoFar;
+    String currency = null;
+    private long targetAmount = 0 ;
+    private long amountRaisedSoFar = 0 ;
 
     public Disaster getDisaster() {
         return disaster;

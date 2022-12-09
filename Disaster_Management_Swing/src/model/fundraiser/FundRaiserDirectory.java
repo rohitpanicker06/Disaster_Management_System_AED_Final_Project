@@ -16,12 +16,33 @@ import java.util.ArrayList;
 public class FundRaiserDirectory {
     
     
-    ArrayList<DisasterFundRaiser> fundRaiserDirectory = new ArrayList<>();
-    ArrayList<FundRaisingEmployee> employeeDirectory = new ArrayList<>();
-    ArrayList<Disaster> disasterDirectory = new DisasterDirectory().getDisasterList();
-    
-    
-    
-    
+   public static ArrayList<DisasterFundRaiser> fundRaiserDirectory = new ArrayList<>();
+   public static ArrayList<FundRaisingEmployee> employeeDirectory = new ArrayList<>();
+    public static ArrayList<Disaster> disasterDirectory = new DisasterDirectory().getDisasterList();
+
+    public ArrayList<DisasterFundRaiser> getFundRaiserDirectory() {
+        return fundRaiserDirectory;
+    }
+
+    public void setFundRaiserDirectory(ArrayList<DisasterFundRaiser> fundRaiserDirectory) {
+        this.fundRaiserDirectory = fundRaiserDirectory;
+    }
+
+    public ArrayList<FundRaisingEmployee> getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(ArrayList<FundRaisingEmployee> employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
+
+    public ArrayList<Disaster> getDisasterDirectory() {
+        return disasterDirectory;
+    }
+
+    public void setDisasterDirectory(ArrayList<Disaster> disasterDirectory) {
+        this.disasterDirectory = disasterDirectory;
+    }
+  
     
 }

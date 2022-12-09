@@ -9,6 +9,9 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
 
 /**
@@ -55,6 +58,7 @@ public class FundRaiserPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -90,6 +94,11 @@ public class FundRaiserPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("View Fund Raising Report");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,6 +122,15 @@ public class FundRaiserPanel extends javax.swing.JPanel {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Welcome to Fund Raising");
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,13 +143,19 @@ public class FundRaiserPanel extends javax.swing.JPanel {
                 .addContainerGap(281, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(14, 14, 14)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,6 +175,29 @@ public class FundRaiserPanel extends javax.swing.JPanel {
        MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_jLabel1MousePressed
 
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+       
+        
+    }//GEN-LAST:event_logoutLabelMousePressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        // TODO add your handling code here:
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new PieChartPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel3MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -158,5 +205,6 @@ public class FundRaiserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logoutLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package doctor;
+package model.doctor;
 
+/**
+ *
+ * @author rohitpanicker
+ */
 import house.House;
 import java.util.ArrayList;
 import person.Person;
@@ -23,6 +27,18 @@ public class DoctorDirectory {
          
      }
 
+     public static  Doctor getDoctorByPerson(Person person)
+     {
+         for(Doctor doctor: doctorList)
+         {
+             if(doctor.getPerson().equals(person))
+             {
+                 return doctor;
+             }
+         }
+         return null;
+         
+     }
     public ArrayList<Doctor> getDoctorList() {
         return doctorList;
     }
@@ -66,3 +82,4 @@ public class DoctorDirectory {
    
     
 }
+

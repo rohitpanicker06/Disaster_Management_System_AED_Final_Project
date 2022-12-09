@@ -4,6 +4,9 @@
  */
 package ui;
 
+
+import javax.swing.JOptionPane;
+import rbac.context.RbacApplicationContext;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -54,6 +57,7 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         btnDisasterWorkspace = new javax.swing.JButton();
         btnSiteManagementWorkspace = new javax.swing.JButton();
         btnReportingManagementWorkspace = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,6 +79,15 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
 
         btnReportingManagementWorkspace.setText("Reporting Management Workspace");
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +103,9 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
                         .addGap(299, 299, 299))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTitle)
-                        .addGap(160, 160, 160))))
+                        .addGap(67, 67, 67)
+                        .addComponent(logoutLabel)
+                        .addGap(38, 38, 38))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDisasterWorkspace, btnReportingManagementWorkspace, btnSiteManagementWorkspace});
@@ -99,7 +114,9 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(lblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle)
+                    .addComponent(logoutLabel))
                 .addGap(117, 117, 117)
                 .addComponent(btnDisasterWorkspace)
                 .addGap(78, 78, 78)
@@ -120,6 +137,19 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnDisasterWorkspaceMouseClicked
 
+
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
     private void btnSiteManagementWorkspaceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSiteManagementWorkspaceMouseClicked
         // TODO add your handling code here:
         MainJFrame.mainPanel.removeAll();
@@ -134,5 +164,6 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnReportingManagementWorkspace;
     private javax.swing.JButton btnSiteManagementWorkspace;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel logoutLabel;
     // End of variables declaration//GEN-END:variables
 }

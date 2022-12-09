@@ -24,6 +24,7 @@ import rbac.roles.roleImplementation.CivilResponseRoleBase;
 import rbac.roles.roleImplementation.CommunityAdminRoleBase;
 import rbac.roles.roleImplementation.DisasterManagementHeadRoleBase;
 import rbac.roles.roleImplementation.DoctorRoleBase;
+import rbac.roles.roleImplementation.DonoRoleBase;
 import rbac.roles.roleImplementation.FundRaiserRoleBase;
 import rbac.roles.roleImplementation.HospitalAdminRoleBase;
 import rbac.roles.roleImplementation.PatientRoleBase;
@@ -31,7 +32,14 @@ import rbac.roles.roleImplementation.PharmacyRoleBase;
 import rbac.roles.roleImplementation.RecordsRoleBase;
 import rbac.roles.roleImplementation.SiteReportingEmployeeRoleBase;
 import rbac.roles.roleImplementation.SystemAdminRoleBase;
+import ui.fundraiser.DonateFundsPanel;
 import ui.fundraiser.FundRaiserPanel;
+import ui.hospital.CommunityAdminPanel;
+import ui.hospital.DoctorPanel;
+import ui.hospital.DoctorPanel;
+import ui.hospital.HospitalAdminPanel;
+import ui.hospital.PatientPanel;
+import ui.hospital.PharmacyPanel;
 
 /**
  *
@@ -56,6 +64,8 @@ public class LoginPanel extends javax.swing.JPanel {
         roles.add("Doctor");
         roles.add("Pharmacy");
         roles.add("Records");
+        roles.add("Donor");
+        roles.add("Comunity Admin");
         
     }
     public LoginPanel() {
@@ -243,7 +253,7 @@ public class LoginPanel extends javax.swing.JPanel {
 String userName = userNameTextField.getText();
         String password = passwordField.getText();
         int userTypeIndex = userTypeDropBox.getSelectedIndex();
-       // UserListDirectory userListDirectory = new UserListDirectory();
+        UserListDirectory userListDirectory = new UserListDirectory();
        // System.out.println("index = " +userTypeIndex);
         Role role = null;
         Component comp = null;
@@ -283,27 +293,27 @@ String userName = userNameTextField.getText();
                 case 5:
                     role = new HospitalAdminRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    // comp = new CommunityAdminPanel();
+                    comp = new HospitalAdminPanel();
                     break;
                     
                     
                 case 6:
                     role = new PatientRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    // comp = new CommunityAdminPanel();
+                    comp = new PatientPanel();
                     break;
                     
                     
                 case 7:
                     role = new DoctorRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    // comp = new CommunityAdminPanel();
+                    comp = new DoctorPanel();
                     break;
                     
                 case 8:
                     role = new PharmacyRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    // comp = new CommunityAdminPanel();
+                    comp = new PharmacyPanel();
                     break;
                     
                     
@@ -313,14 +323,26 @@ String userName = userNameTextField.getText();
                     // comp = new CommunityAdminPanel();
                     break;
                     
+                case 10:
+                    role = new DonoRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp=new DonateFundsPanel();
+                    break;
+                    
+                case 11:
+                    role = new CommunityAdminRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp=new CommunityAdminPanel();
+                    break;
                     
                 default:
                     
                     break;
             }
             
-            // rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
- 
+
+            rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+
             JOptionPane.showMessageDialog(this, "Login Successful");
             
             

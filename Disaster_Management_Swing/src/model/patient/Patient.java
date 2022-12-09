@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package patient;
+package model.patient;
 
-
-import doctor.Doctor;
-import encounter.Encounter;
-import encounter.EncounterHistory;
-import hospital.Hospital;
+import model.doctor.Doctor;
+import model.encounter.Encounter;
+import model.encounter.EncounterHistory;
+import model.hospital.Hospital;
 import java.util.ArrayList;
 import person.Person;
-import vitalSigns.VitalSigns;
+import model.vitalsigns.VitalSigns;
 
 /**
  *
@@ -122,3 +121,4 @@ public class Patient {
     
     
 }
+
