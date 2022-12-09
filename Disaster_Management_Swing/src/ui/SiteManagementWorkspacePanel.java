@@ -4,10 +4,6 @@
  */
 package ui;
 
-
-import javax.swing.JOptionPane;
-import rbac.context.RbacApplicationContext;
-
 import Disaster.Disaster;
 import ReportingManagement.InjuryKilledCasualties;
 import ReportingManagement.SiteManagementAndReporting;
@@ -21,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import person.Person;
 import static ui.ManageDisasterWorkspacePanel.disDir;
-
 
 /**
  *
@@ -66,11 +61,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-
-        logoutLabel = new javax.swing.JLabel();
-
-        
-
         lblCasualtyBox = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblAge = new javax.swing.JLabel();
@@ -93,20 +83,9 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         btnViewReports = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
-
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("~ Site Management Workspace ~");
-
-
-        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
-        logoutLabel.setText("Logout");
-        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                logoutLabelMousePressed(evt);
-                
-        });
 
         lblCasualtyBox.setForeground(new java.awt.Color(255, 255, 255));
         lblCasualtyBox.setText("Casualty Type:");
@@ -192,7 +171,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
-
             }
         });
 
@@ -249,7 +227,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTitle)
                 .addGap(179, 179, 179))
-
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSaveInfo, btnViewReports});
@@ -301,17 +278,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-          private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
-        // TODO add your handling code here:
-         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
-        rbacApplicationContext.setRoleContext(null);
-        rbacApplicationContext.setUser(null);
-        JOptionPane.showMessageDialog(this, "Logged Out");
-        MainJFrame.mainPanel.removeAll();
-        MainJFrame.mainPanel.add(new LoginPanel());
-        MainJFrame.mainPanel.repaint();
-        MainJFrame.mainPanel.revalidate();
-    }
     private void casualtyTypeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_casualtyTypeComboBoxItemStateChanged
         // TODO add your handling code here:
         if(casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
@@ -405,7 +371,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewReportsActionPerformed
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisasterjTableSiteMngmt;
     private javax.swing.JButton btnBack;
@@ -423,16 +388,12 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblSubTitle;
     private javax.swing.JLabel lblSubTitle2;
     private javax.swing.JLabel lblTitle;
-
-    private javax.swing.JLabel logoutLabel;
-
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmailID;
     private javax.swing.JTextField txtInjuryCount;
     private javax.swing.JTextField txtKillCount;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhoneNumber;
-
     // End of variables declaration//GEN-END:variables
 
     private void populateTableinSiteMngmt() {
