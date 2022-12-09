@@ -105,6 +105,8 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 logoutLabelMousePressed(evt);
+                
+        });
 
         lblCasualtyBox.setForeground(new java.awt.Color(255, 255, 255));
         lblCasualtyBox.setText("Casualty Type:");
