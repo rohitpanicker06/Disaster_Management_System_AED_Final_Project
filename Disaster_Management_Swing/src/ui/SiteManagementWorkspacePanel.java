@@ -426,6 +426,6 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         txtKillCount.setText("");
     }
 
-    
+    //TEST
 
 }
