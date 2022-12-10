@@ -21,6 +21,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.doctor.Doctor;
+import model.doctor.DoctorDirectory;
+import model.hospital.Hospital;
+import model.hospital.HospitalDirectory;
+import model.patient.Patient;
+import model.patient.PatientDirectory;
 import model.state.city.community.CommunityDirectory;
 import person.Person;
 import person.PersonDirectory;
@@ -44,6 +50,10 @@ public class SignupPanel extends javax.swing.JPanel {
     public SignupPanel() {
         initComponents();
         setOpaque(false);
+        insuranceIdLabel.setVisible(false);
+        insuranceIdTxtField.setVisible(false);
+        hospitalLable.setVisible(false);
+        hospitalNameComboBox.setVisible(false);
     }
     
     public static void main(String[] args) {
@@ -105,10 +115,18 @@ public class SignupPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         passwordTxtField = new javax.swing.JPasswordField();
         signUpBtn = new javax.swing.JButton();
+        hospitalLable = new javax.swing.JLabel();
+        hospitalNameComboBox = new javax.swing.JComboBox<>();
+        personIdLabel1 = new javax.swing.JLabel();
+        idTxtField = new javax.swing.JTextField();
+
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         userTypeLabel.setText("Role");
 
-        userTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Patient", "Doctor", "Hospital Admin", "Community Admin" }));
+        userTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "System Admin", "Site/Event Reporting", "Civil Response", "Fund Raising", "Hospital Admin", "Patient", "Doctor", "Pharmacy", "Charity", "Community Admin" }));
         userTypeComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 userTypeComboBoxItemStateChanged(evt);
@@ -143,6 +161,12 @@ public class SignupPanel extends javax.swing.JPanel {
         });
 
         insuranceIdLabel.setText("Insurance ID:");
+
+        insuranceIdTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insuranceIdTxtFieldActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Image");
 
@@ -180,6 +204,12 @@ public class SignupPanel extends javax.swing.JPanel {
             }
         });
 
+        hospitalLable.setText("Hospital");
+
+        hospitalNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        personIdLabel1.setText("ID:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,149 +217,166 @@ public class SignupPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(zipCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(communityNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(80, 80, 80))))
+                        .addGap(27, 27, 27)
+                        .addComponent(insuranceIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(insuranceIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(insuranceIdTxtField))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(personNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(emailIdPersonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phonePersonalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(countryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(userTypeComboBox, 0, 190, Short.MAX_VALUE)
-                                    .addComponent(nameTxtField)
-                                    .addComponent(emailIdTxtField)
-                                    .addComponent(phnNumberTxtField)
-                                    .addComponent(cityTxtField)
-                                    .addComponent(stateTxtField)
-                                    .addComponent(countryTxtField)
-                                    .addComponent(genderTxtField)
-                                    .addComponent(ageTxtField))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(browseImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userNameTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addressTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zipCodeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(communityNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(idTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(userTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(40, 40, 40)
+                                            .addComponent(userTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(142, 142, 142)
+                                        .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(264, 264, 264)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(113, 113, 113)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(browseImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(emailIdPersonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(phonePersonalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(countryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(22, 22, 22)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(countryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(stateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(cityTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(269, 269, 269)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(zipCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(communityNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(hospitalLable, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(74, 74, 74)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ageTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(genderTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(insuranceIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(personIdLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(personNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(88, 88, 88)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(communityNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(zipCodeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(addressTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(userNameTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(hospitalNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userTypeLabel)
-                            .addComponent(userTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(personNameLabel)
-                            .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(emailIdPersonLabel)
-                            .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(browseImage))
-                        .addGap(7, 7, 7)
-                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(phonePersonalLabel)
-                            .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(communityNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(communityNameLabel))
-                        .addGap(31, 31, 31)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cityLabel)
-                    .addComponent(cityTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zipCodeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zipCodeLabel))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stateLabel)
-                            .addComponent(stateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(addressLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userTypeLabel)
+                            .addComponent(userTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(countryLabel)
-                            .addComponent(countryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addressTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)))
+                            .addComponent(idTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(personIdLabel1))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(personNameLabel))
+                        .addGap(37, 37, 37)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genderLabel)
-                    .addComponent(genderTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailIdPersonLabel))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ageLabel)
-                            .addComponent(ageTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41))
+                            .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phonePersonalLabel)
+                            .addComponent(communityNameLabel)
+                            .addComponent(communityNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cityTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cityLabel)
+                                    .addComponent(zipCodeLabel)
+                                    .addComponent(zipCodeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(64, 64, 64)
+                                .addComponent(addressLabel)
+                                .addGap(5, 5, 5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(stateLabel)
+                                    .addComponent(stateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(userNameTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(countryLabel)
+                                    .addComponent(countryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(genderLabel)
+                                    .addComponent(genderTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(45, 45, 45)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(ageLabel)
+                                    .addComponent(ageTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hospitalLable)
+                                    .addComponent(hospitalNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(66, 66, 66))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(addressTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(insuranceIdLabel)
+                            .addComponent(insuranceIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(179, 179, 179))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(userNameTxtField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(58, 58, 58)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(insuranceIdLabel))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(insuranceIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -380,142 +427,196 @@ public class SignupPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_userNameTxtField1ActionPerformed
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
-        int errorCount =0;
+        
+          int errorCount =0;
         StringBuffer errorNotifier = new StringBuffer();
         String id = null, name = null, emailId = null, phoneNumber = null, cityName = null, state = null,
         country = null, gender = null, age = null, insuranceId = null, communityName = null, zipCode = null,
         address = null, userName= null, password= null;
         Image image= null;
-
+       
         String hospitalName= null;
         
-        try {
+            if(ValidationHelper.isInteger(idTxtField.getText()))
+            {
+                id = idTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Hospital ID should be an Integer\n");
+            }
             if(ValidationHelper.isValidName(nameTxtField.getText()))
             {
-            name = nameTxtField.getText();
+                name = nameTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Name should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Name should be a String\n");
             }
             if(ValidationHelper.isValidEmailID(emailIdTxtField.getText())){
-            emailId = emailIdTxtField.getText();
+                emailId = emailIdTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Email Id should be in xyz@gmail.com format\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Email Id should be in xyz@gmail.com format\n");
             }
             if(ValidationHelper.checkPhoneNumberWith10Digits(phnNumberTxtField.getText())){
-            phoneNumber = phnNumberTxtField.getText();
+                phoneNumber = phnNumberTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Phone number should be of 10 digits\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Phone number should be of 10 digits\n");
             }
             if(ValidationHelper.isValidName(cityTxtField.getText())){
-            cityName = cityTxtField.getText();
+                cityName = cityTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". City number should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Phone number should be a String\n");
             }
             if(ValidationHelper.isValidName(stateTxtField.getText()))
             {
-            state = stateTxtField.getText();
+                state = stateTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". State should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". State should be a String\n");
             }
-            
+
             if(ValidationHelper.isValidName(countryTxtField.getText())){
-            country = countryTxtField.getText();
+                country = countryTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Country should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Country should be a String\n");
             }
             if(ValidationHelper.isValidName(genderTxtField.getText())){
-            gender = genderTxtField.getText();
+                gender = genderTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Gender should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Gender should be a String\n");
             }
             if(ValidationHelper.isInteger(ageTxtField.getText())){
-            age = ageTxtField.getText();
+                age = ageTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Age should be an Integer\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Age should be an Integer\n");
             }
             
-            if(ValidationHelper.isValidName(communityNameTxtField.getText())){
-            communityName = communityNameTxtField.getText();
+            if(userTypeComboBox.getSelectedIndex() == 1){
+            if(ValidationHelper.isInteger(insuranceIdTxtField.getText())){
+                insuranceId = insuranceIdTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Community Name should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Insurance ID should be an Integer\n");
+            }
+            }
+            
+            if(userTypeComboBox.getSelectedIndex() == 1 || userTypeComboBox.getSelectedIndex() ==2){
+            hospitalName = (String)hospitalNameComboBox.getSelectedItem();
+            }
+           
+            if(ValidationHelper.isValidName(communityNameTxtField.getText())){
+                communityName = communityNameTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Community Name should be a String\n");
             }
             if(ValidationHelper.isInteger(zipCodeTxtField.getText())){
-            zipCode = zipCodeTxtField.getText();
+                zipCode = zipCodeTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Zipcode should be an Integer\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Zipcode should be an Integer\n");
             }
             if(ValidationHelper.isValidName(addressTxtField.getText())){
-            address = addressTxtField.getText();
+                address = addressTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Address should be a String\n");
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Address should be a String\n");
             }
             
-            if(!userNameTxtField1.getText().isBlank() && !userNameTxtField1.getText().isEmpty())
+            if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), userTypeComboBox.getSelectedIndex()))
             {
-            userName = userNameTxtField1.getText();
+                userName = userNameTxtField1.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Re-Enter properly\n");
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
             }
             
             if(passwordTxtField.getText()!= null)
             {
-            password = passwordTxtField.getText();
+                password = passwordTxtField.getText();
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Please enter password\n");
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please enter password\n");
             }
             
             if(this.globalImage != null)
             {
-            image= globalImage;
+                image= globalImage;
             }else{
-            errorCount++;
-            errorNotifier.append(errorCount).append(". Please upload a  picture\n");
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please upload a  picture\n");
             }
-            
+
             if(errorCount > 0 )
             {
-            JOptionPane.showMessageDialog(this, errorNotifier.toString());
-            return;
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
             }else{
-            
-            int selectedIndex = userTypeComboBox.getSelectedIndex();
-
-            City city = new City(state, country,  cityName);
-            Community community = new Community(city, communityName, country, zipCode);
-            CommunityDirectory.communityList.add(community);
-            House house = new House(community, 7, 8);
-            Person person = new Person(id, name, emailId, Long.parseLong(phoneNumber), house, gender, Integer.parseInt(age), image);
-            PersonDirectory.personList.add(person);
-            User newUser = new User(userName, password, person);
+                
+                int selectedIndex = userTypeComboBox.getSelectedIndex();
+               
+                City city = new City(state, country,  cityName);
+                Community community = new Community(city, communityName, country, zipCode);
+                CommunityDirectory.communityList.add(community);
+                House house = new House(community, 7, 8);
+                Person person = new Person(id, name, emailId, Long.parseLong(phoneNumber), house, gender, Integer.parseInt(age), image);
+                PersonDirectory.personList.add(person);
+                User newUser = new User(userName, password, person);
             // System Admin, Patient, Doctor, Hospital Admin, Community Admin
-            HashMap<String,Person> personToUserName =UserListDirectory.getUserNameToPersonMap();
-            personToUserName.put(userName, person);
-            
-            int otp = SendEmail.sendEmail(userName, emailId);
+            switch (selectedIndex) {
+                case 0:
+                    UserListDirectory.getSystemAdminList().add(newUser);
+                    break;
+                case 1:
+                    UserListDirectory.getPatientList().add(newUser);
+                    Hospital hospital_x = new HospitalDirectory().findHospitalByName(hospitalName);
+                    Patient newPatient = new Patient(person, null, Integer.parseInt(insuranceId),hospital_x, null);
+                    hospital_x.getPatientList().add(newPatient);
+                    PatientDirectory.patientList.add(newPatient);
+                    break;
+                case 2:
+                    Hospital hospital = new HospitalDirectory().findHospitalByName(hospitalName);
+                    Doctor doctor = new Doctor(person,hospital);
+                    hospital.getDoctorList().add(doctor);
+                    DoctorDirectory.doctorList.add(doctor);
+                    UserListDirectory.getDoctorUserList().add(newUser);
+                    break;
+                case 3:
+                    UserListDirectory.getHospitalAdminList().add(newUser);
+                    break;
+                case 4:
+                    UserListDirectory.getCommunityAdminList().add(newUser);
+                    break;
+                default:
+                    break;
+            }
+                HashMap<String,Person> personToUserName =UserListDirectory.getUserNameToPersonMap();
+                personToUserName.put(userName, person);
+                try{
+               int otp = SendEmail.sendEmail(userName, emailId);
+                
             MainJFrame.mainPanel.removeAll();
             MainJFrame.mainPanel.add(new OtpVerificationPanel(otp, userName,password, emailId));
             MainJFrame.mainPanel.repaint();
             MainJFrame.mainPanel.revalidate();
-            clearAllTxtFields();
-            }
-              } catch (MessagingException ex) {
-            
-        }
+                }catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(this, "Unable to send OTP, PLease try later");
+                }
+
+                }
+   
 
     }//GEN-LAST:event_signUpBtnActionPerformed
+
+    private void insuranceIdTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insuranceIdTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insuranceIdTxtFieldActionPerformed
 
 private void clearAllTxtFields()
     {
@@ -550,6 +651,9 @@ private void clearAllTxtFields()
     private javax.swing.JTextField emailIdTxtField;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JTextField genderTxtField;
+    private javax.swing.JLabel hospitalLable;
+    private javax.swing.JComboBox<String> hospitalNameComboBox;
+    private javax.swing.JTextField idTxtField;
     private javax.swing.JLabel insuranceIdLabel;
     private javax.swing.JTextField insuranceIdTxtField;
     private javax.swing.JLabel jLabel1;
@@ -557,6 +661,7 @@ private void clearAllTxtFields()
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nameTxtField;
     private javax.swing.JPasswordField passwordTxtField;
+    private javax.swing.JLabel personIdLabel1;
     private javax.swing.JLabel personNameLabel;
     private javax.swing.JTextField phnNumberTxtField;
     private javax.swing.JLabel phonePersonalLabel;

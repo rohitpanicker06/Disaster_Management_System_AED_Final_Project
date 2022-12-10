@@ -40,11 +40,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtDisasterId" max="32767" attributes="0"/>
+                          <Component id="txtDisasterId" pref="166" max="32767" attributes="0"/>
                           <Component id="txtDisasterEvent" max="32767" attributes="0"/>
                           <Component id="txtDisasterTime" max="32767" attributes="0"/>
                           <Component id="txtDisasterCoordinates" max="32767" attributes="0"/>
-                          <Component id="txtDisasterDate" alignment="0" pref="166" max="32767" attributes="0"/>
                           <Component id="txtDisasterLocation" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -53,7 +52,6 @@
                       <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="msgLabel1" pref="133" max="32767" attributes="0"/>
@@ -61,7 +59,6 @@
                   <Component id="msgLabel3" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -73,7 +70,6 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
@@ -93,18 +89,14 @@
                       </Group>
                   </Group>
                   <Component id="msgLabel2" min="-2" pref="31" max="-2" attributes="0"/>
-
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDisasterTime" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDisasterTime" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblDisasterDate" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDisasterDate" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="lblDisasterDate" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -246,9 +238,6 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnViewDisasterMouseClicked"/>
       </Events>
     </Component>
-
-    <Component class="com.toedter.calendar.JDateChooser" name="txtDisasterDate">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtDisasterLocation">
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisasterLocationKeyReleased"/>
@@ -278,19 +267,15 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="2"/>
-
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutLabelMousePressed"/>
       </Events>
-
-    
     </Component>
   </SubComponents>
 </Form>
