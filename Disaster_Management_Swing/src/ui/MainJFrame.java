@@ -4,6 +4,7 @@
  */
 package ui;
 
+import DataForDisasterAndSiteManagementWorkflow.PopulateDataDisasterAndSiteManagement;
 import java.awt.Color;
 
 /**
@@ -19,6 +20,8 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0,0,0,0));
         PopulateData.populateData();
+        PopulateDataDisasterAndSiteManagement.populateDataDisasterAndSiteManagement();
+        
     }
 
     /**
