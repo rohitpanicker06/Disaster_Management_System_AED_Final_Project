@@ -5,6 +5,7 @@
 package database.connectivity;
 
 import java.sql.*;
+import com.mysql.jdbc.Driver;
 
 /**
  *
@@ -14,17 +15,17 @@ public class DataBaseConnection {
    private static String url ="jdbc:mysql://localhost:3306/";
    private static String databaseName="AED_FINAL_PROJECT";
    private static boolean verifyServerCertificate = false;
-   private static boolean useSSL = true;
+   private static boolean useSSL = false;
    static Connection con = null;
    private static DataBaseConnection dbConn;
    private String userName = "root";
-   private String password = "Gersharori@1234";
-   
-   private DataBaseConnection(){
+   private String password = "Welcometopune18@";
+
+   private DataBaseConnection() throws ClassNotFoundException{
        
       String urlString = getDatabaseURL();  
       try{
-
+          Class.forName("com.mysql.jdbc.Driver");
          con = DriverManager.getConnection(urlString,userName,password);
       }catch(Exception e)
       {
@@ -53,7 +54,7 @@ public class DataBaseConnection {
        return urlString.toString();
    }
    
-   public static DataBaseConnection getInstance()
+   public static DataBaseConnection getInstance() throws ClassNotFoundException
     {
         if (dbConn==null)
             dbConn = new DataBaseConnection();
@@ -62,6 +63,10 @@ public class DataBaseConnection {
 
     Connection getConnectionInstance() {
       return con;
+    }
+    
+    public static void main(String[] args) throws ClassNotFoundException {
+        DataBaseConnection db = DataBaseConnection.getInstance();
     }
     }
     

@@ -29,6 +29,8 @@ public class MedicineDirectory {
               }
           } catch (SQLException ex) {
               Logger.getLogger(MedicineDirectory.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (ClassNotFoundException ex) {
+              Logger.getLogger(MedicineDirectory.class.getName()).log(Level.SEVERE, null, ex);
           }
           
       }
