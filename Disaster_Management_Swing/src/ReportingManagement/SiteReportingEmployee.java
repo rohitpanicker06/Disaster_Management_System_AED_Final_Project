@@ -118,7 +118,17 @@ public class SiteReportingEmployee {
     public void setCasualtyEmail(String casualtyEmail) {
         this.casualtyEmail = casualtyEmail;
     }
+
+    public SiteReportingEmployee( String casualtyName, int casualtyAge, long casualtyPhn, String casualtyEmail) {
+        this.casualtyName = casualtyName;
+        this.casualtyAge = casualtyAge;
+        this.casualtyPhn = casualtyPhn;
+        this.casualtyEmail = casualtyEmail;
+    }
     
+    public SiteReportingEmployee(){
+        
+    }    
     
     
     

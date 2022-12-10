@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class DisasterDirectory {
     
-    private static ArrayList<Disaster> disasterList = new ArrayList<>(); 
+    public static ArrayList<Disaster> disasterList = new ArrayList<>(); 
 
     public ArrayList<Disaster> getDisasterList() {  //change public static to public
         return disasterList;

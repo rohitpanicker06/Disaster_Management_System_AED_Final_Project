@@ -324,20 +324,26 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
 
     private void btnSaveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveInfoActionPerformed
         // TODO add your handling code here:
+        SiteReportingEmployee site = new SiteReportingEmployee();
+        InjuryKilledCasualties inj = new InjuryKilledCasualties();
+        
         if (casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
-            SiteReportingEmployee site = new SiteReportingEmployee();
+            
             site.setCasualtyName(txtName.getText());
+            //site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
             site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
             site.setCasualtyPhn(Long.parseLong(txtPhoneNumber.getText()));
             site.setCasualtyEmail(txtEmailID.getText());
             
+            
             mgmtList.addNewSiteReportingEmployee(site);
+            
             JOptionPane.showMessageDialog(this, "Missing casualties saved!");
             vanishDataForMissingCasualty();
         }
         
         else if (casualtyTypeComboBox.getSelectedItem().toString().equals("Injured/Killed")){
-            InjuryKilledCasualties inj = new InjuryKilledCasualties();
+            
             inj.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
             inj.setKillCount(Integer.parseInt(txtKillCount.getText()));
             //SiteReportingEmployee site2 = new SiteReportingEmployee();
@@ -352,6 +358,18 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             vanishDataForInjuredKilledCasualty();
             
         }
+        
+        int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
+        if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
+            return;
+        }
+       
+        Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
+        disaster.getInjuryKilledList().add(inj);
+        disaster.getSiteReportingEmpList().add(site);
+        
+        
     }//GEN-LAST:event_btnSaveInfoActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

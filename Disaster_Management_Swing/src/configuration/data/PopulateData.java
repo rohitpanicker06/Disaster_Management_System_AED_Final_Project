@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ui;
+package configuration.data;
 
 import model.doctor.Doctor;
 import model.doctor.DoctorDirectory;
@@ -40,7 +40,13 @@ public class PopulateData {
     }
     public static void populateData(){
         
+        
         /*
+        
+       
+        roles.add("Civil Response");
+        
+       
         SystemAdmin:
         admin admin
         
@@ -59,6 +65,36 @@ public class PopulateData {
         pradeep pradeep
         rajesh rajesh
         jyoti jyoti
+        
+        Donors
+        george george
+        paul paul
+        jon jon
+        
+        Fund Raisers
+        sean sean
+        rachael rachael
+        tracy tracy
+        
+        
+        Site Reporting Employee
+        alexander alexander
+        leonedwards leonedwards
+        alexp alexp
+        
+        
+        Civil Response Head
+        curtis curtis
+        tom tom 
+        chris chris
+        
+        
+        
+        Pharmacy
+        max max
+        brandon brandon
+        stipe stipe
+       
         
         */
         // Images = 
@@ -219,14 +255,128 @@ public class PopulateData {
         hospital_three.getPatientList().add(patient_Brookline);
   
         
+        //Creating Donors
+        
+        Person donorOne = new Person("500", "George Sebastin", "george@gmail.com", Long.parseLong("9850913005"), house, "Male", 50, doctor_oneIamge);
+        Person donorTwo = new Person("501", "Paul george", "paul@gmail.com", Long.parseLong("9977886678"), house, "Male", 24, doctorTwoIamge);
+        Person donorThree = new Person("502", "Jon Jones", "jonjones@gmail.com", Long.parseLong("6677885545"), house, "Male", 28, doctor_ThreeImage);
+        
+        PersonDirectory.personList.add(donorOne);
+        PersonDirectory.personList.add(donorTwo);
+        PersonDirectory.personList.add(donorThree);
+        
+         User donor_One = new User("george", "george", donorOne);
+         User donor_Two = new User("paul", "paul", donorTwo);
+         User donor_Three = new User("jon", "jon", donorThree);
+         
+         UserListDirectory.getDonor().add(donor_One);
+         UserListDirectory.getDonor().add(donor_Two);
+         UserListDirectory.getDonor().add(donor_Three);
+         
+         UserListDirectory.getUserNameToPersonMap().put("george", donorOne);
+         UserListDirectory.getUserNameToPersonMap().put("paul", donorTwo);
+         UserListDirectory.getUserNameToPersonMap().put("jon",donorThree);
         
          
-       
-         //Create Vital Signs
          
-
+         //Creating FundRaisers
+         
+         
+        Person frOne = new Person("600", "Sean Mally", "sean@gmail.com", Long.parseLong("9988666677"), house, "Male", 20, doctor_oneIamge);
+        Person frTwo = new Person("601", "Rachael Ostovich", "rachael@gmail.com", Long.parseLong("5566774499"), house, "Female", 24, doctorTwoIamge);
+        Person frThree = new Person("603", "Tracy Cortez", "tracy@gmail.com", Long.parseLong("9988778899"), house, "Female", 28, doctor_ThreeImage);
+        
+        PersonDirectory.personList.add(frOne);
+        PersonDirectory.personList.add(frTwo);
+        PersonDirectory.personList.add(frThree);
+        
+         User fr_One = new User("sean", "sean", frOne);
+         User fr_Two = new User("rachael", "rachael", frTwo);
+         User fr_Three = new User("tracy", "tracy", frThree);
+         
+         UserListDirectory.getFundRaiserList().add(fr_One);
+         UserListDirectory.getFundRaiserList().add(fr_Two);
+         UserListDirectory.getFundRaiserList().add(fr_Three);
+         
+         UserListDirectory.getUserNameToPersonMap().put("sean", frOne);
+         UserListDirectory.getUserNameToPersonMap().put("rachael", frTwo);
+         UserListDirectory.getUserNameToPersonMap().put("tracy",frThree);
+         
+         
+         
+         
+         // Site Reporting Employee
+         
+         Person srOne = new Person("700", "Alexander Volkanovski", "alexanderv@gmail.com", Long.parseLong("9988778899"), house, "Male", 30, doctor_oneIamge);
+        Person srTwo = new Person("701", "Leon Edwards", "leoned@gmail.com", Long.parseLong("9955667709"), house, "Male", 33, doctorTwoIamge);
+        Person srThree = new Person("703", "Alex Pereira", "alexp@gmail.com", Long.parseLong("7788556677"), house, "Male", 38, doctor_ThreeImage);
+        
+        PersonDirectory.personList.add(srOne);
+        PersonDirectory.personList.add(srTwo);
+        PersonDirectory.personList.add(srThree);
+        
+         User sr_One = new User("alexander", "alexander", srOne);
+         User sr_Two = new User("leonedwards", "leonedwards", srTwo);
+         User sr_Three = new User("alexp", "alexp", srThree);
+         
+         UserListDirectory.getEventReportingList().add(sr_One);
+         UserListDirectory.getEventReportingList().add(sr_Two);
+         UserListDirectory.getEventReportingList().add(sr_Three);
+         
+         UserListDirectory.getUserNameToPersonMap().put("alexander", srOne);
+         UserListDirectory.getUserNameToPersonMap().put("leonedwards", srTwo);
+         UserListDirectory.getUserNameToPersonMap().put("alexp",srThree);
+         
+         
+         // Creating Pharmacy
          
         
+          
+         Person pharOne = new Person("800", "Max Holloway", "max@gmail.com", Long.parseLong("7788994455"), house, "Male", 39, doctor_oneIamge);
+        Person pharTwo = new Person("801", "Brandon Moreno", "brandon@gmail.com", Long.parseLong("9955667709"), house, "Male", 33, doctorTwoIamge);
+        Person pharThree = new Person("802", "Stipe Miocic", "stipe@gmail.com", Long.parseLong("6677567489"), house, "Male", 42, doctor_ThreeImage);
+        
+        PersonDirectory.personList.add(pharOne);
+        PersonDirectory.personList.add(pharTwo);
+        PersonDirectory.personList.add(pharThree);
+        
+         User ph_One = new User("max", "max", pharOne);
+         User ph_Two = new User("brandon", "brandon", pharTwo);
+         User ph_Three = new User("stipe", "stipe", pharThree);
+         
+         UserListDirectory.getPharmacyList().add(ph_One);
+         UserListDirectory.getPharmacyList().add(ph_Two);
+         UserListDirectory.getPharmacyList().add(ph_Three);
+         
+         UserListDirectory.getUserNameToPersonMap().put("max", pharOne);
+         UserListDirectory.getUserNameToPersonMap().put("brandon", pharTwo);
+         UserListDirectory.getUserNameToPersonMap().put("stipe", pharThree);
+         
+         
+         
+          // Civil Response Head
+         
+        
+          
+         Person cvOne = new Person("900", "Curtis Blaydes", "curtis@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+        Person cvTwo = new Person("901", "Tom Aspinall", "tom@gmail.com", Long.parseLong("9657456730"), house, "Male", 33, doctorTwoIamge);
+        Person cvThree = new Person("902", "Chris Daukaus", "chris@gmail.com", Long.parseLong("9870654798"), house, "Male", 42, doctor_ThreeImage);
+        
+        PersonDirectory.personList.add(cvOne);
+        PersonDirectory.personList.add(cvTwo);
+        PersonDirectory.personList.add(cvThree);
+        
+         User cv_One = new User("curtis", "curtis", cvOne);
+         User cv_Two = new User("tom", "tom", cvTwo);
+         User cv_Three = new User("chris", "chris", cvThree);
+         
+         UserListDirectory.getCivilResponseList().add(cv_One);
+         UserListDirectory.getCivilResponseList().add(cv_Two);
+         UserListDirectory.getCivilResponseList().add(cv_Three);
+         
+         UserListDirectory.getUserNameToPersonMap().put("curtis", cvOne);
+         UserListDirectory.getUserNameToPersonMap().put("tom", cvTwo);
+         UserListDirectory.getUserNameToPersonMap().put("chris", cvThree);
          
     
     }

@@ -27,7 +27,14 @@ public class InjuryKilledCasualties {
     public void setInjuryCount(int injuryCount) {
         this.injuryCount = injuryCount;
     }
+
+    public InjuryKilledCasualties(int killCount, int injuryCount) {
+        this.killCount = killCount;
+        this.injuryCount = injuryCount;
+    }
     
-    
+    public InjuryKilledCasualties(){
+        
+    }
     
 }

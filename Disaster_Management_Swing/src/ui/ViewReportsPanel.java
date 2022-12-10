@@ -4,6 +4,7 @@
  */
 package ui;
 
+import Disaster.Disaster;
 import ReportingManagement.InjuryKilledCasualties;
 import ReportingManagement.SiteReportingEmployee;
 import java.awt.Color;
@@ -11,9 +12,11 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import static ui.ManageDisasterWorkspacePanel.disDir;
 import static ui.SiteManagementWorkspacePanel.mgmtList;
 
 
@@ -31,6 +34,12 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         populateMissingCasualtiesTable();
         populateInjuredKilledCasualtiesTable();
         setOpaque(false);
+        for (Disaster d : disDir.getDisasterList()){
+            chooseDisasterBox.addItem(d.toString());
+        }
+        
+        
+        
     }
     
     @Override
@@ -45,6 +54,8 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, w, h);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,13 +74,15 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         injuredKilledCasualtiesjTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        btnPrintMissing = new javax.swing.JButton();
-        btnPrintInjuredKilled = new javax.swing.JButton();
+        btnGenerateMissing = new javax.swing.JButton();
+        btnGenerateInjuredKilled = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         missingReport = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         injuryKilledReport = new javax.swing.JTextArea();
-        btnPrint = new javax.swing.JButton();
+        btnPrintMissing = new javax.swing.JButton();
+        chooseDisasterBox = new javax.swing.JComboBox<>();
+        btnPrintInjuredKilled = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,21 +154,21 @@ public class ViewReportsPanel extends javax.swing.JPanel {
             }
         });
 
-        btnPrintMissing.setBackground(new java.awt.Color(0, 204, 204));
-        btnPrintMissing.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPrintMissing.setText("Generate Report 1");
-        btnPrintMissing.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerateMissing.setBackground(new java.awt.Color(0, 204, 204));
+        btnGenerateMissing.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGenerateMissing.setText("Generate Report 1");
+        btnGenerateMissing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintMissingActionPerformed(evt);
+                btnGenerateMissingActionPerformed(evt);
             }
         });
 
-        btnPrintInjuredKilled.setBackground(new java.awt.Color(0, 204, 153));
-        btnPrintInjuredKilled.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPrintInjuredKilled.setText("Generate Report 2");
-        btnPrintInjuredKilled.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerateInjuredKilled.setBackground(new java.awt.Color(0, 204, 153));
+        btnGenerateInjuredKilled.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGenerateInjuredKilled.setText("Generate Report 2");
+        btnGenerateInjuredKilled.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintInjuredKilledActionPerformed(evt);
+                btnGenerateInjuredKilledActionPerformed(evt);
             }
         });
 
@@ -167,11 +180,25 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         injuryKilledReport.setRows(5);
         jScrollPane4.setViewportView(injuryKilledReport);
 
-        btnPrint.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+        btnPrintMissing.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPrintMissing.setText("Print Report 1");
+        btnPrintMissing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
+                btnPrintMissingActionPerformed(evt);
+            }
+        });
+
+        chooseDisasterBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chooseDisasterBoxItemStateChanged(evt);
+            }
+        });
+
+        btnPrintInjuredKilled.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPrintInjuredKilled.setText("Print Report 2");
+        btnPrintInjuredKilled.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintInjuredKilledActionPerformed(evt);
             }
         });
 
@@ -179,45 +206,58 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPrintMissing)
-                    .addComponent(btnPrintInjuredKilled)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblInjuredKilledReport)
-                        .addComponent(lblMissingReport)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(btnGenerateMissing)
+                    .addComponent(btnGenerateInjuredKilled)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chooseDisasterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblInjuredKilledReport)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(lblMissingReport))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(lblTitle)
-                .addContainerGap(265, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnPrintMissing)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnPrintInjuredKilled)
+                        .addGap(47, 47, 47))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(186, 186, 186))
+                .addContainerGap(309, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(384, 384, 384))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addGap(222, 222, 222))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(chooseDisasterBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblMissingReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPrintMissing)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerateMissing)
+                    .addComponent(btnPrintMissing))
                 .addGap(28, 28, 28)
                 .addComponent(lblInjuredKilledReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -225,11 +265,11 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPrintInjuredKilled)
-                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnPrint))
+                    .addComponent(btnGenerateInjuredKilled)
+                    .addComponent(btnPrintInjuredKilled))
+                .addGap(40, 40, 40)
+                .addComponent(btnBack)
                 .addGap(125, 125, 125))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -262,7 +302,7 @@ public class ViewReportsPanel extends javax.swing.JPanel {
 //        txtKillCount.setText(model2.getValueAt(j, 1).toString());
     }//GEN-LAST:event_injuredKilledCasualtiesjTableMouseClicked
 
-    private void btnPrintMissingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintMissingActionPerformed
+    private void btnGenerateMissingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateMissingActionPerformed
         // TODO add your handling code here:
         
         missingReport.setText(missingReport.getText()+"===================================================\n");
@@ -282,9 +322,9 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         missingReport.setText(missingReport.getText()+"===================================================\n");
         missingReport.setText(missingReport.getText()+"\t\t End Report!\n");
         
-    }//GEN-LAST:event_btnPrintMissingActionPerformed
+    }//GEN-LAST:event_btnGenerateMissingActionPerformed
 
-    private void btnPrintInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInjuredKilledActionPerformed
+    private void btnGenerateInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateInjuredKilledActionPerformed
         // TODO add your handling code here:
         
         injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
@@ -301,26 +341,42 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         injuryKilledReport.setText(injuryKilledReport.getText()+"\n");
         injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
         injuryKilledReport.setText(injuryKilledReport.getText()+"\t\t End Report!\n");
-    }//GEN-LAST:event_btnPrintInjuredKilledActionPerformed
+    }//GEN-LAST:event_btnGenerateInjuredKilledActionPerformed
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+    private void btnPrintMissingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintMissingActionPerformed
         // TODO add your handling code here:
         try{
             missingReport.print();
-            injuryKilledReport.print();
         }
         catch(Exception e){
             
         }
         
-    }//GEN-LAST:event_btnPrintActionPerformed
+    }//GEN-LAST:event_btnPrintMissingActionPerformed
+
+    private void chooseDisasterBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseDisasterBoxItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseDisasterBoxItemStateChanged
+
+    private void btnPrintInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInjuredKilledActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            injuryKilledReport.print();
+        }
+        catch(Exception e){
+            
+        }
+    }//GEN-LAST:event_btnPrintInjuredKilledActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnPrint;
+    private javax.swing.JButton btnGenerateInjuredKilled;
+    private javax.swing.JButton btnGenerateMissing;
     private javax.swing.JButton btnPrintInjuredKilled;
     private javax.swing.JButton btnPrintMissing;
+    private javax.swing.JComboBox<String> chooseDisasterBox;
     private javax.swing.JTable injuredKilledCasualtiesjTable;
     private javax.swing.JTextArea injuryKilledReport;
     private javax.swing.JScrollPane jScrollPane1;
@@ -337,6 +393,7 @@ public class ViewReportsPanel extends javax.swing.JPanel {
     private void populateMissingCasualtiesTable() {
         DefaultTableModel model = (DefaultTableModel)missingCasualtiesjTable.getModel();
         model.setRowCount(0);
+        
         
         if(mgmtList.getSiteReportingEmpList()!=null){
             for(SiteReportingEmployee sr : mgmtList.getSiteReportingEmpList()){
@@ -367,4 +424,6 @@ public class ViewReportsPanel extends javax.swing.JPanel {
             }
         }
     }
+
+   
 }

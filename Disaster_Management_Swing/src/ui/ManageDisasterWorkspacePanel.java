@@ -262,7 +262,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         disas.setDisasterEvent(txtDisasterEvent.getText());
         disas.setDisasterTime(txtDisasterTime.getText());
         //disas.setDisasterDate(txtDisasterDate.getText());
+
         //disas.setDisasterDate(txtDisasterDate.getDate().toString());
+
         //disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterCoordinates(txtDisasterCoordinates.getText());
@@ -393,7 +395,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         txtDisasterId.setText("");
         txtDisasterEvent.setText("");
         txtDisasterTime.setText("");
+
        // txtDisasterDate.setDateFormatString(null);
+
         txtDisasterLocation.setText("");
         txtDisasterCoordinates.setText("");
     }

@@ -162,7 +162,11 @@ public class OtpVerificationPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(this, "Sign Up Successfull");
              try {
-                QueryExecutor.signupUser(userName,password);
+                try {
+                    QueryExecutor.signupUser(userName,password);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(OtpVerificationPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 MainJFrame.mainPanel.removeAll();
                  MainJFrame.mainPanel.add(new LoginPanel());
                 MainJFrame.mainPanel.repaint();
@@ -187,7 +191,11 @@ public class OtpVerificationPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(this, "Sign Up Successfull");
              try {
-                QueryExecutor.signupUser(userName,password);
+                try {
+                    QueryExecutor.signupUser(userName,password);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(OtpVerificationPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 MainJFrame.mainPanel.removeAll();
                  MainJFrame.mainPanel.add(new LoginPanel());
                 MainJFrame.mainPanel.repaint();

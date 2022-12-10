@@ -4,6 +4,10 @@
  */
 package Disaster;
 
+import ReportingManagement.InjuryKilledCasualties;
+import ReportingManagement.SiteReportingEmployee;
+import java.util.ArrayList;
+
 /**
  *
  * @author Rohit Paul G
@@ -16,6 +20,25 @@ public class Disaster {
     private String disasterDate;
     private String disasterLocation;
     private String disasterCoordinates; //latitude longitude values
+    private  ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
+    private  ArrayList<InjuryKilledCasualties> injuryKilledList = new ArrayList<>();
+
+    public  ArrayList<SiteReportingEmployee> getSiteReportingEmpList() {
+        return siteReportingEmpList;
+    }
+
+    public  void setSiteReportingEmpList(ArrayList<SiteReportingEmployee> siteReportingEmpList) {
+        siteReportingEmpList = siteReportingEmpList;
+    }
+
+    public  ArrayList<InjuryKilledCasualties> getInjuryKilledList() {
+        return injuryKilledList;
+    }
+
+    public  void setInjuryKilledList(ArrayList<InjuryKilledCasualties> injuryKilledList) {
+        injuryKilledList = injuryKilledList;
+    }
+   
 
     public int getDisasterId() {
         return disasterId;
@@ -64,6 +87,35 @@ public class Disaster {
     public void setDisasterCoordinates(String disasterCoordinates) {
         this.disasterCoordinates = disasterCoordinates;
     }
+
+//    public ArrayList<Disaster> getNewDisasterList() {
+//        return newDisasterList;
+//    }
+//
+//    public void setNewDisasterList(ArrayList<Disaster> newDisasterList) {
+//        this.newDisasterList = newDisasterList;
+//    }
+
+    public Disaster(int disasterId, String disasterEvent, String disasterTime, String disasterDate, String disasterLocation, String disasterCoordinates) {
+        this.disasterId = disasterId;
+        this.disasterEvent = disasterEvent;
+        this.disasterTime = disasterTime;
+        this.disasterDate = disasterDate;
+        this.disasterLocation = disasterLocation;
+        this.disasterCoordinates = disasterCoordinates;
+    }
+    
+    public Disaster(){
+        
+    }
+    
+    
+    
+    
+
+    
+    
+    
     
     @Override
     public String toString()
