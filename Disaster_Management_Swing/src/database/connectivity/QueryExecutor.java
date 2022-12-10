@@ -19,7 +19,7 @@ public class QueryExecutor {
     
     
     
-    public static ResultSet executeQuery(String queryString) throws SQLException
+    public static ResultSet executeQuery(String queryString) throws SQLException, ClassNotFoundException
     {
          Connection dbCon = DataBaseConnection.getInstance().getConnectionInstance();
          ResultSet rs = null;
@@ -30,7 +30,7 @@ public class QueryExecutor {
 
 }
     
-    public static boolean validateCreds(String userName, String password) throws SQLException
+    public static boolean validateCreds(String userName, String password) throws SQLException, ClassNotFoundException
     {
         
         String query = "Select UserName, Pass from Users where UserName=\""+userName+"\";";
@@ -43,7 +43,7 @@ public class QueryExecutor {
         return false;
     }
     
-    public static void signupUser(String userName, String password) throws SQLException
+    public static void signupUser(String userName, String password) throws SQLException, ClassNotFoundException
     {
          StringBuffer query = new StringBuffer("INSERT INTO Users(User_ID, UserName, Pass) Values(2,");
            query.append("\"").append(userName).append("\",").append("\"").append(password).append("\");");
