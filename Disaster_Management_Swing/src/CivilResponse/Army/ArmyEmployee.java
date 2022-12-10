@@ -15,6 +15,7 @@ public class ArmyEmployee {
     
     private int empId;
     private Person person;
+    private String Squad;
     private DisasterDirectory disDir;
 
     public int getEmpId() {
@@ -39,6 +40,19 @@ public class ArmyEmployee {
 
     public void setDisDir(DisasterDirectory disDir) {
         this.disDir = disDir;
+    }
+
+    public String getSquad() {
+        return Squad;
+    }
+
+    public void setSquad(String Squad) {
+        this.Squad = Squad;
+    }
+    @Override
+    public String toString()
+    {
+        return this.person.getName();
     }
     
     

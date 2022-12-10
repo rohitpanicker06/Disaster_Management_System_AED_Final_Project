@@ -4,9 +4,12 @@
  */
 package ui;
 
+import CivilResponse.Army.ArmyReportDirectory;
 import CivilResponse.CivilResponseDisasterList;
 import CivilResponse.CivilResponseReport;
 import CivilResponse.CivilResponseReportDirectory;
+import CivilResponse.Navy.NavyReportDirectory;
+import CivilResponse.Police.PoliceReportDirectory;
 import Disaster.Disaster;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -360,7 +363,6 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
         txtDisasterId.setText(String.valueOf(selectedDisaster.getDisasterId()));
         txtDisasterEvent.setText(selectedDisaster.getDisasterEvent());
 
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDisasterIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisasterIdActionPerformed
@@ -443,6 +445,22 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
                 report.setPoliceAssigned(policeAssigned);
 
                 JOptionPane.showMessageDialog(this, "New Report Created. The forces will be informed.");
+
+                if (ArmyjCheckBox1.isSelected()) {
+                    ArmyReportDirectory.crReport.add(report);
+                }
+
+                if (NavyjCheckBox2.isSelected()) {
+                    NavyReportDirectory.crReport.add(report);
+                }
+
+                if (PolicejCheckBox3.isSelected()) {
+                    PoliceReportDirectory.crReport.add(report);
+                }
+
+                //            Remove the disaster from CivilResponse Disaster List
+                CivilResponseDisasterList.CrDisasterArrayList.remove(selectedDisaster);
+
             } catch (Exception e) {
                 //  Block of code to handle errors
                 JOptionPane.showMessageDialog(this, "Error in creating a Response Report" + e);
@@ -457,6 +475,7 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
             ArmyjCheckBox1.setSelected(false);
             NavyjCheckBox2.setSelected(false);
             PolicejCheckBox3.setSelected(false);
+
         }
 
     }//GEN-LAST:event_btnSubmitResponseActionPerformed
@@ -467,25 +486,23 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
     private void jComboBoxLevelOfSeverityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLevelOfSeverityActionPerformed
         // TODO add your handling code here:
-        
+
         String selectedValue = jComboBoxLevelOfSeverity.getSelectedItem().toString();
-        
+
         txtLevelOfSeverity.setText(selectedValue);
-        
-        
+
+
     }//GEN-LAST:event_jComboBoxLevelOfSeverityActionPerformed
 
     private void jComboBoxLevelOfRiskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLevelOfRiskActionPerformed
         // TODO add your handling code here:
-       
+
         String selectedValue = jComboBoxLevelOfRisk.getSelectedItem().toString();
-        
+
         txtLevelOfRisk.setText(selectedValue);
-        
+
     }//GEN-LAST:event_jComboBoxLevelOfRiskActionPerformed
 
-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
-        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ArmyjCheckBox1;
     private javax.swing.JTable DisasterjTable;

@@ -15,12 +15,5 @@ public class CivilResponseDisasterList {
     
     public static ArrayList<Disaster> CrDisasterArrayList = new ArrayList<>();
 
-    public  ArrayList<Disaster> getCrDisasterArrayList() {
-        return CrDisasterArrayList;
-    }
-
-    public  void setCrDisasterArrayList(ArrayList<Disaster> CrDisasterArrayList) {
-        CivilResponseDisasterList.CrDisasterArrayList = CrDisasterArrayList;
-    }
     
 }

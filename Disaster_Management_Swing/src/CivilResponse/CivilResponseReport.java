@@ -78,6 +78,11 @@ public class CivilResponseReport {
         this.policeAssigned = policeAssigned;
     }
     
+    @Override
+    public String toString()
+    {
+        return this.crReportId;
+    }
 
 
     

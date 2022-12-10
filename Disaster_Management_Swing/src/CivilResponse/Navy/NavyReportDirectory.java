@@ -4,6 +4,7 @@
  */
 package CivilResponse.Navy;
 
+import CivilResponse.CivilResponseReport;
 import java.util.ArrayList;
 
 /**
@@ -12,16 +13,6 @@ import java.util.ArrayList;
  */
 public class NavyReportDirectory {
     
-    private static ArrayList<NavyReport> navyReportList = new ArrayList<>();
+    public static ArrayList<CivilResponseReport> crReport = new ArrayList<>();
 
-    public static ArrayList<NavyReport> getNavyReportList() {
-        return navyReportList;
-    }
-
-    public static void setNavyReportList(ArrayList<NavyReport> navyReportList) {
-        NavyReportDirectory.navyReportList = navyReportList;
-    }
-    
-    
-    
 }

@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import static ui.ManageDisasterWorkspacePanel.disDir;
 
 /**
  *
@@ -24,8 +26,9 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
     public CivilResponseViewAllDisastersPanel() {
         initComponents();
         setOpaque(false);
+        populateTable();
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -99,6 +102,11 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         btnView.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnViewMouseClicked(evt);
+            }
+        });
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
             }
         });
 
@@ -239,25 +247,23 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
 
         int selectedRowIndex = DisasterjTable.getSelectedRow();
 
-        if(selectedRowIndex < 0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to view.");
             return;
         }
 
-        Disaster selectedDis = (Disaster)DisasterjTable.getValueAt(DisasterjTable.getSelectedRow(), 0);
+        Disaster selectedDis = (Disaster) DisasterjTable.getValueAt(DisasterjTable.getSelectedRow(), 0);
 
         //if(disDir.getDisasterList()!= null){
-            //  for(Disaster disa : disDir.getDisasterList()){
-                //    txtDisasterId.setText(String.valueOf(disa.getDisasterId()));
-                //  txtDisasterEvent.setText(disa.getDisasterEvent());
-                //txtDisasterTime.setText(disa.getDisasterTime());
-                //txtDisasterDate.setText(disa.getDisasterDate());
-                //txtDisasterLocation.setText(disa.getDisasterLocation());
-                //txtDisasterCoordinates.setText(disa.getDisasterCoordinates());
-
-                //}
-            //}
-
+        //  for(Disaster disa : disDir.getDisasterList()){
+        //    txtDisasterId.setText(String.valueOf(disa.getDisasterId()));
+        //  txtDisasterEvent.setText(disa.getDisasterEvent());
+        //txtDisasterTime.setText(disa.getDisasterTime());
+        //txtDisasterDate.setText(disa.getDisasterDate());
+        //txtDisasterLocation.setText(disa.getDisasterLocation());
+        //txtDisasterCoordinates.setText(disa.getDisasterCoordinates());
+        //}
+        //}
         txtDisasterId.setText(String.valueOf(selectedDis.getDisasterId()));
         txtDisasterEvent.setText(selectedDis.getDisasterEvent());
         txtDisasterTime.setText(selectedDis.getDisasterTime());
@@ -284,6 +290,26 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = DisasterjTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        Disaster selectedDis = (Disaster) DisasterjTable.getValueAt(DisasterjTable.getSelectedRow(), 0);
+
+        txtDisasterId.setText(String.valueOf(selectedDis.getDisasterId()));
+        txtDisasterEvent.setText(selectedDis.getDisasterEvent());
+        txtDisasterTime.setText(selectedDis.getDisasterTime());
+        txtDisasterDate.setText(selectedDis.getDisasterDate());
+        txtDisasterLocation.setText(selectedDis.getDisasterLocation());
+        txtDisasterCoordinates.setText(selectedDis.getDisasterCoordinates());
+
+    }//GEN-LAST:event_btnViewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisasterjTable;
@@ -305,4 +331,27 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDisasterLocation;
     private javax.swing.JTextField txtDisasterTime;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) DisasterjTable.getModel();
+        model.setRowCount(0);
+
+        if (disDir.getDisasterList() != null) {
+            for (Disaster di : disDir.getDisasterList()) {
+                Object[] row = new Object[6];
+
+                row[0] = di;
+                row[1] = di.getDisasterId();
+                row[2] = di.getDisasterTime();
+                row[3] = di.getDisasterDate();
+                row[4] = di.getDisasterLocation();
+                row[5] = di.getDisasterCoordinates();
+
+                model.addRow(row);
+
+            }
+
+        }
+    }
+
 }

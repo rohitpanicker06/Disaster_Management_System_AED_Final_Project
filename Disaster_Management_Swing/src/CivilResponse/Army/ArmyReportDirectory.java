@@ -4,6 +4,7 @@
  */
 package CivilResponse.Army;
 
+import CivilResponse.CivilResponseReport;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,6 @@ import java.util.ArrayList;
  */
 public class ArmyReportDirectory {
     
-    private static ArrayList<ArmyReport> armyReportList = new ArrayList<>();
-    
+    public static ArrayList<CivilResponseReport> crReport  = new ArrayList<>();
+
 }

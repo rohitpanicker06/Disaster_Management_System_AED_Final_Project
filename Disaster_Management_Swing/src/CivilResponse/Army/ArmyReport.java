@@ -4,6 +4,8 @@
  */
 package CivilResponse.Army;
 
+import CivilResponse.CivilResponseReport;
+
 /**
  *
  * @author gayatrisk
@@ -11,12 +13,8 @@ package CivilResponse.Army;
 public class ArmyReport {
     
     private int armyReportId;
-    private ArmyEmployee armyEmp;
-    private int noOfOfficersAssigned;
-    private String inventoryAssigned;
-    private boolean immediateResponse;
-    private String dateOfOperation;
-    private String operationStatus;
+    private CivilResponseReport crReport;
+
 
     public int getArmyReportId() {
         return armyReportId;
@@ -26,55 +24,13 @@ public class ArmyReport {
         this.armyReportId = armyReportId;
     }
 
-    public ArmyEmployee getArmyEmp() {
-        return armyEmp;
+    public CivilResponseReport getCrReport() {
+        return crReport;
     }
 
-    public void setArmyEmp(ArmyEmployee armyEmp) {
-        this.armyEmp = armyEmp;
-    }
-
-    public int getNoOfOfficersAssigned() {
-        return noOfOfficersAssigned;
-    }
-
-    public void setNoOfOfficersAssigned(int noOfOfficersAssigned) {
-        this.noOfOfficersAssigned = noOfOfficersAssigned;
-    }
-
-    public String getInventoryAssigned() {
-        return inventoryAssigned;
-    }
-
-    public void setInventoryAssigned(String inventoryAssigned) {
-        this.inventoryAssigned = inventoryAssigned;
-    }
-
-    public boolean isImmediateResponse() {
-        return immediateResponse;
-    }
-
-    public void setImmediateResponse(boolean immediateResponse) {
-        this.immediateResponse = immediateResponse;
-    }
-
-    public String getDateOfOperation() {
-        return dateOfOperation;
-    }
-
-    public void setDateOfOperation(String dateOfOperation) {
-        this.dateOfOperation = dateOfOperation;
-    }
-
-    public String getOperationStatus() {
-        return operationStatus;
-    }
-
-    public void setOperationStatus(String operationStatus) {
-        this.operationStatus = operationStatus;
+    public void setCrReport(CivilResponseReport crReport) {
+        this.crReport = crReport;
     }
     
-    
-    
-    
+  
 }

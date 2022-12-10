@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class CivilResponseReportDirectory {
     
-    private static ArrayList<CivilResponseReport> crReportList= new ArrayList<>();
+    public static ArrayList<CivilResponseReport> crReportList= new ArrayList<>();
 
     public static ArrayList<CivilResponseReport> getCrReportList() {
         return crReportList;
