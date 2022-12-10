@@ -73,16 +73,10 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         btnSaveDisaster = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnViewDisaster = new javax.swing.JButton();
-        logoutLabel = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(179, 0, 8));
-
-        txtDisasterDate = new com.toedter.calendar.JDateChooser();
         txtDisasterLocation = new javax.swing.JTextField();
         msgLabel1 = new javax.swing.JLabel();
         msgLabel2 = new javax.swing.JLabel();
         msgLabel3 = new javax.swing.JLabel();
-
 
         lblTitle1.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,17 +139,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
-
-        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
-        logoutLabel.setText("Logout");
-        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                logoutLabelMousePressed(evt);
-            }
-        });
-
-
         txtDisasterLocation.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDisasterLocationKeyReleased(evt);
@@ -170,7 +153,12 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
 
         msgLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         msgLabel3.setForeground(new java.awt.Color(255, 255, 255));
-
+        msgLabel3.setText("Logout");
+        msgLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -188,7 +176,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(244, 244, 244)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
                                     .addComponent(lblDisasterCoordinates)
                                     .addComponent(lblDisasterDate, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblDisasterTime, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -197,11 +184,10 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                             .addComponent(lblDisasterLocation, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDisasterId)
+                            .addComponent(txtDisasterId, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(txtDisasterEvent)
                             .addComponent(txtDisasterTime)
                             .addComponent(txtDisasterCoordinates)
-                            .addComponent(txtDisasterDate, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(txtDisasterLocation)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(263, 263, 263)
@@ -212,7 +198,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                     .addComponent(msgLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(msgLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(62, 62, 62))
-
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnBack)
@@ -221,7 +206,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-
                 .addGap(23, 23, 23)
                 .addComponent(lblTitle1)
                 .addGap(96, 96, 96)
@@ -241,10 +225,8 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterTime)
                     .addComponent(txtDisasterTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDisasterDate)
-                    .addComponent(txtDisasterDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(lblDisasterDate)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -274,7 +256,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         disas.setDisasterEvent(txtDisasterEvent.getText());
         disas.setDisasterTime(txtDisasterTime.getText());
         //disas.setDisasterDate(txtDisasterDate.getText());
-        disas.setDisasterDate(txtDisasterDate.getDate().toString());
         //disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterCoordinates(txtDisasterCoordinates.getText());
@@ -384,15 +365,10 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitle1;
-
-    private javax.swing.JLabel logoutLabel;
-
     private javax.swing.JLabel msgLabel1;
     private javax.swing.JLabel msgLabel2;
     private javax.swing.JLabel msgLabel3;
-
     private javax.swing.JTextField txtDisasterCoordinates;
-    private com.toedter.calendar.JDateChooser txtDisasterDate;
     private javax.swing.JTextField txtDisasterEvent;
     private javax.swing.JTextField txtDisasterId;
     private javax.swing.JTextField txtDisasterLocation;
@@ -403,7 +379,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         txtDisasterId.setText("");
         txtDisasterEvent.setText("");
         txtDisasterTime.setText("");
-        txtDisasterDate.setDateFormatString(null);
         txtDisasterLocation.setText("");
         txtDisasterCoordinates.setText("");
     }

@@ -23,8 +23,38 @@ public class UserListDirectory {
     private static ArrayList<User> systemAdminList = new ArrayList<>();
     private static ArrayList<User> doctorUserList = new ArrayList<>();
     private static ArrayList<User> hospitalAdminList = new ArrayList<>();
-     private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
-     private static ArrayList<User> communityAdminList = new ArrayList<>();
+    private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
+    private static ArrayList<User> communityAdminList = new ArrayList<>();
+    private static ArrayList<User> eventReportingList = new ArrayList<>();
+    private static ArrayList<User> fundRaiserList = new ArrayList<>();
+    private static ArrayList<User> pharmacyList = new ArrayList<>();
+    private static ArrayList<User> donor = new ArrayList<>();
+    private static ArrayList<User> civilResponseList = new ArrayList<>();
+
+    public static ArrayList<User> getEventReportingList() {
+        return eventReportingList;
+    }
+
+    public static ArrayList<User> getCivilResponseList() {
+        return civilResponseList;
+    }
+
+    public static ArrayList<User> getFundRaiserList() {
+        return fundRaiserList;
+    }
+
+    public static ArrayList<User> getPharmacyList() {
+        return pharmacyList;
+    }
+
+    public static ArrayList<User> getDonor() {
+        return donor;
+    }
+    
+   
+    
+    
+    
 
     public static HashMap<String, Person> getUserNameToPersonMap() {
         return userNameToPersonMap;
@@ -92,10 +122,17 @@ public class UserListDirectory {
     {
          User user = null;
         switch (selectedIndex) {
-            //case 0 -> user = getUser(name, systemAdminList);
-            case 6 -> user = getUser(name, patientList);
-            case 7 -> user = getUser(name, doctorUserList);
-            case 5 -> user = getUser(name, hospitalAdminList);
+            case 0 -> user = getUser(name, systemAdminList);
+            case 1 -> user = getUser(name,eventReportingList );
+            case 2 -> user = getUser(name, userList);
+            case 3 -> user = getUser(name, fundRaiserList);
+            case 4 -> user = getUser(name, hospitalAdminList);
+            case 5 -> user = getUser(name, patientList);
+            case 6 -> user = getUser(name, doctorUserList);
+            case 7 -> user = getUser(name, pharmacyList);
+            case 8 -> user = getUser(name, donor);
+            case 9 -> user = getUser(name, communityAdminList);
+           
            
             default -> {
             }
@@ -106,10 +143,18 @@ public class UserListDirectory {
     public boolean checkUserValidation(String name, String password, int selectedIndex){
         User user = null;
         switch (selectedIndex) {
-            case 0 -> user = getUser(name, systemAdminList);
-            case 1 -> user = getUser(name, patientList);
-            case 2 -> user = getUser(name, doctorUserList);
-            case 3 -> user = getUser(name, hospitalAdminList);
+            
+           case 0 -> user = getUser(name, systemAdminList);
+            case 1 -> user = getUser(name,eventReportingList );
+            case 2 -> user = getUser(name, userList);
+            case 3 -> user = getUser(name, fundRaiserList);
+            case 4 -> user = getUser(name, hospitalAdminList);
+            case 5 -> user = getUser(name, patientList);
+            case 6 -> user = getUser(name, doctorUserList);
+            case 7 -> user = getUser(name, pharmacyList);
+            case 8 -> user = getUser(name, donor);
+            case 9 -> user = getUser(name, communityAdminList);
+           
             
             default -> {
             }
