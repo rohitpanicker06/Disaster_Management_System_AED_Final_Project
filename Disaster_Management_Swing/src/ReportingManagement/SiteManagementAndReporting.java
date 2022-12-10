@@ -5,6 +5,7 @@
 package ReportingManagement;
 //A SiteManagementAndReporting organization class will have employees attribute. To be modelled further..
 
+import Disaster.Disaster;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +14,9 @@ import java.util.ArrayList;
  */
 public class SiteManagementAndReporting {
     //private int siteMangmntOrgID;
-    private static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
-    private static ArrayList<InjuryKilledCasualties> injuryKilledList = new ArrayList<>();
+    public static ArrayList<SiteReportingEmployee> siteReportingEmpList = new ArrayList<>(); //this arraylist stores the sitereporting employees of the SiteReportingEmployee class
+    public static ArrayList<InjuryKilledCasualties> injuryKilledList = new ArrayList<>();
+   // private ArrayList<Disaster> newDisasterList = new ArrayList<>();
 
     public ArrayList<SiteReportingEmployee> getSiteReportingEmpList() { //deleted "static" before the ArrayList word
         return siteReportingEmpList;
@@ -31,6 +33,14 @@ public class SiteManagementAndReporting {
     public void setInjuryKilledList(ArrayList<InjuryKilledCasualties> injuryKilledList) {
         SiteManagementAndReporting.injuryKilledList = injuryKilledList;
     }
+
+//    public ArrayList<Disaster> getNewDisasterList() {
+//        return newDisasterList;
+//    }
+//
+//    public void setNewDisasterList(ArrayList<Disaster> newDisasterList) {
+//        this.newDisasterList = newDisasterList;
+//    }
     
     
 
@@ -42,6 +52,8 @@ public class SiteManagementAndReporting {
     public void addNewInjuredKilledCasualties(InjuryKilledCasualties injkilled){
         injuryKilledList.add(injkilled);
     }
+    
+    
     
     
     
