@@ -44,6 +44,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="mainPanel" min="-2" max="-2" attributes="0"/>
+
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,13 +68,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Component class="ui.LoginPanel" name="loginPanel1">
+        <Component class="ui.army.ArmyEmpDashboardPanel" name="armyEmpDashboardPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
             </Constraint>
           </Constraints>
         </Component>
+
         <Component class="ui.SignupPanel" name="signupPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -246,6 +248,7 @@
             </Constraint>
           </Constraints>
         </Component>
+
       </SubComponents>
     </Container>
   </SubComponents>

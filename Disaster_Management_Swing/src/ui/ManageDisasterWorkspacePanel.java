@@ -4,6 +4,7 @@
  */
 package ui;
 
+import CivilResponse.CivilResponseDisasterList;
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
 import java.awt.Color;
@@ -123,6 +124,11 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         btnSaveDisaster.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSaveDisasterMouseClicked(evt);
+            }
+        });
+        btnSaveDisaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveDisasterActionPerformed(evt);
             }
         });
 
@@ -259,7 +265,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         disas.setDisasterId(Integer.parseInt(txtDisasterId.getText()));
         disas.setDisasterEvent(txtDisasterEvent.getText());
         disas.setDisasterTime(txtDisasterTime.getText());
+
         disas.setDisasterDate(txtDisasterDate.getDateFormatString());
+
         //disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterCoordinates(txtDisasterCoordinates.getText());
@@ -271,6 +279,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Disaster created successfully!");
 
         vanishDataInDisasterCreation();
+        
+        CivilResponseDisasterList.CrDisasterArrayList.add(disas);
+        
     }//GEN-LAST:event_btnSaveDisasterMouseClicked
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
@@ -356,6 +367,10 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtDisasterLocationKeyReleased
 
+    private void btnSaveDisasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveDisasterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveDisasterActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -384,6 +399,9 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         txtDisasterId.setText("");
         txtDisasterEvent.setText("");
         txtDisasterTime.setText("");
+
+       // txtDisasterDate.setDateFormatString(null);
+
         txtDisasterLocation.setText("");
         txtDisasterCoordinates.setText("");
     }

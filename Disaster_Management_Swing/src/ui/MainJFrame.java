@@ -34,6 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+
         loginPanel1 = new ui.LoginPanel();
         signupPanel1 = new ui.SignupPanel();
         otpVerificationPanel1 = new ui.OtpVerificationPanel();
@@ -57,6 +58,8 @@ public class MainJFrame extends javax.swing.JFrame {
         roleSignUpPanel1 = new ui.SingUp.RoleSignUpPanel();
         resetCredsPanel1 = new ui.ResetCredsPanel();
         resetCredsPanel2 = new ui.ResetCredsPanel();
+        armyEmpDashboardPanel1 = new ui.army.ArmyEmpDashboardPanel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 780));
@@ -68,6 +71,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.setMinimumSize(new java.awt.Dimension(1200, 800));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
         mainPanel.setLayout(new java.awt.CardLayout());
+
         mainPanel.add(loginPanel1, "card2");
         mainPanel.add(signupPanel1, "card3");
         mainPanel.add(otpVerificationPanel1, "card4");
@@ -108,6 +112,9 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.add(resetCredsPanel1, "card22");
         mainPanel.add(resetCredsPanel2, "card23");
 
+        mainPanel.add(armyEmpDashboardPanel1, "card2");
+
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,6 +128,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+
         );
 
         pack();
@@ -171,17 +179,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ui.hospital.CommunityAdminPanel communityAdminPanel1;
-    private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
-    private ui.hospital.DoctorPanel doctorPanel1;
-    private ui.hospital.DoctorPanel doctorPanelT1;
-    private ui.fundraiser.DonateFundsPanel donateFundsPanel1;
-    private ui.hospital.cruds.EncounterHistoryPanel encounterHistoryPanel1;
-    private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
-    private ui.hospital.HospitalAdminPanel hospitalAdminPanel1;
-    private ui.hospital.cruds.HospitalCrud hospitalCrud1;
-    private ui.LoginPanel loginPanel1;
+    private ui.army.ArmyEmpDashboardPanel armyEmpDashboardPanel1;
     public static javax.swing.JPanel mainPanel;
+
     private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
     private ui.OtpVerificationPanel otpVerificationPanel1;
     private ui.hospital.cruds.PatientCrud patientCrud1;
@@ -195,5 +195,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.SignupPanel signupPanel1;
     private ui.SiteManagementWorkspacePanel siteManagementWorkspacePanel1;
     private ui.ViewDisasterPanel viewDisasterPanel1;
+
     // End of variables declaration//GEN-END:variables
 }
