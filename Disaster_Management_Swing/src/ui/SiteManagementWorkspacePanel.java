@@ -328,6 +328,13 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         InjuryKilledCasualties inj = new InjuryKilledCasualties();
         
         if (casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
+            int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
+            
+            if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
+            return;
+        }
+            Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
             
             site.setCasualtyName(txtName.getText());
             //site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
@@ -338,11 +345,19 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             
             mgmtList.addNewSiteReportingEmployee(site);
             
+            disaster.getSiteReportingEmpList().add(site);
             JOptionPane.showMessageDialog(this, "Missing casualties saved!");
             vanishDataForMissingCasualty();
         }
         
         else if (casualtyTypeComboBox.getSelectedItem().toString().equals("Injured/Killed")){
+            int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
+            if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
+            return;
+        }
+         Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
+            
             
             inj.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
             inj.setKillCount(Integer.parseInt(txtKillCount.getText()));
@@ -354,6 +369,7 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             
             mgmtList.addNewInjuredKilledCasualties(inj);
             
+            disaster.getInjuryKilledList().add(inj);
             JOptionPane.showMessageDialog(this, "Injured or Killed casualties saved!");
             vanishDataForInjuredKilledCasualty();
             
