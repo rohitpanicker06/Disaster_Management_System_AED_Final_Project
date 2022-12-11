@@ -56,13 +56,14 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         btnDisasterWorkspace = new javax.swing.JButton();
         btnSiteManagementWorkspace = new javax.swing.JButton();
-        btnReportingManagementWorkspace = new javax.swing.JButton();
         logoutLabel = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("~ Disaster Reporting Dashboard ~");
 
+        btnDisasterWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnDisasterWorkspace.setForeground(new java.awt.Color(255, 255, 255));
         btnDisasterWorkspace.setText("Disaster Workspace");
         btnDisasterWorkspace.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -70,14 +71,14 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        btnSiteManagementWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSiteManagementWorkspace.setForeground(new java.awt.Color(255, 255, 255));
         btnSiteManagementWorkspace.setText("Site Management Workspace");
         btnSiteManagementWorkspace.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSiteManagementWorkspaceMouseClicked(evt);
             }
         });
-
-        btnReportingManagementWorkspace.setText("Reporting Management Workspace");
 
         logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,8 +99,7 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSiteManagementWorkspace)
-                            .addComponent(btnDisasterWorkspace)
-                            .addComponent(btnReportingManagementWorkspace))
+                            .addComponent(btnDisasterWorkspace))
                         .addGap(299, 299, 299))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblTitle)
@@ -108,7 +108,7 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
                         .addGap(38, 38, 38))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDisasterWorkspace, btnReportingManagementWorkspace, btnSiteManagementWorkspace});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDisasterWorkspace, btnSiteManagementWorkspace});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,12 +118,10 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
                     .addComponent(lblTitle)
                     .addComponent(logoutLabel))
                 .addGap(117, 117, 117)
-                .addComponent(btnDisasterWorkspace)
-                .addGap(78, 78, 78)
-                .addComponent(btnSiteManagementWorkspace)
-                .addGap(83, 83, 83)
-                .addComponent(btnReportingManagementWorkspace)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addComponent(btnDisasterWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
+                .addComponent(btnSiteManagementWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -161,7 +159,6 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDisasterWorkspace;
-    private javax.swing.JButton btnReportingManagementWorkspace;
     private javax.swing.JButton btnSiteManagementWorkspace;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel logoutLabel;

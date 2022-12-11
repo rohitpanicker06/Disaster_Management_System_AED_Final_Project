@@ -1,0 +1,5 @@
+@startuml
+
+ApplicationUser->Login: Login Initiated
+
+@enduml

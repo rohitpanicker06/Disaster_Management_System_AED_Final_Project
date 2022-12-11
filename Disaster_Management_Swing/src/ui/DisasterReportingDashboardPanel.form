@@ -23,7 +23,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnSiteManagementWorkspace" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnDisasterWorkspace" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnReportingManagementWorkspace" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
                   </Group>
@@ -46,12 +45,10 @@
                   <Component id="logoutLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-              <Component id="btnDisasterWorkspace" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              <Component id="btnSiteManagementWorkspace" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Component id="btnReportingManagementWorkspace" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="350" max="32767" attributes="0"/>
+              <Component id="btnDisasterWorkspace" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+              <Component id="btnSiteManagementWorkspace" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace pref="228" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,6 +67,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDisasterWorkspace">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Disaster Workspace"/>
       </Properties>
       <Events>
@@ -78,16 +81,17 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSiteManagementWorkspace">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Site Management Workspace"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSiteManagementWorkspaceMouseClicked"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnReportingManagementWorkspace">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Reporting Management Workspace"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="logoutLabel">
       <Properties>
