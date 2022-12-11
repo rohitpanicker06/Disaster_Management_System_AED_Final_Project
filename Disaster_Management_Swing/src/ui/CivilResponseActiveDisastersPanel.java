@@ -21,6 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import rbac.context.RbacApplicationContext;
 
 /**
  *
@@ -31,8 +32,8 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
     /**
      * Creates new form CivilResponseWorkspacePanel
      */
-    CivilResponseDisasterList crDisDir;
-    CivilResponseReportDirectory crDir;
+    CivilResponseDisasterList crDisDir = new CivilResponseDisasterList();
+    CivilResponseReportDirectory crDir = new CivilResponseReportDirectory();
 
     public CivilResponseActiveDisastersPanel() {
         initComponents();
@@ -88,6 +89,7 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
         btnSubmitResponse = new javax.swing.JButton();
         lblReportId = new javax.swing.JLabel();
         txtReportId = new javax.swing.JTextField();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
@@ -212,13 +214,19 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblTitleCivilResponseWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,12 +284,19 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
                                 .addGap(33, 33, 33)
                                 .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblTitleCivilResponseWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lblTitleCivilResponseWorkspace)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitleCivilResponseWorkspace)
+                    .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -296,7 +311,7 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
                     .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -432,10 +447,8 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, errMessageFinal);
         } else {
             try {
-                //Create new Employee with function from EmployeeHistory
                 CivilResponseReport report = crDir.addNewReport();
 
-                // Set all the values of the new employee with setters and text field values
                 report.setCrDisaster(selectedDisaster);
                 report.setCrReportId(reportId);
                 report.setLvlOfSeverity(levelOfSeverity);
@@ -460,6 +473,7 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
                 //            Remove the disaster from CivilResponse Disaster List
                 CivilResponseDisasterList.CrDisasterArrayList.remove(selectedDisaster);
+                populateTable();
 
             } catch (Exception e) {
                 //  Block of code to handle errors
@@ -503,6 +517,19 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jComboBoxLevelOfRiskActionPerformed
 
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox ArmyjCheckBox1;
     private javax.swing.JTable DisasterjTable;
@@ -524,6 +551,7 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblLevelOfSeverity;
     private javax.swing.JLabel lblReportId;
     private javax.swing.JLabel lblTitleCivilResponseWorkspace;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterEvent;
     private javax.swing.JTextField txtDisasterId;
     private javax.swing.JTextField txtLevelOfRisk;

@@ -4,7 +4,9 @@
  */
 package CivilResponse.Army;
 
+import CivilResponse.CivilResponseReport;
 import Disaster.DisasterDirectory;
+import java.util.ArrayList;
 import person.Person;
 
 /**
@@ -13,18 +15,27 @@ import person.Person;
  */
 public class ArmyEmployee {
     
-    private int empId;
+    private String empId;
     private Person person;
     private String Squad;
-    private DisasterDirectory disDir;
+    private ArrayList<CivilResponseReport> crReportList = new ArrayList<>();
 
-    public int getEmpId() {
+    public ArmyEmployee(String empId, Person person, String Squad) {
+        this.empId = empId;
+        this.person = person;
+        this.Squad = Squad;
+       
+    }
+
+    public String getEmpId() {
         return empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(String empId) {
         this.empId = empId;
     }
+    
+   
 
     public Person getPerson() {
         return person;
@@ -34,14 +45,6 @@ public class ArmyEmployee {
         this.person = person;
     }
 
-    public DisasterDirectory getDisDir() {
-        return disDir;
-    }
-
-    public void setDisDir(DisasterDirectory disDir) {
-        this.disDir = disDir;
-    }
-
     public String getSquad() {
         return Squad;
     }
@@ -49,10 +52,20 @@ public class ArmyEmployee {
     public void setSquad(String Squad) {
         this.Squad = Squad;
     }
+
+    public ArrayList<CivilResponseReport> getCrReportList() {
+        return crReportList;
+    }
+
+    public void setCrReportList(ArrayList<CivilResponseReport> crReportList) {
+        this.crReportList = crReportList;
+    }
+    
+    
     @Override
     public String toString()
     {
-        return this.person.getName();
+        return this.empId;
     }
     
     

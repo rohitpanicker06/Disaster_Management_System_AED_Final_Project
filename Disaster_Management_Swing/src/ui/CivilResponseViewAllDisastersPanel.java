@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import rbac.context.RbacApplicationContext;
 import static ui.ManageDisasterWorkspacePanel.disDir;
 
 /**
@@ -69,6 +70,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         lblDisasterEvent = new javax.swing.JLabel();
         txtDisasterEvent = new javax.swing.JTextField();
         lblDisasterTime = new javax.swing.JLabel();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -146,6 +148,15 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         lblDisasterTime.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterTime.setText("Disaster Time:");
 
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -154,7 +165,9 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE))
+                        .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -202,7 +215,9 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(lblTitleCivilResponseAllDisasters)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitleCivilResponseAllDisasters)
+                    .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -310,6 +325,19 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisasterjTable;
@@ -324,6 +352,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitleCivilResponseAllDisasters;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterCoordinates;
     private javax.swing.JTextField txtDisasterDate;
     private javax.swing.JTextField txtDisasterEvent;
