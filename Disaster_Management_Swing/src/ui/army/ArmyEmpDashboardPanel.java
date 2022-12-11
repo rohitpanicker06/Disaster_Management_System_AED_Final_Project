@@ -4,26 +4,49 @@
  */
 package ui.army;
 
+import CivilResponse.Army.ArmyEmployee;
+import CivilResponse.Army.ArmyEmployeeDirectory;
+import CivilResponse.CivilResponseReport;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import person.Person;
+import rbac.application.user.User;
+import rbac.application.user.UserListDirectory;
+import rbac.context.RbacApplicationContext;
 
 /**
  *
  * @author gayatrisk
  */
+
 public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ArmyEmpDashboardPanel
      */
+    RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+
+    public static void main(String[] args) {
+        
+    }
     public ArmyEmpDashboardPanel() {
         initComponents();
         setOpaque(false);
+      
     }
     
+    public ArmyEmpDashboardPanel(int i ) {
+        initComponents();
+        setOpaque(false);
+        populateFields();
+      
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -46,48 +69,48 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitleCivilResponseAllDisasters = new javax.swing.JLabel();
-        lblDisasterId = new javax.swing.JLabel();
-        lblDisasterEvent = new javax.swing.JLabel();
-        txtDisasterId = new javax.swing.JTextField();
-        txtDisasterEvent = new javax.swing.JTextField();
-        lblDisasterLocation = new javax.swing.JLabel();
-        txtDisasterLocation = new javax.swing.JTextField();
-        lblDisasterLocation1 = new javax.swing.JLabel();
-        txtDisasterLocation1 = new javax.swing.JTextField();
-        lblDisasterLocation2 = new javax.swing.JLabel();
-        txtDisasterLocation2 = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
+        lblempId = new javax.swing.JLabel();
+        lblname = new javax.swing.JLabel();
+        txtEmpId = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        lblSquad = new javax.swing.JLabel();
+        txtSquad = new javax.swing.JTextField();
+        lblemailId = new javax.swing.JLabel();
+        txtemailId = new javax.swing.JTextField();
+        lblPhone = new javax.swing.JLabel();
+        txtGender = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        DisasterjTable = new javax.swing.JTable();
+        ReportjTable = new javax.swing.JTable();
         lblOfAllocation = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        lblTitleCivilResponseAllDisasters.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
-        lblTitleCivilResponseAllDisasters.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitleCivilResponseAllDisasters.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleCivilResponseAllDisasters.setText("~ Welcome Officer ~");
+        lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("~ Welcome Officer ~");
 
-        lblDisasterId.setBackground(new java.awt.Color(255, 255, 255));
-        lblDisasterId.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisasterId.setText("Employee ID");
+        lblempId.setBackground(new java.awt.Color(255, 255, 255));
+        lblempId.setForeground(new java.awt.Color(255, 255, 255));
+        lblempId.setText("Employee ID");
 
-        lblDisasterEvent.setBackground(new java.awt.Color(255, 255, 255));
-        lblDisasterEvent.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisasterEvent.setText("Name");
+        lblname.setBackground(new java.awt.Color(255, 255, 255));
+        lblname.setForeground(new java.awt.Color(255, 255, 255));
+        lblname.setText("Name");
 
-        lblDisasterLocation.setBackground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation.setText("Squad");
+        lblSquad.setBackground(new java.awt.Color(255, 255, 255));
+        lblSquad.setForeground(new java.awt.Color(255, 255, 255));
+        lblSquad.setText("Squad");
 
-        lblDisasterLocation1.setBackground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation1.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation1.setText("Email ID");
+        lblemailId.setBackground(new java.awt.Color(255, 255, 255));
+        lblemailId.setForeground(new java.awt.Color(255, 255, 255));
+        lblemailId.setText("Email ID");
 
-        lblDisasterLocation2.setBackground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation2.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisasterLocation2.setText("Phone");
+        lblPhone.setBackground(new java.awt.Color(255, 255, 255));
+        lblPhone.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhone.setText("Gender");
 
-        DisasterjTable.setModel(new javax.swing.table.DefaultTableModel(
+        ReportjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -106,13 +129,18 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(DisasterjTable);
+        jScrollPane1.setViewportView(ReportjTable);
 
         lblOfAllocation.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblOfAllocation.setForeground(new java.awt.Color(255, 255, 255));
         lblOfAllocation.setText("Operations Allocated");
 
         jButton1.setText("Start Operation");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,7 +148,7 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
@@ -129,27 +157,27 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(lblDisasterId)
+                                .addComponent(lblempId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDisasterId, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                                .addComponent(txtEmpId, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblname, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDisasterEvent)))
+                                .addComponent(txtName)))
                         .addGap(125, 125, 125)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblDisasterLocation)
+                                .addComponent(lblSquad)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSquad, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblDisasterLocation1)
+                                .addComponent(lblemailId)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtDisasterLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtemailId, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblDisasterLocation2)
+                                .addComponent(lblPhone)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtDisasterLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,30 +188,30 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(lblTitleCivilResponseAllDisasters)
+                .addComponent(lblTitle)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblname, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDisasterId)
-                            .addComponent(txtDisasterId, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblempId)
+                            .addComponent(txtEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDisasterLocation))
+                            .addComponent(txtSquad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSquad))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisasterLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDisasterLocation1))
+                            .addComponent(txtemailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblemailId))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisasterLocation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDisasterLocation2))))
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPhone))))
                 .addGap(59, 59, 59)
                 .addComponent(lblOfAllocation)
                 .addGap(18, 18, 18)
@@ -194,22 +222,71 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Operation started. Good luck!");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable DisasterjTable;
+    private javax.swing.JTable ReportjTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblDisasterEvent;
-    private javax.swing.JLabel lblDisasterId;
-    private javax.swing.JLabel lblDisasterLocation;
-    private javax.swing.JLabel lblDisasterLocation1;
-    private javax.swing.JLabel lblDisasterLocation2;
     private javax.swing.JLabel lblOfAllocation;
-    private javax.swing.JLabel lblTitleCivilResponseAllDisasters;
-    private javax.swing.JTextField txtDisasterEvent;
-    private javax.swing.JTextField txtDisasterId;
-    private javax.swing.JTextField txtDisasterLocation;
-    private javax.swing.JTextField txtDisasterLocation1;
-    private javax.swing.JTextField txtDisasterLocation2;
+    private javax.swing.JLabel lblPhone;
+    private javax.swing.JLabel lblSquad;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblemailId;
+    private javax.swing.JLabel lblempId;
+    private javax.swing.JLabel lblname;
+    private javax.swing.JTextField txtEmpId;
+    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtSquad;
+    private javax.swing.JTextField txtemailId;
     // End of variables declaration//GEN-END:variables
+
+    public void populateFields() {
+
+        User user = rbacApplicationContext.getUser();
+        
+        String username = user.getUserName();
+        Person person = UserListDirectory.getUserNameToPersonMap().get(username);
+
+        ArmyEmployee currentEmp = null;
+
+        for (ArmyEmployee armEmp : ArmyEmployeeDirectory.armyEmpList) {
+            if (armEmp.getPerson().getId().equals(person.getId())) {
+                currentEmp = armEmp;
+            }
+        }
+
+        txtEmpId.setText(currentEmp.getEmpId());
+        txtName.setText(currentEmp.getPerson().getName());
+        txtSquad.setText(currentEmp.getSquad());
+        txtemailId.setText(currentEmp.getPerson().getEmailid());
+        txtGender.setText(currentEmp.getPerson().getGender());
+        
+        DefaultTableModel model = (DefaultTableModel) ReportjTable.getModel();
+        model.setRowCount(0);
+
+        if (currentEmp.getCrReportList() != null) {
+            for (CivilResponseReport crReport : currentEmp.getCrReportList()) {
+                Object[] row = new Object[5];
+
+                row[0] = crReport;
+                row[1] = crReport.getCrDisaster().getDisasterId();
+                row[2] = crReport.getCrDisaster().getDisasterTime();
+                row[3] = crReport.getLvlOfSeverity();
+                row[4] = crReport.getLvlOfRisk();
+
+                model.addRow(row);
+
+            }
+
+        }
+        
+    }
+    
+  
 }

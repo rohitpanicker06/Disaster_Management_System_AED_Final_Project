@@ -5,8 +5,10 @@
 package ui.army;
 
 import CivilResponse.Army.ArmyEmployee;
+import CivilResponse.Army.ArmyEmployeeDirectory;
 import CivilResponse.Army.ArmyReportDirectory;
 import CivilResponse.CivilResponseReport;
+import CivilResponse.CivilResponseReportDirectory;
 import CivilResponse.OfficerAllocation;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -16,6 +18,8 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
 
 /**
@@ -32,6 +36,7 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         populateTable();
+        populateOfficersTable();
     }
 
     @Override
@@ -73,6 +78,7 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         jComboBoxViewOfficers = new javax.swing.JComboBox<>();
         btnSaveAssignment = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -159,8 +165,6 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         lblAssignedOfficer.setForeground(new java.awt.Color(255, 255, 255));
         lblAssignedOfficer.setText("Assigned Officers");
 
-        jComboBoxViewOfficers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnSaveAssignment.setText("Save");
         btnSaveAssignment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +176,15 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
+            }
+        });
+
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed(evt);
             }
         });
 
@@ -212,14 +225,18 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
                                 .addComponent(txtDisasterEvent))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblTitleOperationWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                        .addComponent(lblTitleOperationWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(lblTitleOperationWorkspace)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitleOperationWorkspace)
+                    .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -277,10 +294,16 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
             return;
         }
 
-        CivilResponseReport crReport = (CivilResponseReport) ReportjTable.getValueAt(selectedRowIndex, 0);
-
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
         for (ArmyEmployee armyEmp : officersAdded) {
-            OfficerAllocation.ArmyOffAllocation.put(armyEmp, crReport);
+            OfficerAllocation.ArmyOffAllocation.put(armyEmp, cv);
         }
 
 
@@ -304,10 +327,17 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
             return;
         }
 
-        CivilResponseReport crReport = (CivilResponseReport) ReportjTable.getValueAt(selectedRowIndex, 0);
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
 
-        txtReportId.setText(crReport.getCrReportId());
-        txtDisasterEvent.setText(crReport.getCrDisaster().getDisasterEvent());
+        txtReportId.setText(cv.getCrReportId());
+        txtDisasterEvent.setText(cv.getCrDisaster().getDisasterEvent());
 
     }//GEN-LAST:event_btnTakeActionActionPerformed
 
@@ -321,13 +351,47 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
             return;
         }
 
-        ArmyEmployee officer = (ArmyEmployee) OfficerTable.getValueAt(selectedRowIndex, 0);
+        String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
+        
+        int selectedRowIndexforReport = ReportjTable.getSelectedRow();
 
-        jComboBoxViewOfficers.addItem(officer.toString());
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
 
-        officersAdded.add(officer);
+        ArmyEmployee armyemp = null;
+        for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
+            if (armyEmp.getEmpId().equals(OfficerID)) {
+                armyemp = armyEmp;
+                break;
+            }
+        }
+
+        jComboBoxViewOfficers.addItem(armyemp.getPerson().getName());
+        armyemp.getCrReportList().add(cv);
+
+        officersAdded.add(armyemp);
+        
 
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -346,6 +410,7 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblOfAllocation;
     private javax.swing.JLabel lblReportId;
     private javax.swing.JLabel lblTitleOperationWorkspace;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JTextField txtDisasterEvent;
     private javax.swing.JTextField txtReportId;
     // End of variables declaration//GEN-END:variables
@@ -368,5 +433,25 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
 
             }
         }
+    }
+
+    public void populateOfficersTable() {
+
+        DefaultTableModel model = (DefaultTableModel) OfficerTable.getModel();
+        model.setRowCount(0);
+
+        if (ArmyEmployeeDirectory.armyEmpList != null) {
+            for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
+                Object[] row = new Object[3];
+
+                row[0] = armyEmp.getEmpId();
+                row[1] = armyEmp.getPerson().getName();
+                row[2] = armyEmp.getSquad();
+
+                model.addRow(row);
+
+            }
+        }
+
     }
 }

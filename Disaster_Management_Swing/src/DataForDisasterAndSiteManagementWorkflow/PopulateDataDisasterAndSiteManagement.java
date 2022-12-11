@@ -4,6 +4,7 @@
  */
 package DataForDisasterAndSiteManagementWorkflow;
 
+import CivilResponse.CivilResponseDisasterList;
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
 import ReportingManagement.InjuryKilledCasualties;
@@ -29,6 +30,12 @@ public class PopulateDataDisasterAndSiteManagement {
         DisasterDirectory.disasterList.add(disaster_new_value2);
         DisasterDirectory.disasterList.add(disaster_new_value3);
         DisasterDirectory.disasterList.add(disaster_new_value4);
+        
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value2);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value3);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value4);
         
         
         //for Site Reporting Employee and Injury Killed Casualties classes

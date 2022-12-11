@@ -9,6 +9,9 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
 
 /**
@@ -55,6 +58,7 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         lblMilitaryStaff = new javax.swing.JLabel();
         jBtnCreateOfficer = new javax.swing.JButton();
         jBtnViewOfficer = new javax.swing.JButton();
+        logoutLabel2 = new javax.swing.JLabel();
 
         jPanel1.setEnabled(false);
         jPanel1.setOpaque(false);
@@ -122,14 +126,25 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel2.setText("Logout");
+        logoutLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabel2MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -153,7 +168,9 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(lblTitleArmyDashboard)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitleArmyDashboard)
+                    .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -224,6 +241,19 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnViewOfficerActionPerformed
 
+    private void logoutLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel2MousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabel2MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnActiveAssignments;
@@ -234,5 +264,8 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisAssignments;
     private javax.swing.JLabel lblMilitaryStaff;
     private javax.swing.JLabel lblTitleArmyDashboard;
+    private javax.swing.JLabel logoutLabel;
+    private javax.swing.JLabel logoutLabel1;
+    private javax.swing.JLabel logoutLabel2;
     // End of variables declaration//GEN-END:variables
 }

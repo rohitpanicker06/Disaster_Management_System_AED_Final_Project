@@ -4,6 +4,8 @@
  */
 package configuration.data;
 
+import CivilResponse.Army.ArmyEmployee;
+import CivilResponse.Army.ArmyEmployeeDirectory;
 import model.doctor.Doctor;
 import model.doctor.DoctorDirectory;
 import static model.doctor.DoctorDirectory.doctorList;
@@ -378,6 +380,41 @@ public class PopulateData {
          UserListDirectory.getUserNameToPersonMap().put("tom", cvTwo);
          UserListDirectory.getUserNameToPersonMap().put("chris", cvThree);
          
+         //Army Head
+         
+         
+          Person armyhead = new Person("10000", "Gayatri", "gayatri@gmail.com", Long.parseLong("7754567346"), house, "Female", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(armyhead);
+          User army_head = new User("army", "army", armyhead);
+          UserListDirectory.getArmyHeadList().add(army_head);
+          UserListDirectory.getUserNameToPersonMap().put("army", armyhead);
+          
+          //Creating army officers
+          
+          Person armyOffOne = new Person("1100", "Ric", "ric@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(armyOffOne);
+          ArmyEmployee army_Off_One = new ArmyEmployee("1100",armyOffOne, "Boston");
+          ArmyEmployeeDirectory.armyEmpList.add(army_Off_One);
+         
+          User army_Officer_one = new User("ric", "ric", armyOffOne);
+          UserListDirectory.getArmyEmployeeList().add(army_Officer_one);
+          UserListDirectory.getUserNameToPersonMap().put("ric", armyOffOne);
+          
+          
+          Person armyOffTwo = new Person("1200", "John", "john@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(armyOffOne);
+          ArmyEmployee army_Off_two = new ArmyEmployee("101",armyOffTwo, "New York");
+          ArmyEmployeeDirectory.armyEmpList.add(army_Off_two);
+          
+          Person armyOffthree = new Person("1300", "Robert", "robert@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(armyOffthree);
+          ArmyEmployee army_Off_three = new ArmyEmployee("102",armyOffthree, "Texas");
+          ArmyEmployeeDirectory.armyEmpList.add(army_Off_three);
+          
+          Person armyOffFour = new Person("1400", "Alexis", "alexis@gmail.com", Long.parseLong("7754567346"), house, "Female", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(armyOffFour);
+          ArmyEmployee army_Off_Four = new ArmyEmployee("103",armyOffFour, "Boston");
+          ArmyEmployeeDirectory.armyEmpList.add(army_Off_Four);
     
     }
 }

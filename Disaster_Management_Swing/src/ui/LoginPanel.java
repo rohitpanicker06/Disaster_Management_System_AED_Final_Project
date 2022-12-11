@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import rbac.application.user.UserListDirectory;
 import rbac.context.RbacApplicationContext;
 import rbac.role.Role;
+import rbac.roles.roleImplementation.ArmyEmployeeRoleBase;
+import rbac.roles.roleImplementation.ArmyheadRoleBase;
 import rbac.roles.roleImplementation.CivilResponseRoleBase;
 import rbac.roles.roleImplementation.CommunityAdminRoleBase;
 import rbac.roles.roleImplementation.DisasterManagementHeadRoleBase;
@@ -43,6 +45,8 @@ import ui.hospital.PatientPanel;
 import ui.hospital.PharmacyPanel;
 import ui.SingUp.UserDetailsSignUpPanel;
 import ui.SingUp.UserNamePassPanel;
+import ui.army.ArmyDashboardPanel;
+import ui.army.ArmyEmpDashboardPanel;
 
 /**
  *
@@ -67,6 +71,8 @@ public class LoginPanel extends javax.swing.JPanel {
         roles.add("Pharmacy");
         roles.add("Charity");
         roles.add("Community Admin");
+        roles.add("Army head");
+        roles.add("Army Employee");
         
     }
     public LoginPanel() {
@@ -302,7 +308,7 @@ String userName = userNameTextField.getText();
                 case 2:
                     role = new CivilResponseRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    // comp = new HospitalAdminPanel();
+                     comp = new CivilResponseDashboardPanel();
                     break;
                 case 3:
                     role = new FundRaiserRoleBase();
@@ -349,7 +355,17 @@ String userName = userNameTextField.getText();
                     rbacApplicationContext.setRoleContext(role);
                     comp=new CommunityAdminPanel();
                     break;
-                    
+                case 10:
+                    role = new ArmyheadRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    comp = new ArmyDashboardPanel();
+                    break;
+                case 11:
+                    role = new ArmyEmployeeRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                    comp = new ArmyEmpDashboardPanel(1);
+                    break;
                 default:
                     break;
             }
@@ -420,4 +436,8 @@ String userName = userNameTextField.getText();
     private javax.swing.JComboBox<String> userTypeDropBox;
     private javax.swing.JLabel userTypeLabel;
     // End of variables declaration//GEN-END:variables
+
+    private Component ArmyEmpDashboardPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
