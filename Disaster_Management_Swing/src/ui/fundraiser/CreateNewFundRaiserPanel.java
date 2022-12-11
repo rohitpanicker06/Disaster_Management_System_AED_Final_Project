@@ -21,7 +21,7 @@ import model.fundraiser.TelevisionFundRaisingDept;
 import rbac.context.RbacApplicationContext;
 import ui.LoginPanel;
 import ui.MainJFrame;
-import ui.SignupPanel;
+
 
 /**
  *
