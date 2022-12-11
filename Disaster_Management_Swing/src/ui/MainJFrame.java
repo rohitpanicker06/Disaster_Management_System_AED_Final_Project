@@ -195,7 +195,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.hospital.SystemAdminPanel systemAdminPanel1;
     private ui.ViewDisasterPanel viewDisasterPanel1;
 
-    public static javax.swing.JPanel mainPanel;
+   
 
     // End of variables declaration//GEN-END:variables
 }
