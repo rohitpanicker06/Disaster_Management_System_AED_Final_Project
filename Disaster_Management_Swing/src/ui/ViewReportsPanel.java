@@ -5,6 +5,7 @@
 package ui;
 
 import Disaster.Disaster;
+import Disaster.DisasterDirectory;
 import ReportingManagement.InjuryKilledCasualties;
 import ReportingManagement.SiteReportingEmployee;
 import java.awt.Color;
@@ -18,6 +19,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import static ui.ManageDisasterWorkspacePanel.disDir;
 import static ui.SiteManagementWorkspacePanel.mgmtList;
+import ReportingManagement.InjuryKilledCasualties;
+import ReportingManagement.SiteReportingEmployee;
+import java.util.ArrayList;
 
 
 /**
@@ -31,8 +35,8 @@ public class ViewReportsPanel extends javax.swing.JPanel {
      */
     public ViewReportsPanel() {
         initComponents();
-        populateMissingCasualtiesTable();
-        populateInjuredKilledCasualtiesTable();
+        //populateMissingCasualtiesTable();
+        //populateInjuredKilledCasualtiesTable();
         setOpaque(false);
         for (Disaster d : disDir.getDisasterList()){
             chooseDisasterBox.addItem(d.toString());
@@ -356,6 +360,12 @@ public class ViewReportsPanel extends javax.swing.JPanel {
 
     private void chooseDisasterBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseDisasterBoxItemStateChanged
         // TODO add your handling code here:
+        String text = (String) chooseDisasterBox.getSelectedItem();
+        Disaster disaster = getDisasteByName(text);
+        ArrayList<SiteReportingEmployee> se = disaster.getSiteReportingEmpList();
+        ArrayList<InjuryKilledCasualties>  ik= disaster.getInjuryKilledList();
+        populateInjuredKilledCasualtiesTable(ik);
+        populateMissingCasualtiesTable(se);
     }//GEN-LAST:event_chooseDisasterBoxItemStateChanged
 
     private void btnPrintInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInjuredKilledActionPerformed
@@ -390,13 +400,13 @@ public class ViewReportsPanel extends javax.swing.JPanel {
     private javax.swing.JTextArea missingReport;
     // End of variables declaration//GEN-END:variables
 
-    private void populateMissingCasualtiesTable() {
+    private void populateMissingCasualtiesTable(ArrayList<SiteReportingEmployee> se) {
         DefaultTableModel model = (DefaultTableModel)missingCasualtiesjTable.getModel();
         model.setRowCount(0);
         
         
-        if(mgmtList.getSiteReportingEmpList()!=null){
-            for(SiteReportingEmployee sr : mgmtList.getSiteReportingEmpList()){
+       
+            for(SiteReportingEmployee sr : se){
                 Object[] row = new Object[4];
                 
                 row[0] = sr.getCasualtyName();
@@ -406,15 +416,15 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                 
                 model.addRow(row);
             }
-        }
+        
     }
 
-    private void populateInjuredKilledCasualtiesTable() {
+    private void populateInjuredKilledCasualtiesTable( ArrayList<InjuryKilledCasualties> ik) {
         DefaultTableModel model1 = (DefaultTableModel)injuredKilledCasualtiesjTable.getModel();
         model1.setRowCount(0);
         
-        if(mgmtList.getInjuryKilledList()!=null){
-            for(InjuryKilledCasualties injkill : mgmtList.getInjuryKilledList()){
+       
+            for(InjuryKilledCasualties injkill :ik){
                 Object[] row1 = new Object[2];
                 
                 row1[0] = injkill.getInjuryCount();
@@ -422,7 +432,18 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                 
                 model1.addRow(row1);
             }
+        
+    }
+
+    private Disaster getDisasteByName(String text) {
+        for(Disaster disaster: DisasterDirectory.disasterList)
+        {
+            if(disaster.getDisasterEvent().equals(text) )
+            {
+                return disaster;
+            }
         }
+        return null;
     }
 
    

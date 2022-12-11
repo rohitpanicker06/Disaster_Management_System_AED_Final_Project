@@ -34,6 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+
         loginPanel1 = new ui.LoginPanel();
         manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
         siteManagementWorkspacePanel1 = new ui.SiteManagementWorkspacePanel();
@@ -57,6 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
         resetCredsPanel2 = new ui.ResetCredsPanel();
         systemAdminPanel1 = new ui.hospital.SystemAdminPanel();
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 780));
         setUndecorated(true);
@@ -65,6 +67,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.setMinimumSize(new java.awt.Dimension(1200, 800));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
         mainPanel.setLayout(new java.awt.CardLayout());
+
         mainPanel.add(loginPanel1, "card24");
         mainPanel.add(manageDisasterWorkspacePanel1, "card5");
         mainPanel.add(siteManagementWorkspacePanel1, "card6");
@@ -167,6 +170,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private ui.hospital.CommunityAdminPanel communityAdminPanel1;
     private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
     private ui.hospital.DoctorPanel doctorPanel1;
@@ -190,5 +194,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.SiteManagementWorkspacePanel siteManagementWorkspacePanel1;
     private ui.hospital.SystemAdminPanel systemAdminPanel1;
     private ui.ViewDisasterPanel viewDisasterPanel1;
+
+    public static javax.swing.JPanel mainPanel;
+
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,10 @@ public class UserListDirectory {
     private static ArrayList<User> systemAdminList = new ArrayList<>();
     private static ArrayList<User> doctorUserList = new ArrayList<>();
     private static ArrayList<User> hospitalAdminList = new ArrayList<>();
+
+    public static ArrayList<User> getArmyEmployeeList() {
+        return armyEmployeeList;
+    }
     private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
     private static ArrayList<User> communityAdminList = new ArrayList<>();
     private static ArrayList<User> eventReportingList = new ArrayList<>();
@@ -30,6 +34,18 @@ public class UserListDirectory {
     private static ArrayList<User> pharmacyList = new ArrayList<>();
     private static ArrayList<User> donor = new ArrayList<>();
     private static ArrayList<User> civilResponseList = new ArrayList<>();
+    private static ArrayList<User> armyHeadList = new ArrayList<>();
+    private static ArrayList<User> armyEmployeeList = new ArrayList<>();
+    
+
+    public static ArrayList<User> getArmyHeadList() {
+        return armyHeadList;
+    }
+
+    public static void setArmyHeadList(ArrayList<User> armyHeadList) {
+        UserListDirectory.armyHeadList = armyHeadList;
+    }
+
 
     public static ArrayList<User> getEventReportingList() {
         return eventReportingList;
@@ -124,7 +140,7 @@ public class UserListDirectory {
         switch (selectedIndex) {
             case 0 -> user = getUser(name, systemAdminList);
             case 1 -> user = getUser(name,eventReportingList );
-            case 2 -> user = getUser(name, userList);
+            case 2 -> user = getUser(name, civilResponseList);
             case 3 -> user = getUser(name, fundRaiserList);
             case 4 -> user = getUser(name, hospitalAdminList);
             case 5 -> user = getUser(name, patientList);
@@ -132,6 +148,8 @@ public class UserListDirectory {
             case 7 -> user = getUser(name, pharmacyList);
             case 8 -> user = getUser(name, donor);
             case 9 -> user = getUser(name, communityAdminList);
+            case 10 -> user = getUser(name, armyHeadList);
+            case 11 -> user = getUser(name, armyEmployeeList);
            
            
             default -> {
@@ -146,7 +164,7 @@ public class UserListDirectory {
             
            case 0 -> user = getUser(name, systemAdminList);
             case 1 -> user = getUser(name,eventReportingList );
-            case 2 -> user = getUser(name, userList);
+            case 2 -> user = getUser(name, civilResponseList);
             case 3 -> user = getUser(name, fundRaiserList);
             case 4 -> user = getUser(name, hospitalAdminList);
             case 5 -> user = getUser(name, patientList);
@@ -154,6 +172,8 @@ public class UserListDirectory {
             case 7 -> user = getUser(name, pharmacyList);
             case 8 -> user = getUser(name, donor);
             case 9 -> user = getUser(name, communityAdminList);
+            case 10 -> user = getUser(name, armyHeadList);
+            case 11 -> user = getUser(name, armyEmployeeList);
            
             
             default -> {

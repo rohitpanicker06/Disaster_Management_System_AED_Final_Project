@@ -4,6 +4,7 @@
  */
 package DataForDisasterAndSiteManagementWorkflow;
 
+import CivilResponse.CivilResponseDisasterList;
 import Disaster.Disaster;
 import Disaster.DisasterDirectory;
 import ReportingManagement.InjuryKilledCasualties;
@@ -30,13 +31,22 @@ public class PopulateDataDisasterAndSiteManagement {
         DisasterDirectory.disasterList.add(disaster_new_value3);
         DisasterDirectory.disasterList.add(disaster_new_value4);
         
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value2);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value3);
+        CivilResponseDisasterList.CrDisasterArrayList.add(disaster_new_value4);
+        
+        
         
         //for Site Reporting Employee and Injury Killed Casualties classes
-        SiteReportingEmployee siteReportingEmp1 = new SiteReportingEmployee("Rohit Paul", 24, 857313020, "rohitpauldb@gmail.com");
-        SiteReportingEmployee siteReportingEmp2 = new SiteReportingEmployee("Rohit Panicker", 24, 857313021, "panicker.r@gmail.com");
-        SiteReportingEmployee siteReportingEmp3 = new SiteReportingEmployee("Preshanth Adhini Ramesh", 24, 857313022, "preshupee@gmail.com");
-        SiteReportingEmployee siteReportingEmp4 = new SiteReportingEmployee("Akshatha Patil", 24, 857313023, "patil.aksha@gmail.com");
-        SiteReportingEmployee siteReportingEmp5 = new SiteReportingEmployee("Ashwini Thiru", 25, 857313024, "ashwinithiru@gmail.com");
+        SiteReportingEmployee siteReportingEmp1 = new SiteReportingEmployee("Paul", 24, 857313020, "rohitpauldb@gmail.com");
+        SiteReportingEmployee siteReportingEmp2 = new SiteReportingEmployee("Panicker", 24, 857313021, "panicker.r@gmail.com");
+        SiteReportingEmployee siteReportingEmp3 = new SiteReportingEmployee("Preshanth", 24, 857313022, "preshupee@gmail.com");
+        SiteReportingEmployee siteReportingEmp4 = new SiteReportingEmployee("Akshatha", 24, 857313023, "patil.aksha@gmail.com");
+        SiteReportingEmployee siteReportingEmp5 = new SiteReportingEmployee("Ashwini", 25, 857313024, "ashwinithiru@gmail.com");
+        
+        
         
         InjuryKilledCasualties injuryKilledCasualties1 = new InjuryKilledCasualties(90, 44);
         InjuryKilledCasualties injuryKilledCasualties2 = new InjuryKilledCasualties(148, 78);
@@ -44,18 +54,19 @@ public class PopulateDataDisasterAndSiteManagement {
         InjuryKilledCasualties injuryKilledCasualties4 = new InjuryKilledCasualties(3800, 700);
         InjuryKilledCasualties injuryKilledCasualties5 = new InjuryKilledCasualties(57, 1013);
         
-        SiteManagementAndReporting.siteReportingEmpList.add(siteReportingEmp1);
-        SiteManagementAndReporting.siteReportingEmpList.add(siteReportingEmp2);
-        SiteManagementAndReporting.siteReportingEmpList.add(siteReportingEmp3);
-        SiteManagementAndReporting.siteReportingEmpList.add(siteReportingEmp4);
-        SiteManagementAndReporting.siteReportingEmpList.add(siteReportingEmp5);
         
-        SiteManagementAndReporting.injuryKilledList.add(injuryKilledCasualties1);
-        SiteManagementAndReporting.injuryKilledList.add(injuryKilledCasualties2);
-        SiteManagementAndReporting.injuryKilledList.add(injuryKilledCasualties3);
-        SiteManagementAndReporting.injuryKilledList.add(injuryKilledCasualties4);
-        SiteManagementAndReporting.injuryKilledList.add(injuryKilledCasualties5);
+        disaster.getSiteReportingEmpList().add(siteReportingEmp1);
+        disaster.getInjuryKilledList().add(injuryKilledCasualties1);
+        disaster_new_value.getSiteReportingEmpList().add(siteReportingEmp2);
+        disaster_new_value.getInjuryKilledList().add(injuryKilledCasualties2);
+        disaster_new_value2.getSiteReportingEmpList().add(siteReportingEmp3);
+        disaster_new_value2.getInjuryKilledList().add(injuryKilledCasualties3);
+        disaster_new_value3.getSiteReportingEmpList().add(siteReportingEmp4);
+        disaster_new_value3.getInjuryKilledList().add(injuryKilledCasualties4);
+        disaster_new_value4.getSiteReportingEmpList().add(siteReportingEmp5);
+        disaster_new_value4.getInjuryKilledList().add(injuryKilledCasualties5);
         
+       
         
         
         
