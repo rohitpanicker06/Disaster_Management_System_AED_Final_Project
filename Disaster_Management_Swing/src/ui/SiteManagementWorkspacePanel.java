@@ -13,6 +13,8 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import person.Person;
@@ -82,6 +84,12 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         btnSaveInfo = new javax.swing.JButton();
         btnViewReports = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        msgLabel4 = new javax.swing.JLabel();
+        msgLabel2 = new javax.swing.JLabel();
+        msgLabel3 = new javax.swing.JLabel();
+        msgLabel1 = new javax.swing.JLabel();
+        msgLabel5 = new javax.swing.JLabel();
+        msgLabel6 = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,11 +146,47 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
+
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyReleased(evt);
+            }
+        });
+
+        txtEmailID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailIDKeyReleased(evt);
+            }
+        });
+
         lblInjuryCount.setForeground(new java.awt.Color(255, 255, 255));
         lblInjuryCount.setText("Injury Count:");
 
         lblKillCount.setForeground(new java.awt.Color(255, 255, 255));
         lblKillCount.setText("Kill Count:");
+
+        txtInjuryCount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtInjuryCountKeyReleased(evt);
+            }
+        });
+
+        txtKillCount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKillCountKeyReleased(evt);
+            }
+        });
 
         btnSaveInfo.setBackground(new java.awt.Color(51, 204, 0));
         btnSaveInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -174,59 +218,92 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        msgLabel4.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        msgLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        msgLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel3.setForeground(new java.awt.Color(255, 255, 255));
+
+        msgLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        msgLabel5.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel5.setForeground(new java.awt.Color(255, 255, 255));
+
+        msgLabel6.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        msgLabel6.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblName)
-                    .addComponent(lblCasualtyBox)
-                    .addComponent(lblAge)
-                    .addComponent(lblPhoneNumber)
-                    .addComponent(lblEmailID))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtName)
-                    .addComponent(txtPhoneNumber)
-                    .addComponent(txtEmailID, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblInjuryCount)
-                    .addComponent(lblKillCount))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtInjuryCount, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                    .addComponent(txtKillCount))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblName)
+                            .addComponent(lblCasualtyBox)
+                            .addComponent(lblAge)
+                            .addComponent(lblPhoneNumber)
+                            .addComponent(lblEmailID))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtName)
+                                    .addComponent(txtPhoneNumber)
+                                    .addComponent(txtEmailID, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(msgLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(msgLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblInjuryCount)
+                                            .addComponent(lblKillCount)))
+                                    .addComponent(msgLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtInjuryCount)
+                                    .addComponent(txtKillCount, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(msgLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(msgLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(msgLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(lblTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(lblSubTitle)))
+                .addGap(48, 48, 48))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 154, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSubTitle)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblSubTitle2)
-                                .addGap(30, 30, 30)))
-                        .addGap(330, 330, 330))
+                        .addComponent(lblSubTitle2)
+                        .addGap(360, 360, 360))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSaveInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnViewReports)
-                        .addGap(146, 146, 146))
+                        .addComponent(btnBack)
+                        .addGap(365, 365, 365))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(112, 112, 112))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(365, 365, 365))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitle)
-                .addGap(179, 179, 179))
+                        .addComponent(btnSaveInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnViewReports)
+                        .addGap(176, 176, 176))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSaveInfo, btnViewReports});
@@ -234,40 +311,58 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lblTitle)
-                .addGap(43, 43, 43)
-                .addComponent(lblSubTitle)
-                .addGap(25, 25, 25)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCasualtyBox)
-                            .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblInjuryCount)
-                            .addComponent(txtInjuryCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addComponent(lblName))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblKillCount)
-                        .addComponent(txtKillCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTitle)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSubTitle)
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblCasualtyBox)
+                                        .addComponent(casualtyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(39, 39, 39)
+                                    .addComponent(lblName))
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblInjuryCount)
+                                    .addComponent(txtInjuryCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(msgLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblKillCount)
+                                        .addComponent(txtKillCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(msgLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(msgLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAge)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msgLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAge)
+                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSaveInfo)
                     .addComponent(btnViewReports))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhoneNumber)
-                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msgLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPhoneNumber)
+                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmailID)
-                    .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msgLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblEmailID)
+                        .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(lblSubTitle2)
                 .addGap(18, 18, 18)
@@ -328,7 +423,13 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         InjuryKilledCasualties inj = new InjuryKilledCasualties();
         
         if (casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
-            
+            int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
+        if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
+            return;
+        }
+         Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
+         
             site.setCasualtyName(txtName.getText());
             //site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
             site.setCasualtyAge(Integer.parseInt(txtAge.getText()));
@@ -337,13 +438,20 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             
             
             mgmtList.addNewSiteReportingEmployee(site);
-            
+           
+             disaster.getSiteReportingEmpList().add(site);
             JOptionPane.showMessageDialog(this, "Missing casualties saved!");
             vanishDataForMissingCasualty();
         }
         
         else if (casualtyTypeComboBox.getSelectedItem().toString().equals("Injured/Killed")){
-            
+             int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
+        if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
+            return;
+        }
+         Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
+         
             inj.setInjuryCount(Integer.parseInt(txtInjuryCount.getText()));
             inj.setKillCount(Integer.parseInt(txtKillCount.getText()));
             //SiteReportingEmployee site2 = new SiteReportingEmployee();
@@ -353,21 +461,17 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             //site2.setKillCount(Integer.parseInt(txtKillCount.getText()));
             
             mgmtList.addNewInjuredKilledCasualties(inj);
-            
+             disaster.getInjuryKilledList().add(inj);
             JOptionPane.showMessageDialog(this, "Injured or Killed casualties saved!");
             vanishDataForInjuredKilledCasualty();
             
         }
         
-        int selectedRowIndex = DisasterjTableSiteMngmt.getSelectedRow();
-        if (selectedRowIndex == -1) {
-            JOptionPane.showMessageDialog(this, "No disaster is selected, Please Try Again");
-            return;
-        }
+        
        
-        Disaster disaster = (Disaster) DisasterjTableSiteMngmt.getValueAt(selectedRowIndex, 0);
-        disaster.getInjuryKilledList().add(inj);
-        disaster.getSiteReportingEmpList().add(site);
+       
+        
+       
         
         
     }//GEN-LAST:event_btnSaveInfoActionPerformed
@@ -388,6 +492,92 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnViewReportsActionPerformed
 
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        
+        String con1 = "^[a-z A-Z]{0,30}$";
+        Pattern ptt = Pattern.compile(con1);
+        Matcher mat = ptt.matcher(txtName.getText());
+        if(!mat.matches()){
+            msgLabel1.setText("Incorrect Input!");
+        }
+        else {
+            msgLabel1.setText(null);
+        }
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        
+        String con2 = "^[0-9]{0,2}$";
+        Pattern ptt = Pattern.compile(con2);
+        Matcher mat = ptt.matcher(txtAge.getText());
+        if(!mat.matches()){
+            msgLabel2.setText("Enter valid Age!");
+        }
+        else {
+            msgLabel2.setText(null);
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
+
+    private void txtPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyReleased
+        // TODO add your handling code here:
+        
+        
+        String con3 = "^[0-9]{0,10}$";
+        Pattern ptt = Pattern.compile(con3);
+        Matcher mat = ptt.matcher(txtPhoneNumber.getText());
+        if(!mat.matches()){
+            msgLabel3.setText("Invalid Phone Number!");
+        }
+        else {
+            msgLabel3.setText(null);
+        }
+    }//GEN-LAST:event_txtPhoneNumberKeyReleased
+
+    private void txtEmailIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailIDKeyReleased
+        // TODO add your handling code here:
+        
+        String con4 = "^[a-z.A-Z.0-9]{0,50}@[a-z]{0,50}.[a-z]{0,5}$";
+        Pattern ptt = Pattern.compile(con4);
+        Matcher mat = ptt.matcher(txtEmailID.getText());
+        if(!mat.matches()){
+            msgLabel4.setText("Invalid Email ID!");
+        }
+        else {
+            msgLabel4.setText(null);
+        }
+    }//GEN-LAST:event_txtEmailIDKeyReleased
+
+    private void txtInjuryCountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInjuryCountKeyReleased
+        // TODO add your handling code here:
+        
+        String con5 = "^[0-9]{0,4}$";
+        Pattern ptt = Pattern.compile(con5);
+        Matcher mat = ptt.matcher(txtInjuryCount.getText());
+        if(!mat.matches()){
+            msgLabel5.setText("Enter a realistic count!");
+        }
+        else {
+            msgLabel5.setText(null);
+        }
+    }//GEN-LAST:event_txtInjuryCountKeyReleased
+
+    private void txtKillCountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKillCountKeyReleased
+        // TODO add your handling code here:
+        
+        String con6 = "^[0-9]{0,4}$";
+        Pattern ptt = Pattern.compile(con6);
+        Matcher mat = ptt.matcher(txtKillCount.getText());
+        if(!mat.matches()){
+            msgLabel6.setText("Enter a realistic count!");
+        }
+        else {
+            msgLabel6.setText(null);
+        }
+        
+    }//GEN-LAST:event_txtKillCountKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DisasterjTableSiteMngmt;
@@ -406,6 +596,12 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblSubTitle;
     private javax.swing.JLabel lblSubTitle2;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel msgLabel1;
+    private javax.swing.JLabel msgLabel2;
+    private javax.swing.JLabel msgLabel3;
+    private javax.swing.JLabel msgLabel4;
+    private javax.swing.JLabel msgLabel5;
+    private javax.swing.JLabel msgLabel6;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmailID;
     private javax.swing.JTextField txtInjuryCount;
