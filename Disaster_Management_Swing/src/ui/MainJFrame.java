@@ -229,7 +229,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.hospital.HospitalAdminPanel hospitalAdminPanel1;
     private ui.hospital.cruds.HospitalCrud hospitalCrud1;
     private ui.LoginPanel loginPanel1;
-    public static javax.swing.JPanel mainPanel;
+   
     private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
     private ui.hospital.cruds.PatientCrud patientCrud1;
     private ui.hospital.PatientPanel patientPanel1;
@@ -243,7 +243,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.hospital.SystemAdminPanel systemAdminPanel1;
     private ui.ViewDisasterPanel viewDisasterPanel1;
 
-    public static javax.swing.JPanel mainPanel;
+   
 
 
     // End of variables declaration//GEN-END:variables
