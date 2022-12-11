@@ -223,6 +223,7 @@ public class SystemAdminPanel extends javax.swing.JPanel {
 
     private void btnPatientDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientDirectoryActionPerformed
         // TODO add your handling code here:
+        hideButtons(true);
         createRecordBtn.setText("Create New Patient");
         viewRecordBtn.setText("View Patient Details");
         updateRecordBtn.setText("Update Patient Details");
@@ -332,6 +333,7 @@ public class SystemAdminPanel extends javax.swing.JPanel {
      
     private void btnDoctorDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorDirectoryActionPerformed
         // TODO add your handling code here:
+        hideButtons(true);
         createRecordBtn.setText("Create New Doctor");
         viewRecordBtn.setText("View Doctor Record");
         updateRecordBtn.setText("Update Doctor Record");
@@ -411,6 +413,7 @@ public class SystemAdminPanel extends javax.swing.JPanel {
     }
     private void btnHospitalDirectoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalDirectoryActionPerformed
 
+        hideButtons(true);
         createRecordBtn.setText("Create New Hospital");
         viewRecordBtn.setText("View Hospital Details");
         updateRecordBtn.setText("Update Hospital Details");

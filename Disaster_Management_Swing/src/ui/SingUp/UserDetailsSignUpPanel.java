@@ -251,7 +251,7 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
                 id = Integer.parseInt(idTxtField.getText());
             }else{
                 errorCount++;
-                errorNotifier.append(errorCount).append(". Hospital ID should be an Integer\n");
+                errorNotifier.append(errorCount).append(". ID should be an Integer\n");
             }
         
         if(ValidationHelper.isValidName(nameTxtField.getText()))

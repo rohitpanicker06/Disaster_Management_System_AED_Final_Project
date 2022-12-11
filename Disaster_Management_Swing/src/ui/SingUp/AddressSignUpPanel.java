@@ -219,7 +219,7 @@ public class AddressSignUpPanel extends javax.swing.JPanel {
                 this.city = cityTxtField.getText();
             }else{
                 errorCount++;
-                errorNotifier.append(errorCount).append(". Phone number should be a String\n");
+                errorNotifier.append(errorCount).append(". City should be a String\n");
             }
        
          if(ValidationHelper.isValidName(communityNameTxtField.getText())){

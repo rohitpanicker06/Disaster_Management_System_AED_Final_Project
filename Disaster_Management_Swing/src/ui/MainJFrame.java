@@ -34,8 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        signupPanel1 = new ui.SignupPanel();
-        otpVerificationPanel1 = new ui.OtpVerificationPanel();
+        loginPanel1 = new ui.LoginPanel();
         manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
         siteManagementWorkspacePanel1 = new ui.SiteManagementWorkspacePanel();
         viewDisasterPanel1 = new ui.ViewDisasterPanel();
@@ -57,7 +56,6 @@ public class MainJFrame extends javax.swing.JFrame {
         resetCredsPanel1 = new ui.ResetCredsPanel();
         resetCredsPanel2 = new ui.ResetCredsPanel();
         systemAdminPanel1 = new ui.hospital.SystemAdminPanel();
-        loginPanel1 = new ui.LoginPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 780));
@@ -67,8 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.setMinimumSize(new java.awt.Dimension(1200, 800));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
         mainPanel.setLayout(new java.awt.CardLayout());
-        mainPanel.add(signupPanel1, "card3");
-        mainPanel.add(otpVerificationPanel1, "card4");
+        mainPanel.add(loginPanel1, "card24");
         mainPanel.add(manageDisasterWorkspacePanel1, "card5");
         mainPanel.add(siteManagementWorkspacePanel1, "card6");
         mainPanel.add(viewDisasterPanel1, "card7");
@@ -106,7 +103,6 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.add(resetCredsPanel1, "card22");
         mainPanel.add(resetCredsPanel2, "card23");
         mainPanel.add(systemAdminPanel1, "card23");
-        mainPanel.add(loginPanel1, "card24");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,7 +179,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.LoginPanel loginPanel1;
     public static javax.swing.JPanel mainPanel;
     private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
-    private ui.OtpVerificationPanel otpVerificationPanel1;
     private ui.hospital.cruds.PatientCrud patientCrud1;
     private ui.hospital.PatientPanel patientPanel1;
     private ui.hospital.PharmacyPanel pharmacyPanel1;
@@ -192,7 +187,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private ui.ResetCredsPanel resetCredsPanel1;
     private ui.ResetCredsPanel resetCredsPanel2;
     private ui.SingUp.RoleSignUpPanel roleSignUpPanel1;
-    private ui.SignupPanel signupPanel1;
     private ui.SiteManagementWorkspacePanel siteManagementWorkspacePanel1;
     private ui.hospital.SystemAdminPanel systemAdminPanel1;
     private ui.ViewDisasterPanel viewDisasterPanel1;
