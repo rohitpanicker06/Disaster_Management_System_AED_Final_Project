@@ -29,6 +29,7 @@ import ui.MainJFrame;
 import ui.OtpVerificationPanel;
 import us.state.city.City;
 import us.state.city.community.Community;
+import utility.ValidationHelper;
 
 /**
  *
@@ -192,8 +193,29 @@ public class UserNamePassPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        userName = userNameTxtField1.getText();
-        password = passwordTxtField.getText();
+         int errorCount =0;
+       StringBuffer errorNotifier = new StringBuffer();
+        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex))
+            {
+                userName = userNameTxtField1.getText();
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
+            }       
+        
+        if(passwordTxtField.getText()!= null)
+            {
+                password = passwordTxtField.getText();
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please enter password\n");
+            }
+         if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }
+        else{
         
           City cityx = new City(this.state, this.Country,  this.city);
             Community community = new Community(cityx, communityName, this.Country, zipCode);
@@ -268,7 +290,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
                 }
 
   
-
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

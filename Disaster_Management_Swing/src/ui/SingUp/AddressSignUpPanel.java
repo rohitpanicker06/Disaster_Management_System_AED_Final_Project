@@ -10,8 +10,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
 import model.hospital.Hospital;
 import ui.MainJFrame;
+import utility.ValidationHelper;
 
 /**
  *
@@ -211,18 +213,62 @@ public class AddressSignUpPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         int errorCount =0;
+        StringBuffer errorNotifier = new StringBuffer();
+       if(ValidationHelper.isValidName(cityTxtField.getText())){
+                this.city = cityTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Phone number should be a String\n");
+            }
        
-        this.city = cityTxtField.getText();
-        this.communityName = communityNameTxtField.getText();
-        this.state = stateTxtField.getText();
-        this.zipCode = zipCodeTxtField.getText();
-        this.Country = countryTxtField.getText();
-        this.address = addressTxtField.getText();
+         if(ValidationHelper.isValidName(communityNameTxtField.getText())){
+                this.communityName = communityNameTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Community Name should be a String\n");
+            }
+         
+         if(ValidationHelper.isValidName(stateTxtField.getText()))
+            {
+                state = stateTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". State should be a String\n");
+            }
+         
+         if(ValidationHelper.isInteger(zipCodeTxtField.getText())){
+                zipCode = zipCodeTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Zipcode should be an Integer\n");
+            }
+         
+         
+       if(ValidationHelper.isValidName(countryTxtField.getText())){
+                this.Country = countryTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Country should be a String\n");
+            }
+       
+        if(ValidationHelper.isValidName(addressTxtField.getText())){
+                this.address = addressTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Address should be a String\n");
+            }
         
+        if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }else{
         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new UserNamePassPanel(selectedIndex , id, age, name, email, phoneNumber, gender,globalImage,insuranceId,hospital,city, communityName, state, zipCode, Country, address));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -10,9 +10,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
 import model.hospital.Hospital;
 import model.hospital.HospitalDirectory;
 import ui.MainJFrame;
+import utility.ValidationHelper;
 
 /**
  *
@@ -160,14 +162,29 @@ public class HospitalAndInsuranceIDPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        insuranceId = insuranceIdTxtField.getText();
+         int errorCount =0;
+       StringBuffer errorNotifier = new StringBuffer();
+        if(ValidationHelper.isInteger(insuranceIdTxtField.getText())){
+                insuranceId = insuranceIdTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Insurance ID should be an Integer\n");
+            }
+        
         String hospitalname = (String) hospitalNameComboBox.getSelectedItem();
         this.hospital = new HospitalDirectory().findHospitalByName(hospitalname);
         
+        if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }
+        else{
         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new AddressSignUpPanel(selectedIndex, id, name, email, phoneNumber, gender, age, globalImage, insuranceId, hospital));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -43,6 +43,7 @@ import ui.hospital.PatientPanel;
 import ui.hospital.PharmacyPanel;
 import ui.SingUp.UserDetailsSignUpPanel;
 import ui.SingUp.UserNamePassPanel;
+import ui.hospital.SystemAdminPanel;
 
 /**
  *
@@ -292,7 +293,7 @@ String userName = userNameTextField.getText();
                 case 0:
                     role = new SystemAdminRoleBase();
                     rbacApplicationContext.setRoleContext(role);
-                    //comp= new AllDirectoriesPanel();
+                    comp= new SystemAdminPanel();
                     break;
                 case 1:
                     role = new SiteReportingEmployeeRoleBase();
@@ -341,6 +342,7 @@ String userName = userNameTextField.getText();
                 case 8:
                     role = new DonoRoleBase();
                     rbacApplicationContext.setRoleContext(role);
+                    
                     comp=new DonateFundsPanel();
                     break;
                     

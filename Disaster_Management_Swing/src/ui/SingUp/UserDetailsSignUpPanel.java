@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ui.LoginPanel;
 import ui.MainJFrame;
+import utility.ValidationHelper;
 
 /**
  *
@@ -241,17 +242,69 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
     private String selectedImage;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       int errorCount =0;
+       StringBuffer errorNotifier = new StringBuffer();
+        Image image= null;
        
-        id = Integer.parseInt(idTxtField.getText());
-        name = nameTxtField.getText();
-        email = emailIdTxtField.getText();
-        phoneNumber = phnNumberTxtField.getText();
-        gender = genderTxtField.getText();
-        age = Integer.parseInt(ageTxtField.getText());
+        if(ValidationHelper.isInteger(idTxtField.getText()))
+            {
+                id = Integer.parseInt(idTxtField.getText());
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Hospital ID should be an Integer\n");
+            }
         
+        if(ValidationHelper.isValidName(nameTxtField.getText()))
+            {
+                name = nameTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Name should be a String\n");
+            }
+        
+         if(ValidationHelper.isValidEmailID(emailIdTxtField.getText())){
+                email = emailIdTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Email Id should be in xyz@gmail.com format\n");
+            }
+         
+       if(ValidationHelper.checkPhoneNumberWith10Digits(phnNumberTxtField.getText())){
+                phoneNumber = phnNumberTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Phone number should be of 10 digits\n");
+            }
+       
+        if(ValidationHelper.isValidName(genderTxtField.getText())){
+                gender = genderTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Gender should be a String\n");
+            }
+         if(this.globalImage != null)
+            {
+                image= globalImage;
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please upload a  picture\n");
+            }
+        if(ValidationHelper.isInteger(ageTxtField.getText())){
+                age = Integer.parseInt(ageTxtField.getText());
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Age should be an Integer\n");
+            }
+        
+        if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }
+        else{
         if(this.selectedIndex == 5 || this.selectedIndex == 6)
         {
-           MainJFrame.mainPanel.removeAll();
+         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new HospitalAndInsuranceIDPanel(selectedIndex, id, name, email, phoneNumber, gender, age, globalImage));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate(); 
@@ -260,6 +313,7 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new AddressSignUpPanel(selectedIndex, id, name, email, phoneNumber, gender, age, globalImage, null, null));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
