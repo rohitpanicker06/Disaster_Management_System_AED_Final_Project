@@ -110,6 +110,8 @@ public class UserNamePassPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username:");
 
         userNameTxtField1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +120,8 @@ public class UserNamePassPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -172,7 +176,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
                     .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

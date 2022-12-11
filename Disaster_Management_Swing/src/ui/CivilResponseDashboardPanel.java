@@ -60,6 +60,8 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
         lblTitleCivilResponseDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleCivilResponseDashboard.setText("~ Civil Response Dashboard ~");
 
+        jBtnActiveDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters.setText("Active Disasters");
         jBtnActiveDisasters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,6 +74,8 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        jBtnActiveDisasters1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters1.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters1.setText("All Disasters");
         jBtnActiveDisasters1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,11 +105,11 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lblTitleCivilResponseDashboard)
-                .addGap(116, 116, 116)
-                .addComponent(jBtnActiveDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jBtnActiveDisasters1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addGap(133, 133, 133)
+                .addComponent(jBtnActiveDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addComponent(jBtnActiveDisasters1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
