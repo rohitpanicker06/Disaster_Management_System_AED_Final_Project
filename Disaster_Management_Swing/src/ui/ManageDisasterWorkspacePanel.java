@@ -266,7 +266,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         disas.setDisasterEvent(txtDisasterEvent.getText());
         disas.setDisasterTime(txtDisasterTime.getText());
 
-        disas.setDisasterDate(txtDisasterDate.getDateFormatString());
+        disas.setDisasterDate(txtDisasterDate.getDate().toString());
 
         //disas.setDisasterLocation(txtDisasterLocation.getText());
         disas.setDisasterLocation(txtDisasterLocation.getText());
