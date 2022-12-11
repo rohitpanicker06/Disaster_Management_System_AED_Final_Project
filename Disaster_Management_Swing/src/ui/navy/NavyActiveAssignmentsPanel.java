@@ -2,14 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.army;
+package ui.navy;
 
 import CivilResponse.Army.ArmyEmployee;
 import CivilResponse.Army.ArmyEmployeeDirectory;
-import CivilResponse.Army.ArmyReportDirectory;
 import CivilResponse.CivilResponseReport;
 import CivilResponse.CivilResponseReportDirectory;
-import CivilResponse.OfficerAllocation;
+import CivilResponse.Navy.NavyEmployee;
+import CivilResponse.Navy.NavyEmployeeDirectory;
+import CivilResponse.Navy.NavyReportDirectory;
+import CivilResponse.Police.PoliceReportDirectory;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -26,13 +28,13 @@ import ui.MainJFrame;
  *
  * @author gayatrisk
  */
-public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
+public class NavyActiveAssignmentsPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ArmyActiveAssignmentsPanel
      */
 //     OfficerAllocation offAddedHm;
-    public ArmyActiveAssignmentsPanel() {
+    public NavyActiveAssignmentsPanel() {
         initComponents();
         setOpaque(false);
         populateTable();
@@ -292,6 +294,9 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
             return;
+        } else if (jComboBoxViewOfficers.getItemCount() == 0){
+            JOptionPane.showMessageDialog(this, "Please select one or more Officers");
+            return;
         }
 
         String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
@@ -302,9 +307,20 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
                 break;
             }
         }
-        for (ArmyEmployee armyEmp : officersAdded) {
-            OfficerAllocation.ArmyOffAllocation.put(armyEmp, cv);
-        }
+        
+        String msg = cv.getCrReportId();
+        
+        JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: "+msg);
+
+        
+        txtDisasterEvent.setText("");
+        txtReportId.setText("");
+        jComboBoxViewOfficers.removeAllItems();
+        NavyReportDirectory.crReport.remove(cv);
+        populateTable();
+        
+        
+        
 
 
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
@@ -312,7 +328,7 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         MainJFrame.mainPanel.removeAll();
-        MainJFrame.mainPanel.add(new ArmyDashboardPanel());
+        MainJFrame.mainPanel.add(new NavyDashboardPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -364,18 +380,20 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
             }
         }
 
-        ArmyEmployee armyemp = null;
-        for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
-            if (armyEmp.getEmpId().equals(OfficerID)) {
-                armyemp = armyEmp;
+        NavyEmployee navy_Emp = null;
+        for (NavyEmployee navyEmp: NavyEmployeeDirectory.empList) {
+            if (navyEmp.getEmpId().equals(OfficerID)) {
+                navy_Emp = navyEmp;
                 break;
             }
         }
 
-        jComboBoxViewOfficers.addItem(armyemp.getPerson().getName());
-        armyemp.getCrReportList().add(cv);
+        jComboBoxViewOfficers.addItem(navy_Emp.getPerson().getName());
+        navy_Emp.getCrReports().add(cv);
+        
+        
 
-        officersAdded.add(armyemp);
+        
         
 
     }//GEN-LAST:event_btnAddActionPerformed
@@ -419,8 +437,8 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) ReportjTable.getModel();
         model.setRowCount(0);
 
-        if (ArmyReportDirectory.crReport != null) {
-            for (CivilResponseReport crReport : ArmyReportDirectory.crReport) {
+        if (NavyReportDirectory.crReport != null) {
+            for (CivilResponseReport crReport : NavyReportDirectory.crReport) {
                 Object[] row = new Object[5];
 
                 row[0] = crReport.getCrReportId();
@@ -440,13 +458,13 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) OfficerTable.getModel();
         model.setRowCount(0);
 
-        if (ArmyEmployeeDirectory.armyEmpList != null) {
-            for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
+        if (NavyEmployeeDirectory.empList != null) {
+            for (NavyEmployee navyEmp : NavyEmployeeDirectory.empList) {
                 Object[] row = new Object[3];
 
-                row[0] = armyEmp.getEmpId();
-                row[1] = armyEmp.getPerson().getName();
-                row[2] = armyEmp.getSquad();
+                row[0] = navyEmp.getEmpId();
+                row[1] = navyEmp.getPerson().getName();
+                row[2] = navyEmp.getSquad();
 
                 model.addRow(row);
 

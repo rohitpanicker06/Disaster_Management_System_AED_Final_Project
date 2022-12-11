@@ -23,10 +23,6 @@ public class UserListDirectory {
     private static ArrayList<User> systemAdminList = new ArrayList<>();
     private static ArrayList<User> doctorUserList = new ArrayList<>();
     private static ArrayList<User> hospitalAdminList = new ArrayList<>();
-
-    public static ArrayList<User> getArmyEmployeeList() {
-        return armyEmployeeList;
-    }
     private static HashMap<String,Person> userNameToPersonMap = new HashMap<>();
     private static ArrayList<User> communityAdminList = new ArrayList<>();
     private static ArrayList<User> eventReportingList = new ArrayList<>();
@@ -37,7 +33,31 @@ public class UserListDirectory {
     private static ArrayList<User> armyHeadList = new ArrayList<>();
     private static ArrayList<User> armyEmployeeList = new ArrayList<>();
     
+    private static ArrayList<User> policeHeadList = new ArrayList<>();
+    private static ArrayList<User> policeEmployeeList = new ArrayList<>();
 
+    public static ArrayList<User> getPoliceHeadList() {
+        return policeHeadList;
+    }
+
+    public static ArrayList<User> getPoliceEmployeeList() {
+        return policeEmployeeList;
+    }
+
+    public static ArrayList<User> getNavyHeadList() {
+        return navyHeadList;
+    }
+
+    public static ArrayList<User> getNavyEmployeeList() {
+        return navyEmployeeList;
+    }
+    private static ArrayList<User> navyHeadList = new ArrayList<>();
+    private static ArrayList<User> navyEmployeeList = new ArrayList<>();
+
+    
+     public static ArrayList<User> getArmyEmployeeList() {
+        return armyEmployeeList;
+    }
     public static ArrayList<User> getArmyHeadList() {
         return armyHeadList;
     }
@@ -150,6 +170,11 @@ public class UserListDirectory {
             case 9 -> user = getUser(name, communityAdminList);
             case 10 -> user = getUser(name, armyHeadList);
             case 11 -> user = getUser(name, armyEmployeeList);
+            case 12 -> user = getUser(name, policeHeadList);
+            case 13 -> user = getUser(name, policeEmployeeList);
+            case 14 -> user = getUser(name, navyHeadList);
+            case 15 -> user = getUser(name, navyEmployeeList);
+            
            
            
             default -> {
@@ -174,6 +199,10 @@ public class UserListDirectory {
             case 9 -> user = getUser(name, communityAdminList);
             case 10 -> user = getUser(name, armyHeadList);
             case 11 -> user = getUser(name, armyEmployeeList);
+            case 12 -> user = getUser(name, policeHeadList);
+            case 13 -> user = getUser(name, policeEmployeeList);
+            case 14 -> user = getUser(name, navyHeadList);
+            case 15 -> user = getUser(name, navyEmployeeList);
            
             
             default -> {

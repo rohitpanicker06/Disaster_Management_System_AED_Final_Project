@@ -9,11 +9,10 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
-import ui.army.ArmyActiveAssignmentsPanel;
-import ui.army.ArmyAllDisasterPanel;
-import ui.army.PoliceActiveAssignmentsPanel;
-import ui.army.PoliceAllDisasterPanel;
 
 /**
  *
@@ -52,12 +51,9 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         lblTitlePoliceDashboard = new javax.swing.JLabel();
-        lblDisAssignments = new javax.swing.JLabel();
         jBtnActiveAssignments = new javax.swing.JButton();
         jBtnAllDisasters = new javax.swing.JButton();
-        lblPoliceStaff = new javax.swing.JLabel();
-        jBtnCreateOfficer = new javax.swing.JButton();
-        jBtnViewOfficer = new javax.swing.JButton();
+        logoutLabel3 = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -65,11 +61,6 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
         lblTitlePoliceDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblTitlePoliceDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitlePoliceDashboard.setText("~ Police Dashboard ~");
-
-        lblDisAssignments.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblDisAssignments.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisAssignments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDisAssignments.setText("Disaster Assignments");
 
         jBtnActiveAssignments.setText("Active Assignments");
         jBtnActiveAssignments.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,32 +86,12 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        lblPoliceStaff.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblPoliceStaff.setForeground(new java.awt.Color(255, 255, 255));
-        lblPoliceStaff.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPoliceStaff.setText("Police staff");
-
-        jBtnCreateOfficer.setText("Create Officer");
-        jBtnCreateOfficer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnCreateOfficerMouseClicked(evt);
-            }
-        });
-        jBtnCreateOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCreateOfficerActionPerformed(evt);
-            }
-        });
-
-        jBtnViewOfficer.setText("View/ Update Officer");
-        jBtnViewOfficer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnViewOfficerMouseClicked(evt);
-            }
-        });
-        jBtnViewOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnViewOfficerActionPerformed(evt);
+        logoutLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel3.setText("Logout");
+        logoutLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabel3MousePressed(evt);
             }
         });
 
@@ -129,46 +100,31 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitlePoliceDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblDisAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(89, 89, 89)
+                        .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblPoliceStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBtnViewOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnCreateOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                        .addContainerGap()
+                        .addComponent(lblTitlePoliceDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(lblTitlePoliceDashboard)
-                .addGap(70, 70, 70)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDisAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblPoliceStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBtnCreateOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jBtnViewOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitlePoliceDashboard)
+                    .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(521, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -207,31 +163,25 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_jBtnAllDisastersActionPerformed
 
-    private void jBtnCreateOfficerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCreateOfficerMouseClicked
+    private void logoutLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel3MousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnCreateOfficerMouseClicked
 
-    private void jBtnCreateOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCreateOfficerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnCreateOfficerActionPerformed
-
-    private void jBtnViewOfficerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnViewOfficerMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnViewOfficerMouseClicked
-
-    private void jBtnViewOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnViewOfficerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnViewOfficerActionPerformed
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabel3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnActiveAssignments;
     private javax.swing.JButton jBtnAllDisasters;
-    private javax.swing.JButton jBtnCreateOfficer;
-    private javax.swing.JButton jBtnViewOfficer;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblDisAssignments;
-    private javax.swing.JLabel lblPoliceStaff;
     private javax.swing.JLabel lblTitlePoliceDashboard;
+    private javax.swing.JLabel logoutLabel3;
     // End of variables declaration//GEN-END:variables
 }

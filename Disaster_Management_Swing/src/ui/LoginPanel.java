@@ -30,8 +30,12 @@ import rbac.roles.roleImplementation.DoctorRoleBase;
 import rbac.roles.roleImplementation.DonoRoleBase;
 import rbac.roles.roleImplementation.FundRaiserRoleBase;
 import rbac.roles.roleImplementation.HospitalAdminRoleBase;
+import rbac.roles.roleImplementation.NavyEmployeeRoleBase;
+import rbac.roles.roleImplementation.NavyHeadRoleBase;
 import rbac.roles.roleImplementation.PatientRoleBase;
 import rbac.roles.roleImplementation.PharmacyRoleBase;
+import rbac.roles.roleImplementation.PoliceEmployeeRoleBase;
+import rbac.roles.roleImplementation.PoliceHeadRoleBase;
 import rbac.roles.roleImplementation.RecordsRoleBase;
 import rbac.roles.roleImplementation.SiteReportingEmployeeRoleBase;
 import rbac.roles.roleImplementation.SystemAdminRoleBase;
@@ -51,6 +55,10 @@ import ui.hospital.SystemAdminPanel;
 
 import ui.army.ArmyDashboardPanel;
 import ui.army.ArmyEmpDashboardPanel;
+import ui.navy.NavyDashboardPanel;
+import ui.navy.NavyEmpDashboardPanel;
+import ui.police.PoliceDashboardPanel;
+import ui.police.PoliceEmpDashboardPanel;
 
 
 /**
@@ -78,6 +86,10 @@ public class LoginPanel extends javax.swing.JPanel {
         roles.add("Community Admin");
         roles.add("Army head");
         roles.add("Army Employee");
+        roles.add("Police Head");
+        roles.add("Police Employee");
+        roles.add("Navy Head");
+        roles.add("Navy Employee");
         
     }
     public LoginPanel() {
@@ -374,6 +386,35 @@ String userName = userNameTextField.getText();
                     rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
                     comp = new ArmyEmpDashboardPanel(1);
                     break;
+                    
+                case 12:
+                    role = new PoliceHeadRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                    comp = new PoliceDashboardPanel();
+                    break;
+                    
+                 case 13:
+                    role = new PoliceEmployeeRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                    comp = new PoliceEmpDashboardPanel();
+                    break;
+                    
+                  case 14:
+                    role = new NavyHeadRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                    comp = new NavyDashboardPanel();
+                    break;
+                    
+                   case 15:
+                    role = new NavyEmployeeRoleBase();
+                    rbacApplicationContext.setRoleContext(role);
+                    rbacApplicationContext.setUser(userListDirectory.getUser(userName, userTypeIndex));
+                    comp = new NavyEmpDashboardPanel();
+                    break;
+                    
                 default:
                     break;
             }

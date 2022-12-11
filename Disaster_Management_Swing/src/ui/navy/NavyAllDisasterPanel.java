@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.army;
+package ui.navy;
 
 import CivilResponse.Army.ArmyReportDirectory;
 import CivilResponse.CivilResponseReport;
+import CivilResponse.CivilResponseReportDirectory;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -21,12 +22,12 @@ import ui.MainJFrame;
  *
  * @author gayatrisk
  */
-public class ArmyAllDisasterPanel extends javax.swing.JPanel {
+public class NavyAllDisasterPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ArmyAllDisasterPanel
      */
-    public ArmyAllDisasterPanel() {
+    public NavyAllDisasterPanel() {
         initComponents();
         setOpaque(false);
         populateTable();
@@ -281,7 +282,7 @@ public class ArmyAllDisasterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         MainJFrame.mainPanel.removeAll();
-        MainJFrame.mainPanel.add(new ArmyDashboardPanel());
+        MainJFrame.mainPanel.add(new NavyDashboardPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnBackMouseClicked
@@ -289,7 +290,7 @@ public class ArmyAllDisasterPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         MainJFrame.mainPanel.removeAll();
-        MainJFrame.mainPanel.add(new ArmyDashboardPanel());
+        MainJFrame.mainPanel.add(new NavyDashboardPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnBackActionPerformed
@@ -341,7 +342,7 @@ public class ArmyAllDisasterPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         if (ArmyReportDirectory.crReport != null) {
-            for (CivilResponseReport crReport : ArmyReportDirectory.crReport) {
+            for (CivilResponseReport crReport : CivilResponseReportDirectory.crReportList) {
                 Object[] row = new Object[5];
 
                 row[0] = crReport.getCrReportId();
