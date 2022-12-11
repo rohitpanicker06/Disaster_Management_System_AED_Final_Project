@@ -63,6 +63,8 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
         lblTitleCivilResponseDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleCivilResponseDashboard.setText("~ Civil Response Dashboard ~");
 
+        jBtnActiveDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters.setText("Active Disasters");
         jBtnActiveDisasters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,6 +77,8 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        jBtnActiveDisasters1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters1.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters1.setText("All Disasters");
         jBtnActiveDisasters1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,6 +120,7 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
+
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitleCivilResponseDashboard)
                     .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))

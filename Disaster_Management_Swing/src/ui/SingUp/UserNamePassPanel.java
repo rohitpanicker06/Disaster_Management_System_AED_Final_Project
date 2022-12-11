@@ -29,6 +29,7 @@ import ui.MainJFrame;
 import ui.OtpVerificationPanel;
 import us.state.city.City;
 import us.state.city.community.Community;
+import utility.ValidationHelper;
 
 /**
  *
@@ -109,6 +110,8 @@ public class UserNamePassPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username:");
 
         userNameTxtField1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +120,8 @@ public class UserNamePassPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -171,7 +176,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
                     .addComponent(passwordTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -192,8 +197,29 @@ public class UserNamePassPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        userName = userNameTxtField1.getText();
-        password = passwordTxtField.getText();
+         int errorCount =0;
+       StringBuffer errorNotifier = new StringBuffer();
+        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex))
+            {
+                userName = userNameTxtField1.getText();
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
+            }       
+        
+        if(passwordTxtField.getText()!= null)
+            {
+                password = passwordTxtField.getText();
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please enter password\n");
+            }
+         if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }
+        else{
         
           City cityx = new City(this.state, this.Country,  this.city);
             Community community = new Community(cityx, communityName, this.Country, zipCode);
@@ -268,7 +294,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
                 }
 
   
-
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

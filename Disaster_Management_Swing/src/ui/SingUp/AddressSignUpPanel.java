@@ -10,8 +10,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import javax.swing.JOptionPane;
 import model.hospital.Hospital;
 import ui.MainJFrame;
+import utility.ValidationHelper;
 
 /**
  *
@@ -95,16 +97,28 @@ public class AddressSignUpPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
+        cityLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        cityLabel.setForeground(new java.awt.Color(255, 255, 255));
         cityLabel.setText("City:");
 
+        stateLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        stateLabel.setForeground(new java.awt.Color(255, 255, 255));
         stateLabel.setText("State");
 
+        communityNameLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        communityNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         communityNameLabel.setText("Community Name:");
 
+        zipCodeLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        zipCodeLabel.setForeground(new java.awt.Color(255, 255, 255));
         zipCodeLabel.setText("ZipCode:");
 
+        addressLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        addressLabel.setForeground(new java.awt.Color(255, 255, 255));
         addressLabel.setText("Address:");
 
+        countryLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        countryLabel.setForeground(new java.awt.Color(255, 255, 255));
         countryLabel.setText("Country:");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -132,24 +146,24 @@ public class AddressSignUpPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(stateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(countryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(countryLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(74, 74, 74)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cityTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(119, 119, 119)
-                                .addComponent(communityNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(stateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(119, 119, 119)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(zipCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(countryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
+                            .addComponent(countryTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cityTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(119, 119, 119)
+                                .addComponent(communityNameLabel)))
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(zipCodeTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(communityNameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,18 +225,62 @@ public class AddressSignUpPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         int errorCount =0;
+        StringBuffer errorNotifier = new StringBuffer();
+       if(ValidationHelper.isValidName(cityTxtField.getText())){
+                this.city = cityTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". City should be a String\n");
+            }
        
-        this.city = cityTxtField.getText();
-        this.communityName = communityNameTxtField.getText();
-        this.state = stateTxtField.getText();
-        this.zipCode = zipCodeTxtField.getText();
-        this.Country = countryTxtField.getText();
-        this.address = addressTxtField.getText();
+         if(ValidationHelper.isValidName(communityNameTxtField.getText())){
+                this.communityName = communityNameTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Community Name should be a String\n");
+            }
+         
+         if(ValidationHelper.isValidName(stateTxtField.getText()))
+            {
+                state = stateTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". State should be a String\n");
+            }
+         
+         if(ValidationHelper.isInteger(zipCodeTxtField.getText())){
+                zipCode = zipCodeTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Zipcode should be an Integer\n");
+            }
+         
+         
+       if(ValidationHelper.isValidName(countryTxtField.getText())){
+                this.Country = countryTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Country should be a String\n");
+            }
+       
+        if(ValidationHelper.isValidName(addressTxtField.getText())){
+                this.address = addressTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Address should be a String\n");
+            }
         
+        if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }else{
         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new UserNamePassPanel(selectedIndex , id, age, name, email, phoneNumber, gender,globalImage,insuranceId,hospital,city, communityName, state, zipCode, Country, address));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

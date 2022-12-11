@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import ui.LoginPanel;
 import ui.MainJFrame;
+import utility.ValidationHelper;
 
 /**
  *
@@ -84,8 +85,12 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
+        personIdLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        personIdLabel1.setForeground(new java.awt.Color(255, 255, 255));
         personIdLabel1.setText("ID:");
 
+        personNameLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        personNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         personNameLabel.setText("Name:");
 
         nameTxtField.addActionListener(new java.awt.event.ActionListener() {
@@ -94,8 +99,12 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
             }
         });
 
+        emailIdPersonLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        emailIdPersonLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailIdPersonLabel.setText("Email ID:");
 
+        phonePersonalLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        phonePersonalLabel.setForeground(new java.awt.Color(255, 255, 255));
         phonePersonalLabel.setText("Phone Number:");
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -112,12 +121,19 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SIGN UP : 1/3");
 
+        genderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        genderLabel.setForeground(new java.awt.Color(255, 255, 255));
         genderLabel.setText("Gender");
 
+        ageLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        ageLabel.setForeground(new java.awt.Color(255, 255, 255));
         ageLabel.setText("Age:");
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Image");
 
+        browseImage.setForeground(new java.awt.Color(255, 255, 255));
         browseImage.setText("Browse Image");
         browseImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,9 +158,9 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(74, 74, 74)
+                                    .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ageTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(genderTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -152,31 +168,33 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
                 .addContainerGap(295, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(browseImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(browseImage, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(284, 284, 284))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(303, 303, 303)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(emailIdPersonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(phonePersonalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(22, 22, 22)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(personIdLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailIdPersonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(52, 52, 52)
+                            .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(personNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(142, 142, 142)
+                            .addComponent(personIdLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(72, 72, 72)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(idTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(nameTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(phonePersonalLabel))
                     .addContainerGap(304, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,7 +208,9 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
                     .addComponent(browseImage))
                 .addGap(18, 18, 18)
                 .addComponent(photoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genderLabel)
                     .addComponent(genderTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,10 +236,8 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
                         .addComponent(emailIdTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(emailIdPersonLabel))
                     .addGap(44, 44, 44)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(phnNumberTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(phonePersonalLabel))
-                    .addGap(216, 216, 216)))
+                    .addComponent(phonePersonalLabel)
+                    .addGap(218, 218, 218)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -241,17 +259,69 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
     private String selectedImage;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       int errorCount =0;
+       StringBuffer errorNotifier = new StringBuffer();
+        Image image= null;
        
-        id = Integer.parseInt(idTxtField.getText());
-        name = nameTxtField.getText();
-        email = emailIdTxtField.getText();
-        phoneNumber = phnNumberTxtField.getText();
-        gender = genderTxtField.getText();
-        age = Integer.parseInt(ageTxtField.getText());
+        if(ValidationHelper.isInteger(idTxtField.getText()))
+            {
+                id = Integer.parseInt(idTxtField.getText());
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". ID should be an Integer\n");
+            }
         
+        if(ValidationHelper.isValidName(nameTxtField.getText()))
+            {
+                name = nameTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Name should be a String\n");
+            }
+        
+         if(ValidationHelper.isValidEmailID(emailIdTxtField.getText())){
+                email = emailIdTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Email Id should be in xyz@gmail.com format\n");
+            }
+         
+       if(ValidationHelper.checkPhoneNumberWith10Digits(phnNumberTxtField.getText())){
+                phoneNumber = phnNumberTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Phone number should be of 10 digits\n");
+            }
+       
+        if(ValidationHelper.isValidName(genderTxtField.getText())){
+                gender = genderTxtField.getText();
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Gender should be a String\n");
+            }
+         if(this.globalImage != null)
+            {
+                image= globalImage;
+            }else{
+                 errorCount++;
+                errorNotifier.append(errorCount).append(". Please upload a  picture\n");
+            }
+        if(ValidationHelper.isInteger(ageTxtField.getText())){
+                age = Integer.parseInt(ageTxtField.getText());
+            }else{
+                errorCount++;
+                errorNotifier.append(errorCount).append(". Age should be an Integer\n");
+            }
+        
+        if(errorCount > 0 )
+            {
+                JOptionPane.showMessageDialog(this, errorNotifier.toString());
+                return;
+            }
+        else{
         if(this.selectedIndex == 5 || this.selectedIndex == 6)
         {
-           MainJFrame.mainPanel.removeAll();
+         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new HospitalAndInsuranceIDPanel(selectedIndex, id, name, email, phoneNumber, gender, age, globalImage));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate(); 
@@ -260,6 +330,7 @@ public class UserDetailsSignUpPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new AddressSignUpPanel(selectedIndex, id, name, email, phoneNumber, gender, age, globalImage, null, null));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
