@@ -288,9 +288,13 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
 
         // TODO add your handling code here:
         int selectedRowIndex = ReportjTable.getSelectedRow();
+        int selectedRowIndexOfficer = OfficerTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
+            return;
+        } else if (jComboBoxViewOfficers.getItemCount() == 0){
+            JOptionPane.showMessageDialog(this, "Please select one or more Officers");
             return;
         }
 
@@ -302,10 +306,23 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
                 break;
             }
         }
-        for (ArmyEmployee armyEmp : officersAdded) {
-            OfficerAllocation.ArmyOffAllocation.put(armyEmp, cv);
-        }
+        
+        String msg = cv.getCrReportId();
+        
+        JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: "+msg);
 
+        
+        txtDisasterEvent.setText("");
+        txtReportId.setText("");
+        jComboBoxViewOfficers.removeAllItems();
+        
+        ArmyReportDirectory.crReport.remove(cv);
+        populateTable();
+
+        
+        
+        
+       
 
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
 

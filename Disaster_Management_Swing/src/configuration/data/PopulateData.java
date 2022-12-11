@@ -6,12 +6,14 @@ package configuration.data;
 
 import CivilResponse.Army.ArmyEmployee;
 import CivilResponse.Army.ArmyEmployeeDirectory;
+import CivilResponse.Navy.NavyEmployee;
+import CivilResponse.Navy.NavyEmployeeDirectory;
+import CivilResponse.Police.PoliceEmployee;
+import CivilResponse.Police.PoliceEmployeeDirectory;
 import model.doctor.Doctor;
 import model.doctor.DoctorDirectory;
-import static model.doctor.DoctorDirectory.doctorList;
 import model.hospital.Hospital;
 import model.hospital.HospitalDirectory;
-import static model.hospital.HospitalDirectory.hospitalList;
 import house.House;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -164,6 +166,12 @@ public class PopulateData {
          Person person_Brookline = new Person("02", "Rahul Panicker", "rahulpanicker06@gmail.com", Long.parseLong("9762123818"), house_Brookline, "Male", 24, personBrookImage);
          Person person_Bolyston = new Person("03", "Ajitha Haridas", "ajitha@gmail.com", Long.parseLong("8149993424"), house_Bolyston, "Female", 50, personBolyImage);
        
+        //g
+         Person person = new Person("01", "Rohit Panicker", "rohitpanicker06@gmail.com", Long.parseLong("9762123819"), house, "Male", 23, personImage);
+         Person person_Brookline = new Person("02", "Rahul Panicker", "rahulpanicker06@gmail.com", Long.parseLong("9762123818"), house_Brookline, "Male", 24, personBrookImage);
+         Person person_Bolyston = new Person("03", "Ajitha Haridas", "ajitha@gmail.com", Long.parseLong("8149993424"), house_Bolyston, "Female", 50, personBolyImage);
+
+         
          PersonDirectory.personList.add(person);
          PersonDirectory.personList.add(person_Bolyston);
          PersonDirectory.personList.add(person_Brookline);
@@ -415,6 +423,83 @@ public class PopulateData {
           PersonDirectory.personList.add(armyOffFour);
           ArmyEmployee army_Off_Four = new ArmyEmployee("103",armyOffFour, "Boston");
           ArmyEmployeeDirectory.armyEmpList.add(army_Off_Four);
+          
+          
+          //Police Head
+         
+         
+          Person policeHead = new Person("14000", "Rohit", "Rohit@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(policeHead);
+          User police_head = new User("police", "police", policeHead);
+          UserListDirectory.getPoliceHeadList().add(police_head);
+          UserListDirectory.getUserNameToPersonMap().put("police", policeHead);
+          
+          //Creating police officers
+          
+          Person policeOffOne = new Person("1800", "Macy", "macy@gmail.com", Long.parseLong("7754567346"), house, "Female", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(policeOffOne);
+          PoliceEmployee police_Off_One = new PoliceEmployee("1100",policeOffOne, "Boston");
+          PoliceEmployeeDirectory.policeEmpList.add(police_Off_One);
+         
+          User police_Officer_one = new User("macy", "macy", policeOffOne);
+          UserListDirectory.getPoliceEmployeeList().add(police_Officer_one);
+          UserListDirectory.getUserNameToPersonMap().put("macy", policeOffOne);
+          
+          
+          Person policeOffTwo = new Person("1810", "Ben", "ben@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(policeOffTwo);
+          PoliceEmployee police_Off_Two = new PoliceEmployee("1110",policeOffOne, "Boston");
+          PoliceEmployeeDirectory.policeEmpList.add(police_Off_Two);
+          
+          Person policeOffThree = new Person("1820", "Stanley", "stanley@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(policeOffThree);
+          PoliceEmployee police_Off_Three = new PoliceEmployee("1120",policeOffThree, "Boston");
+          PoliceEmployeeDirectory.policeEmpList.add(police_Off_Three);
+          
+          Person policeOffFour = new Person("1830", "Mark", "mark@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(policeOffFour);
+          PoliceEmployee police_Off_Four = new PoliceEmployee("1130",policeOffFour, "Boston");
+          PoliceEmployeeDirectory.policeEmpList.add(police_Off_Four);
+          
+           //Navy Head
+         
+         
+          Person navyHead = new Person("15100", "Olivia", "olivia@gmail.com", Long.parseLong("7754567346"), house, "Female", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(navyHead);
+          User navy_head = new User("navy", "navy", navyHead);
+          
+          UserListDirectory.getNavyHeadList().add(navy_head);
+          UserListDirectory.getUserNameToPersonMap().put("navy", navyHead);
+          
+          //Creating navy officers
+          
+//          Navy emp with username
+          Person navyOffOne = new Person("1900", "Liam", "liam@gmail.com", Long.parseLong("7754567346"), house, "Female", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(navyOffOne);
+          NavyEmployee navy_Off_One = new NavyEmployee("1100",navyOffOne, "Boston");
+          NavyEmployeeDirectory.empList.add(navy_Off_One);
+         
+          User navy_Officer_one = new User("emma", "emma", navyOffOne);
+          UserListDirectory.getNavyEmployeeList().add(navy_Officer_one);
+          UserListDirectory.getUserNameToPersonMap().put("emma", navyOffOne);
+          
+          
+//          Navy emp 
+          Person navyOffTwo = new Person("1910", "Ben", "ben@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(navyOffTwo);
+          NavyEmployee navy_Off_Two = new NavyEmployee("1110",navyOffTwo, "Boston");
+          NavyEmployeeDirectory.empList.add(navy_Off_Two);
+          
+          Person navyOffThree = new Person("1920", "Stanley", "stanley@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(navyOffThree);
+          NavyEmployee navy_Off_Three = new NavyEmployee("1120",navyOffThree, "Boston");
+          NavyEmployeeDirectory.empList.add(navy_Off_Three);
+          
+          Person navyOffFour = new Person("1930", "Mark", "mark@gmail.com", Long.parseLong("7754567346"), house, "Male", 39, doctor_oneIamge);
+          PersonDirectory.personList.add(navyOffFour);
+          NavyEmployee navy_Off_Four = new NavyEmployee("1130",navyOffFour, "Boston");
+          NavyEmployeeDirectory.empList.add(navy_Off_Four);
+          
     
     }
 }

@@ -421,15 +421,19 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
         boolean policeAssigned = PolicejCheckBox3.isSelected();
 
         //    Array of all the  validation errors
-        ArrayList<String> errList = new ArrayList<String>();
+        ArrayList<String> errList = new ArrayList<>();
         int errCount = 0;
 
-        if (levelOfRisk == "") {
+        if(!reportId.matches("[0-9]+")){
+            errList.add("Please input a valid Report ID");
+            errCount++;
+        }
+        if ("".equals(levelOfSeverity)) {
             errList.add("Please input level of Severity.");
             errCount++;
         }
 
-        if (levelOfRisk == "") {
+        if ("".equals(levelOfRisk)) {
             errList.add("Please input level of Risk.");
             errCount++;
         }

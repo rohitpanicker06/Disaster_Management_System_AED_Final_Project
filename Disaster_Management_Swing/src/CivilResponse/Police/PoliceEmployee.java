@@ -4,7 +4,9 @@
  */
 package CivilResponse.Police;
 
+import CivilResponse.CivilResponseReport;
 import Disaster.DisasterDirectory;
+import java.util.ArrayList;
 import person.Person;
 
 /**
@@ -13,15 +15,24 @@ import person.Person;
  */
 public class PoliceEmployee {
     
-    private int empId;
+    private String empId;
     private Person person;
-    private DisasterDirectory disDir;
+    private String squad;
+    private ArrayList<CivilResponseReport> reportList = new ArrayList<>();
 
-    public int getEmpId() {
+    public PoliceEmployee(String empId, Person person, String squad) {
+        this.empId = empId;
+        this.person = person;
+        this.squad = squad;
+    }
+    
+    
+
+    public String getEmpId() {
         return empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(String empId) {
         this.empId = empId;
     }
 
@@ -33,13 +44,22 @@ public class PoliceEmployee {
         this.person = person;
     }
 
-    public DisasterDirectory getDisDir() {
-        return disDir;
+    public String getSquad() {
+        return squad;
     }
 
-    public void setDisDir(DisasterDirectory disDir) {
-        this.disDir = disDir;
+    public void setSquad(String squad) {
+        this.squad = squad;
     }
+
+    public ArrayList<CivilResponseReport> getReportList() {
+        return reportList;
+    }
+
+    public void setReportList(ArrayList<CivilResponseReport> reportList) {
+        this.reportList = reportList;
+    }
+
     
     
     

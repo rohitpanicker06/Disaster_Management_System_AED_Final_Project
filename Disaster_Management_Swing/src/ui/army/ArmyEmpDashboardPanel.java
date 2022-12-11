@@ -18,6 +18,8 @@ import person.Person;
 import rbac.application.user.User;
 import rbac.application.user.UserListDirectory;
 import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
+import ui.MainJFrame;
 
 /**
  *
@@ -84,6 +86,7 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
         ReportjTable = new javax.swing.JTable();
         lblOfAllocation = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        logoutLabel2 = new javax.swing.JLabel();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,14 +145,25 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        logoutLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel2.setText("Logout");
+        logoutLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabel2MousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -188,7 +202,9 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(lblTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle)
+                    .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -227,6 +243,19 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Operation started. Good luck!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void logoutLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel2MousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabel2MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ReportjTable;
@@ -239,6 +268,7 @@ public class ArmyEmpDashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblemailId;
     private javax.swing.JLabel lblempId;
     private javax.swing.JLabel lblname;
+    private javax.swing.JLabel logoutLabel2;
     private javax.swing.JTextField txtEmpId;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtName;

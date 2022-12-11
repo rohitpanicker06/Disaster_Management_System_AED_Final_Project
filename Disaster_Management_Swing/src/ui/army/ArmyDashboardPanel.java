@@ -54,10 +54,6 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         lblTitleArmyDashboard = new javax.swing.JLabel();
         jBtnActiveAssignments = new javax.swing.JButton();
         jBtnAllDisasters = new javax.swing.JButton();
-        lblDisAssignments = new javax.swing.JLabel();
-        lblMilitaryStaff = new javax.swing.JLabel();
-        jBtnCreateOfficer = new javax.swing.JButton();
-        jBtnViewOfficer = new javax.swing.JButton();
         logoutLabel2 = new javax.swing.JLabel();
 
         jPanel1.setEnabled(false);
@@ -92,40 +88,6 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        lblDisAssignments.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblDisAssignments.setForeground(new java.awt.Color(255, 255, 255));
-        lblDisAssignments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDisAssignments.setText("Disaster Assignments");
-
-        lblMilitaryStaff.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        lblMilitaryStaff.setForeground(new java.awt.Color(255, 255, 255));
-        lblMilitaryStaff.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMilitaryStaff.setText("Military staff");
-
-        jBtnCreateOfficer.setText("Create Officer");
-        jBtnCreateOfficer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnCreateOfficerMouseClicked(evt);
-            }
-        });
-        jBtnCreateOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnCreateOfficerActionPerformed(evt);
-            }
-        });
-
-        jBtnViewOfficer.setText("View/ Update Officer");
-        jBtnViewOfficer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnViewOfficerMouseClicked(evt);
-            }
-        });
-        jBtnViewOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnViewOfficerActionPerformed(evt);
-            }
-        });
-
         logoutLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         logoutLabel2.setForeground(new java.awt.Color(255, 255, 255));
         logoutLabel2.setText("Logout");
@@ -146,23 +108,11 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
                 .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(lblDisAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblMilitaryStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBtnViewOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnCreateOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(112, 112, 112))
+                .addGap(73, 73, 73)
+                .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124)
+                .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,21 +121,11 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitleArmyDashboard)
                     .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblDisAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblMilitaryStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jBtnCreateOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jBtnViewOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addGap(127, 127, 127)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(525, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -225,22 +165,6 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_jBtnAllDisastersActionPerformed
 
-    private void jBtnCreateOfficerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCreateOfficerMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnCreateOfficerMouseClicked
-
-    private void jBtnCreateOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCreateOfficerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnCreateOfficerActionPerformed
-
-    private void jBtnViewOfficerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnViewOfficerMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnViewOfficerMouseClicked
-
-    private void jBtnViewOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnViewOfficerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnViewOfficerActionPerformed
-
     private void logoutLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel2MousePressed
         // TODO add your handling code here:
 
@@ -258,14 +182,8 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnActiveAssignments;
     private javax.swing.JButton jBtnAllDisasters;
-    private javax.swing.JButton jBtnCreateOfficer;
-    private javax.swing.JButton jBtnViewOfficer;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblDisAssignments;
-    private javax.swing.JLabel lblMilitaryStaff;
     private javax.swing.JLabel lblTitleArmyDashboard;
-    private javax.swing.JLabel logoutLabel;
-    private javax.swing.JLabel logoutLabel1;
     private javax.swing.JLabel logoutLabel2;
     // End of variables declaration//GEN-END:variables
 }

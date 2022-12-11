@@ -6,6 +6,7 @@ package ui.army;
 
 import CivilResponse.Army.ArmyReportDirectory;
 import CivilResponse.CivilResponseReport;
+import CivilResponse.CivilResponseReportDirectory;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -341,7 +342,7 @@ public class ArmyAllDisasterPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         if (ArmyReportDirectory.crReport != null) {
-            for (CivilResponseReport crReport : ArmyReportDirectory.crReport) {
+            for (CivilResponseReport crReport : CivilResponseReportDirectory.crReportList) {
                 Object[] row = new Object[5];
 
                 row[0] = crReport.getCrReportId();

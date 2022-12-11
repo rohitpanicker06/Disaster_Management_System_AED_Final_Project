@@ -34,6 +34,21 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        civilResponseDashboardPanel1 = new ui.CivilResponseDashboardPanel();
+        civilResponseActiveDisastersPanel1 = new ui.CivilResponseActiveDisastersPanel();
+        civilResponseViewAllDisastersPanel1 = new ui.CivilResponseViewAllDisastersPanel();
+        armyEmpDashboardPanel1 = new ui.army.ArmyEmpDashboardPanel();
+        armyActiveAssignmentsPanel1 = new ui.army.ArmyActiveAssignmentsPanel();
+        armyAllDisasterPanel1 = new ui.army.ArmyAllDisasterPanel();
+        armyDashboardPanel1 = new ui.army.ArmyDashboardPanel();
+        navyActiveAssignmentsPanel1 = new ui.navy.NavyActiveAssignmentsPanel();
+        navyAllDisasterPanel1 = new ui.navy.NavyAllDisasterPanel();
+        navyDashboardPanel1 = new ui.navy.NavyDashboardPanel();
+        navyEmpDashboardPanel1 = new ui.navy.NavyEmpDashboardPanel();
+        policeActiveAssignmentsPanel1 = new ui.police.PoliceActiveAssignmentsPanel();
+        policeAllDisasterPanel1 = new ui.police.PoliceAllDisasterPanel();
+        policeDashboardPanel1 = new ui.police.PoliceDashboardPanel();
+        policeEmpDashboardPanel1 = new ui.police.PoliceEmpDashboardPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 780));
@@ -43,6 +58,21 @@ public class MainJFrame extends javax.swing.JFrame {
         mainPanel.setMinimumSize(new java.awt.Dimension(1200, 800));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
         mainPanel.setLayout(new java.awt.CardLayout());
+        mainPanel.add(civilResponseDashboardPanel1, "card5");
+        mainPanel.add(civilResponseActiveDisastersPanel1, "card6");
+        mainPanel.add(civilResponseViewAllDisastersPanel1, "card7");
+        mainPanel.add(armyEmpDashboardPanel1, "card8");
+        mainPanel.add(armyActiveAssignmentsPanel1, "card6");
+        mainPanel.add(armyAllDisasterPanel1, "card7");
+        mainPanel.add(armyDashboardPanel1, "card8");
+        mainPanel.add(navyActiveAssignmentsPanel1, "card9");
+        mainPanel.add(navyAllDisasterPanel1, "card10");
+        mainPanel.add(navyDashboardPanel1, "card11");
+        mainPanel.add(navyEmpDashboardPanel1, "card12");
+        mainPanel.add(policeActiveAssignmentsPanel1, "card13");
+        mainPanel.add(policeAllDisasterPanel1, "card14");
+        mainPanel.add(policeDashboardPanel1, "card15");
+        mainPanel.add(policeEmpDashboardPanel1, "card16");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +137,21 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private ui.army.ArmyActiveAssignmentsPanel armyActiveAssignmentsPanel1;
+    private ui.army.ArmyAllDisasterPanel armyAllDisasterPanel1;
+    private ui.army.ArmyDashboardPanel armyDashboardPanel1;
+    private ui.army.ArmyEmpDashboardPanel armyEmpDashboardPanel1;
+    private ui.CivilResponseActiveDisastersPanel civilResponseActiveDisastersPanel1;
+    private ui.CivilResponseDashboardPanel civilResponseDashboardPanel1;
+    private ui.CivilResponseViewAllDisastersPanel civilResponseViewAllDisastersPanel1;
     public static javax.swing.JPanel mainPanel;
+    private ui.navy.NavyActiveAssignmentsPanel navyActiveAssignmentsPanel1;
+    private ui.navy.NavyAllDisasterPanel navyAllDisasterPanel1;
+    private ui.navy.NavyDashboardPanel navyDashboardPanel1;
+    private ui.navy.NavyEmpDashboardPanel navyEmpDashboardPanel1;
+    private ui.police.PoliceActiveAssignmentsPanel policeActiveAssignmentsPanel1;
+    private ui.police.PoliceAllDisasterPanel policeAllDisasterPanel1;
+    private ui.police.PoliceDashboardPanel policeDashboardPanel1;
+    private ui.police.PoliceEmpDashboardPanel policeEmpDashboardPanel1;
     // End of variables declaration//GEN-END:variables
 }

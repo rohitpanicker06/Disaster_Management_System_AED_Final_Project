@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui.army;
+package ui.police;
 
 import CivilResponse.Army.ArmyEmployee;
 import CivilResponse.CivilResponseReport;
 import CivilResponse.CivilResponseReportDirectory;
-import CivilResponse.OfficerAllocation;
+import CivilResponse.Police.PoliceEmployee;
+import CivilResponse.Police.PoliceEmployeeDirectory;
+import CivilResponse.Police.PoliceReportDirectory;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -16,9 +18,9 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import person.Person;
+import rbac.context.RbacApplicationContext;
+import ui.LoginPanel;
 import ui.MainJFrame;
-import ui.police.PoliceDashboardPanel;
 
 /**
  *
@@ -29,14 +31,15 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
     /**
      * Creates new form ArmyActiveAssignmentsPanel
      */
-   
 //     OfficerAllocation offAddedHm;
-             
     public PoliceActiveAssignmentsPanel() {
         initComponents();
         setOpaque(false);
         populateTable();
+        populateOfficerTable();
+
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -76,6 +79,7 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         jComboBoxViewOfficers = new javax.swing.JComboBox<>();
         btnSaveAssignment = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        logoutLabel3 = new javax.swing.JLabel();
 
         jPanel1.setOpaque(false);
 
@@ -162,8 +166,6 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         lblAssignedOfficer.setForeground(new java.awt.Color(255, 255, 255));
         lblAssignedOfficer.setText("Assigned Officers");
 
-        jComboBoxViewOfficers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnSaveAssignment.setText("Save");
         btnSaveAssignment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +177,15 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
+            }
+        });
+
+        logoutLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel3.setText("Logout");
+        logoutLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabel3MousePressed(evt);
             }
         });
 
@@ -192,7 +203,7 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
                                 .addComponent(btnTakeAction, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBack))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(115, 115, 115)
@@ -215,17 +226,21 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
                                 .addComponent(txtDisasterEvent))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblTitleOperationWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                        .addComponent(lblTitleOperationWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(lblTitleOperationWorkspace)
-                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitleOperationWorkspace)
+                    .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(btnTakeAction))
@@ -268,28 +283,44 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtReportIdActionPerformed
 
     public ArrayList<ArmyEmployee> officersAdded = new ArrayList<>();
-    
-            
+
+
     private void btnSaveAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAssignmentActionPerformed
-        
+
         // TODO add your handling code here:
-                
         int selectedRowIndex = ReportjTable.getSelectedRow();
-         
-         if(selectedRowIndex<0) {
-             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
-             return;
-         }
-         
-         CivilResponseReport crReport = (CivilResponseReport) ReportjTable.getValueAt(selectedRowIndex, 0);
-       
-        for(ArmyEmployee armyEmp: officersAdded ) {
-            OfficerAllocation.ArmyOffAllocation.put(armyEmp,crReport);
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a report to take Action");
+            return;
+        } else if (jComboBoxViewOfficers.getItemCount() == 0){
+            JOptionPane.showMessageDialog(this, "Please select one or more Officers");
+            return;
         }
-       
+
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
+        String msg = cv.getCrReportId();
+
+        JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: " + msg);
         
         
+
+        txtDisasterEvent.setText("");
+        txtReportId.setText("");
+        jComboBoxViewOfficers.removeAllItems();
         
+        PoliceReportDirectory.crReport.remove(cv);
+        populateTable();
+
+
+
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -300,44 +331,74 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    boolean isArmy = false;
-    boolean isNavy = false;
-    boolean isPolice = false;
     private void btnTakeActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakeActionActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = ReportjTable.getSelectedRow();
-         
-         if(selectedRowIndex<0) {
-             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
-             return;
-         }
-         
-         CivilResponseReport crReport = (CivilResponseReport) ReportjTable.getValueAt(selectedRowIndex, 0);
-         isArmy = crReport.isArmyAssigned();
-         isNavy = crReport.isNavyAssigned();
-         isPolice = crReport.isPoliceAssigned();
-         txtReportId.setText(crReport.getCrReportId());
-         txtDisasterEvent.setText(crReport.getCrDisaster().getDisasterEvent());
-         
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a report to take Action");
+            return;
+        }
+
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
+        txtReportId.setText(cv.getCrReportId());
+        txtDisasterEvent.setText(cv.getCrDisaster().getDisasterEvent());
+
     }//GEN-LAST:event_btnTakeActionActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        
-        int selectedRowIndex = OfficerTable.getSelectedRow();
-         
-         if(selectedRowIndex<0) {
-             JOptionPane.showMessageDialog(this, "Please select an Officer");
-             return;
-         }
-         
-         ArmyEmployee officer = (ArmyEmployee) OfficerTable.getValueAt(selectedRowIndex, 0);
-         
-         jComboBoxViewOfficers.addItem(officer.toString());
-         
-         officersAdded.add(officer);
 
+        int selectedRowIndex = OfficerTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Officer");
+            return;
+        }
+
+        String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
+
+        int selectedRowIndexforReport = ReportjTable.getSelectedRow();
+
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
+
+        PoliceEmployee policeEmp = null;
+        for (PoliceEmployee police_Emp : PoliceEmployeeDirectory.policeEmpList) {
+            if (police_Emp.getEmpId().equals(OfficerID)) {
+                policeEmp = police_Emp;
+            }
+        }
+
+        jComboBoxViewOfficers.addItem(policeEmp.getPerson().getName());
+        policeEmp.getReportList().add(cv);
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void logoutLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel3MousePressed
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabel3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,29 +417,52 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblOfAllocation;
     private javax.swing.JLabel lblReportId;
     private javax.swing.JLabel lblTitleOperationWorkspace;
+    private javax.swing.JLabel logoutLabel;
+    private javax.swing.JLabel logoutLabel1;
+    private javax.swing.JLabel logoutLabel2;
+    private javax.swing.JLabel logoutLabel3;
     private javax.swing.JTextField txtDisasterEvent;
     private javax.swing.JTextField txtReportId;
     // End of variables declaration//GEN-END:variables
 
-public void populateTable() {
-    
-    DefaultTableModel model = (DefaultTableModel) ReportjTable.getModel();
-    model.setRowCount(0);
+    public void populateTable() {
 
-        if (CivilResponseReportDirectory.crReportList != null) {
-            for (CivilResponseReport crReport : CivilResponseReportDirectory.crReportList) {
+        DefaultTableModel model = (DefaultTableModel) ReportjTable.getModel();
+        model.setRowCount(0);
+
+        if (PoliceReportDirectory.crReport != null) {
+            for (CivilResponseReport crReport : PoliceReportDirectory.crReport) {
                 Object[] row = new Object[5];
-                
 
-                row[0] = crReport;
-                row[1] = crReport.getCrDisaster().getDisasterEvent();
+                row[0] = crReport.getCrReportId();
+                row[1] = crReport.getCrDisaster().getDisasterId();
                 row[2] = crReport.getCrDisaster().getDisasterEvent();
                 row[3] = crReport.getLvlOfSeverity();
                 row[4] = crReport.getLvlOfRisk();
-                
+
                 model.addRow(row);
 
             }
         }
-}
+    }
+
+    public void populateOfficerTable() {
+
+        DefaultTableModel model = (DefaultTableModel) OfficerTable.getModel();
+        model.setRowCount(0);
+
+        if (PoliceEmployeeDirectory.policeEmpList != null) {
+            for (PoliceEmployee policeEmp : PoliceEmployeeDirectory.policeEmpList) {
+                Object[] row = new Object[3];
+
+                row[0] = policeEmp.getEmpId();
+                row[1] = policeEmp.getPerson().getName();
+                row[2] = policeEmp.getSquad();
+
+                model.addRow(row);
+
+            }
+        }
+
+    }
 }
