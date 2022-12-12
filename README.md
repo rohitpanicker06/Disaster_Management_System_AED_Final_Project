@@ -1,9 +1,7 @@
 # Disaster_Management_System_AED_Final_Project
 
-**DESIGN DOCUMENTATION**
 
-1.
-2.
+
 
 
 **CONTEXT**
@@ -35,18 +33,15 @@ Our Disaster Management System application is designed to aid society to find qu
 
 
 
-
-**MODEL**
-The Model of our project Disaster Management System is comprised of 83 classes and 12 interfaces.
-
-Attaching a class diagram for reference.
-
-Link: 
-
-
+**DESIGN DOCUMENTATION**
 **UML DIAGRAM**
 Attaching two UML Diagram that explains the enterprises, organizations and the roles used in this project.
 
-Link1:
-Link2:
+1. Role Based Access Method Implementation: 
+
+![RBAC_AED](https://user-images.githubusercontent.com/66110853/206954353-40f777fa-85e4-4777-a0b3-ca42f2b54511.jpeg)
+
+
+2. Architectural UML Diagram for Disaster Management 
+![UML AED](https://user-images.githubusercontent.com/66110853/206954423-e11bd4b8-94b2-446a-9b6d-77e19e905aeb.jpeg)
 
