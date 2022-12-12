@@ -59,12 +59,15 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         jPanel1.setEnabled(false);
         jPanel1.setOpaque(false);
 
-        lblTitleArmyDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitleArmyDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitleArmyDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblTitleArmyDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleArmyDashboard.setText("~ Army Dashboard ~");
+        lblTitleArmyDashboard.setText(" Army Dashboard ");
+        lblTitleArmyDashboard.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        jBtnActiveAssignments.setText("Active Assignments");
+        jBtnActiveAssignments.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jBtnActiveAssignments.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnActiveAssignments.setText("ACTIVE ASSIGNMENTS");
         jBtnActiveAssignments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnActiveAssignmentsMouseClicked(evt);
@@ -76,7 +79,9 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        jBtnAllDisasters.setText("All Disasters");
+        jBtnAllDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jBtnAllDisasters.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnAllDisasters.setText("ALL DISASTERS");
         jBtnAllDisasters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnAllDisastersMouseClicked(evt);
@@ -102,17 +107,17 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145)
                 .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124)
-                .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(395, 395, 395)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +126,11 @@ public class ArmyDashboardPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitleArmyDashboard)
                     .addComponent(logoutLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(127, 127, 127)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(525, Short.MAX_VALUE))
+                .addGap(150, 150, 150)
+                .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

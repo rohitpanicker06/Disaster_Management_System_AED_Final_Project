@@ -75,7 +75,7 @@ public class PopulateData {
         paul paul
         jon jon
         
-        Fund Raisers
+        Charity
         sean sean
         rachael rachael
         tracy tracy

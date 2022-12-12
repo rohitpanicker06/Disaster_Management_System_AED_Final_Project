@@ -75,11 +75,13 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        lblTitleCivilResponseAllDisasters.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitleCivilResponseAllDisasters.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitleCivilResponseAllDisasters.setForeground(new java.awt.Color(255, 255, 255));
         lblTitleCivilResponseAllDisasters.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleCivilResponseAllDisasters.setText("~ Disaster Operations Allocated ~");
+        lblTitleCivilResponseAllDisasters.setText(" Disaster Operations Allocated ");
+        lblTitleCivilResponseAllDisasters.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
+        btnView.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnView.setText("View Disaster");
         btnView.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,6 +94,7 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,14 +108,17 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
         });
 
         lblDisasterId.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterId.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterId.setText("Report ID:");
 
         lblDisasterEvent.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterEvent.setText("Disaster Event:");
 
         lblDisasterLocation.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterLocation.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterLocation.setText("Level Of Severity:");
 
@@ -123,12 +129,20 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
         });
 
         lblDisasterTime.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterTime.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterTime.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterTime.setText("Disaster ID:");
 
         lblDisasterCoordinates.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterCoordinates.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterCoordinates.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterCoordinates.setText("Level of Risk");
+
+        txtDisasterId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDisasterIdActionPerformed(evt);
+            }
+        });
 
         ReportjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,85 +179,81 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(191, 191, 191)
                 .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(12, 12, 12))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
+                        .addGap(144, 144, 144)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblDisasterTime)
-                                        .addComponent(lblDisasterEvent))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtDisasterId))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(15, 15, 15)
-                                            .addComponent(txtDisasterEvent, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblDisasterLocation)
-                                        .addComponent(lblDisasterCoordinates))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtLvlofRisk, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtLvlOfSeverity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnView)
-                                    .addGap(494, 494, 494)
-                                    .addComponent(btnBack)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDisasterTime)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(lblDisasterEvent)))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtDisasterId, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(137, 137, 137)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lblDisasterCoordinates)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtLvlofRisk, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lblDisasterLocation)
+                                                .addGap(47, 47, 47)
+                                                .addComponent(txtLvlOfSeverity, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(btnView)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblDisasterId)
+                                .addGap(87, 87, 87)
+                                .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(lblDisasterId)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(93, 93, 93)
+                        .addComponent(btnBack)))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitleCivilResponseAllDisasters)
-                    .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblTitleCivilResponseAllDisasters)))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnView)
-                    .addComponent(btnBack))
+                .addComponent(btnView)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterId)
-                    .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDisasterTime)
-                            .addComponent(txtDisasterId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDisasterEvent)
-                            .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDisasterLocation)
-                            .addComponent(txtLvlOfSeverity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLvlofRisk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDisasterCoordinates))))
-                .addContainerGap(241, Short.MAX_VALUE))
+                    .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDisasterLocation)
+                    .addComponent(txtLvlOfSeverity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDisasterTime)
+                    .addComponent(txtDisasterId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDisasterCoordinates)
+                    .addComponent(txtLvlofRisk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDisasterEvent)
+                    .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -315,6 +325,10 @@ public class NavyAllDisasterPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
     }//GEN-LAST:event_logoutLabelMousePressed
+
+    private void txtDisasterIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisasterIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDisasterIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

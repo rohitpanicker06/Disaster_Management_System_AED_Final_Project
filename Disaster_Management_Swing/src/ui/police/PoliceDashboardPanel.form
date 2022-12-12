@@ -35,21 +35,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                          <Component id="jBtnActiveAssignments" min="-2" pref="272" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jBtnAllDisasters" min="-2" pref="272" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblTitlePoliceDashboard" pref="735" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lblTitlePoliceDashboard" min="-2" pref="617" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                   <Component id="logoutLabel3" min="-2" pref="83" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                  <Component id="jBtnActiveAssignments" min="-2" pref="415" max="-2" attributes="0"/>
+                  <EmptySpace pref="208" max="32767" attributes="0"/>
+                  <Component id="jBtnAllDisasters" min="-2" pref="415" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -62,11 +59,11 @@
                       <Component id="logoutLabel3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jBtnActiveAssignments" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="jBtnAllDisasters" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jBtnActiveAssignments" pref="135" max="32767" attributes="0"/>
+                      <Component id="jBtnAllDisasters" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="521" max="32767" attributes="0"/>
+                  <EmptySpace pref="425" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -75,18 +72,28 @@
         <Component class="javax.swing.JLabel" name="lblTitlePoliceDashboard">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Variable" size="30" style="1"/>
+              <Font name="Segoe UI Variable" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="~ Police Dashboard ~"/>
+            <Property name="text" type="java.lang.String" value=" Police Dashboard"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder>
+                  <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                </MatteColorBorder>
+              </Border>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBtnActiveAssignments">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Active Assignments"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ACTIVE ASSIGNMENTS"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBtnActiveAssignmentsMouseClicked"/>
@@ -95,7 +102,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBtnAllDisasters">
           <Properties>
-            <Property name="text" type="java.lang.String" value="All Disasters"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ALL DISASTERS"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBtnAllDisastersMouseClicked"/>

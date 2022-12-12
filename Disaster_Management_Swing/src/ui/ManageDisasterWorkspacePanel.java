@@ -79,47 +79,67 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         msgLabel2 = new javax.swing.JLabel();
         msgLabel3 = new javax.swing.JLabel();
         txtDisasterDate = new com.toedter.calendar.JDateChooser();
+        logoutLabel = new javax.swing.JLabel();
 
-        lblTitle1.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitle1.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle1.setText("~ Disaster Workspace ~");
+        lblTitle1.setText(" Disaster Workspace ");
+        lblTitle1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         lblDisasterId.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterId.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterId.setText("Disaster ID:");
 
         lblDisasterEvent.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterEvent.setText("Disaster Event:");
 
         lblDisasterTime.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterTime.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterTime.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterTime.setText("Disaster Time:");
 
         lblDisasterDate.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterDate.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterDate.setText("Disaster Date:");
 
         lblDisasterLocation.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterLocation.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterLocation.setText("Disaster Location:");
 
         lblDisasterCoordinates.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterCoordinates.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblDisasterCoordinates.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterCoordinates.setText("Disaster Coordinates:");
 
+        txtDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         txtDisasterId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDisasterIdKeyReleased(evt);
             }
         });
 
+        txtDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         txtDisasterEvent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDisasterEventKeyReleased(evt);
             }
         });
 
+        txtDisasterTime.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        txtDisasterTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDisasterTimeActionPerformed(evt);
+            }
+        });
+
+        txtDisasterCoordinates.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+
+        btnSaveDisaster.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnSaveDisaster.setText("Save Disaster");
         btnSaveDisaster.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,6 +152,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,6 +160,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        btnViewDisaster.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnViewDisaster.setText("View Disaster");
         btnViewDisaster.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,6 +168,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
             }
         });
 
+        txtDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         txtDisasterLocation.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDisasterLocationKeyReleased(evt);
@@ -157,13 +180,26 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
 
         msgLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         msgLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        msgLabel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                msgLabel2KeyReleased(evt);
+            }
+        });
 
         msgLabel3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         msgLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        msgLabel3.setText("Logout");
         msgLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 logoutLabelMousePressed(evt);
+            }
+        });
+
+        logoutLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(255, 255, 255));
+        logoutLabel.setText("Logout");
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logoutLabelMousePressed1(evt);
             }
         });
 
@@ -172,51 +208,70 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(btnSaveDisaster)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnViewDisaster))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(244, 244, 244)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDisasterId)
+                                    .addComponent(lblDisasterEvent)
+                                    .addComponent(lblDisasterTime)
+                                    .addComponent(lblDisasterDate)
                                     .addComponent(lblDisasterCoordinates)
-                                    .addComponent(lblDisasterDate, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDisasterTime, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(lblDisasterEvent, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDisasterId, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDisasterLocation, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDisasterId, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(txtDisasterEvent)
-                            .addComponent(txtDisasterTime)
-                            .addComponent(txtDisasterCoordinates)
-                            .addComponent(txtDisasterLocation)
-                            .addComponent(txtDisasterDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(lblTitle1)))
-                .addGap(18, 18, 18)
+                                    .addComponent(btnSaveDisaster, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(86, 86, 86)
+                                        .addComponent(txtDisasterId, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtDisasterTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDisasterDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDisasterCoordinates, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnViewDisaster, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDisasterLocation)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(msgLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(msgLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(msgLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(62, 62, 62))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(msgLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(msgLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(msgLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                        .addGap(23, 23, 23))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
                 .addComponent(btnBack)
-                .addGap(341, 341, 341))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(355, 355, 355)
+                .addComponent(lblTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblTitle1)
-                .addGap(96, 96, 96)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(lblTitle1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(98, 98, 98)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -233,27 +288,31 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterTime)
                     .addComponent(txtDisasterTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDisasterDate)
-                    .addComponent(txtDisasterDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDisasterLocation)
-                        .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(msgLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(txtDisasterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDisasterLocation))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(msgLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterCoordinates)
                     .addComponent(txtDisasterCoordinates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSaveDisaster)
-                    .addComponent(btnViewDisaster))
-                .addGap(32, 32, 32)
+                    .addComponent(btnSaveDisaster, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewDisaster, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnBack)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -310,18 +369,6 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewDisasterMouseClicked
 
 
-    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
-        // TODO add your handling code here:
-         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
-        rbacApplicationContext.setRoleContext(null);
-        rbacApplicationContext.setUser(null);
-        JOptionPane.showMessageDialog(this, "Logged Out");
-        MainJFrame.mainPanel.removeAll();
-        MainJFrame.mainPanel.add(new LoginPanel());
-        MainJFrame.mainPanel.repaint();
-        MainJFrame.mainPanel.revalidate();
-    }//GEN-LAST:event_logoutLabelMousePressed
-
     private void txtDisasterIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisasterIdKeyReleased
         // TODO add your handling code here:
         
@@ -371,6 +418,39 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveDisasterActionPerformed
 
+    private void txtDisasterTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisasterTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDisasterTimeActionPerformed
+
+    private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
+        // TODO add your handling code here:
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed
+
+    private void msgLabel2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_msgLabel2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_msgLabel2KeyReleased
+
+    private void logoutLabelMousePressed1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed1
+        // TODO add your handling code here:
+
+        RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
+        rbacApplicationContext.setRoleContext(null);
+        rbacApplicationContext.setUser(null);
+        JOptionPane.showMessageDialog(this, "Logged Out");
+        MainJFrame.mainPanel.removeAll();
+        MainJFrame.mainPanel.add(new LoginPanel());
+        MainJFrame.mainPanel.repaint();
+        MainJFrame.mainPanel.revalidate();
+    }//GEN-LAST:event_logoutLabelMousePressed1
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -384,6 +464,7 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDisasterLocation;
     private javax.swing.JLabel lblDisasterTime;
     private javax.swing.JLabel lblTitle1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JLabel msgLabel1;
     private javax.swing.JLabel msgLabel2;
     private javax.swing.JLabel msgLabel3;

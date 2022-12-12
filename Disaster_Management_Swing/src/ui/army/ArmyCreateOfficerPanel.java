@@ -58,31 +58,37 @@ public class ArmyCreateOfficerPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        lblTitleArmyDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitleArmyDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitleArmyDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblTitleArmyDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleArmyDashboard.setText("~ Create Officer ~");
+        lblTitleArmyDashboard.setText(" Create Officer");
+        lblTitleArmyDashboard.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         lblDisasterId.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterId.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterId.setText("Officer ID:");
 
+        txtDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterEvent.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterEvent.setText("Officer Name:");
 
+        txtDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterLocation.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterLocation.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterLocation.setText("Squad Name:");
+
+        txtDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -99,7 +105,11 @@ public class ArmyCreateOfficerPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDisasterId)
                             .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitleArmyDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(208, 208, 208))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +128,7 @@ public class ArmyCreateOfficerPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterLocation)
                     .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(481, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

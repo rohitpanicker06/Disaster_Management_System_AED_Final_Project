@@ -34,24 +34,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="1060" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="allPatientsBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="allPersonsBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="allDoctorsBtn" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="updateBtn" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="allHospitalBtn" alignment="0" pref="260" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
                   <Component id="communityNameSearchLabel" min="-2" pref="140" max="-2" attributes="0"/>
@@ -60,6 +42,18 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="logoutLabel" min="-2" pref="83" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="updateBtn" min="-2" pref="260" max="-2" attributes="0"/>
+                      <Component id="allPatientsBtn" min="-2" pref="266" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="943" max="-2" attributes="0"/>
+                      <Component id="allPersonsBtn" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                      <Component id="allDoctorsBtn" alignment="0" min="-2" pref="266" max="-2" attributes="0"/>
+                      <Component id="allHospitalBtn" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="149" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -81,17 +75,17 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                   <Component id="allPatientsBtn" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="allPersonsBtn" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="allDoctorsBtn" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="allHospitalBtn" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="allPersonsBtn" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="allDoctorsBtn" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="allHospitalBtn" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="updateBtn" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,6 +93,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="allHospitalBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="All Hospitals"/>
           </Properties>
           <Events>
@@ -107,6 +104,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="allDoctorsBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="All Doctors"/>
           </Properties>
           <Events>
@@ -115,6 +115,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="allPatientsBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="All Patients"/>
           </Properties>
           <Events>
@@ -123,6 +126,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="allPersonsBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="All Registered Users"/>
           </Properties>
           <Events>
@@ -156,6 +162,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="updateBtn">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Update Hospital Record"/>
           </Properties>
           <Events>
@@ -164,11 +173,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="communityNameSearchLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Community Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="communityNameSearchComboBox">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Item 1"/>
