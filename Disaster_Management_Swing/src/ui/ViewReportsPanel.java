@@ -38,9 +38,13 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         //populateMissingCasualtiesTable();
         //populateInjuredKilledCasualtiesTable();
         setOpaque(false);
-        for (Disaster d : disDir.getDisasterList()){
+        try {
+            for (Disaster d : disDir.getDisasterList()){
             chooseDisasterBox.addItem(d.toString());
         }
+        } catch (Exception e) {
+        }
+        
         
         
         
@@ -309,7 +313,8 @@ public class ViewReportsPanel extends javax.swing.JPanel {
     private void btnGenerateMissingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateMissingActionPerformed
         // TODO add your handling code here:
         
-        missingReport.setText(missingReport.getText()+"===================================================\n");
+        try {
+            missingReport.setText(missingReport.getText()+"===================================================\n");
         missingReport.setText(missingReport.getText()+" \t Missing Casualties Report \n");
         missingReport.setText(missingReport.getText()+"===================================================\n");
         DefaultTableModel model = (DefaultTableModel)missingCasualtiesjTable.getModel();
@@ -325,13 +330,19 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         missingReport.setText(missingReport.getText()+"\n");
         missingReport.setText(missingReport.getText()+"===================================================\n");
         missingReport.setText(missingReport.getText()+"\t\t End Report!\n");
+        } catch (Exception e) {
+        }
+        
+        
         
     }//GEN-LAST:event_btnGenerateMissingActionPerformed
 
     private void btnGenerateInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateInjuredKilledActionPerformed
         // TODO add your handling code here:
         
-        injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
+        
+        try {
+            injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
         injuryKilledReport.setText(injuryKilledReport.getText()+" \t Injury/Killed Casualties Report \n");
         injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
         DefaultTableModel model = (DefaultTableModel)injuredKilledCasualtiesjTable.getModel();
@@ -345,6 +356,10 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         injuryKilledReport.setText(injuryKilledReport.getText()+"\n");
         injuryKilledReport.setText(injuryKilledReport.getText()+"===================================================\n");
         injuryKilledReport.setText(injuryKilledReport.getText()+"\t\t End Report!\n");
+        } catch (Exception e) {
+        }
+        
+        
     }//GEN-LAST:event_btnGenerateInjuredKilledActionPerformed
 
     private void btnPrintMissingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintMissingActionPerformed
@@ -360,12 +375,17 @@ public class ViewReportsPanel extends javax.swing.JPanel {
 
     private void chooseDisasterBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chooseDisasterBoxItemStateChanged
         // TODO add your handling code here:
-        String text = (String) chooseDisasterBox.getSelectedItem();
+        
+        try {
+            String text = (String) chooseDisasterBox.getSelectedItem();
         Disaster disaster = getDisasteByName(text);
         ArrayList<SiteReportingEmployee> se = disaster.getSiteReportingEmpList();
         ArrayList<InjuryKilledCasualties>  ik= disaster.getInjuryKilledList();
         populateInjuredKilledCasualtiesTable(ik);
         populateMissingCasualtiesTable(se);
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_chooseDisasterBoxItemStateChanged
 
     private void btnPrintInjuredKilledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintInjuredKilledActionPerformed
@@ -401,7 +421,9 @@ public class ViewReportsPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateMissingCasualtiesTable(ArrayList<SiteReportingEmployee> se) {
-        DefaultTableModel model = (DefaultTableModel)missingCasualtiesjTable.getModel();
+        
+        try {
+           DefaultTableModel model = (DefaultTableModel)missingCasualtiesjTable.getModel();
         model.setRowCount(0);
         
         
@@ -415,12 +437,18 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                 row[3] = sr.getCasualtyEmail();
                 
                 model.addRow(row);
-            }
+            } 
+        } catch (Exception e) {
+        }
+        
+        
         
     }
 
     private void populateInjuredKilledCasualtiesTable( ArrayList<InjuryKilledCasualties> ik) {
-        DefaultTableModel model1 = (DefaultTableModel)injuredKilledCasualtiesjTable.getModel();
+        
+        try {
+           DefaultTableModel model1 = (DefaultTableModel)injuredKilledCasualtiesjTable.getModel();
         model1.setRowCount(0);
         
        
@@ -431,18 +459,28 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                 row1[1] = injkill.getKillCount();
                 
                 model1.addRow(row1);
-            }
+            } 
+        } catch (Exception e) {
+        }
+        
+        
         
     }
 
     private Disaster getDisasteByName(String text) {
-        for(Disaster disaster: DisasterDirectory.disasterList)
+        
+        try {
+            for(Disaster disaster: DisasterDirectory.disasterList)
         {
             if(disaster.getDisasterEvent().equals(text) )
             {
                 return disaster;
             }
         }
+        } catch (Exception e) {
+        }
+        
+        
         return null;
     }
 

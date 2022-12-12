@@ -393,7 +393,9 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
 
     private void casualtyTypeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_casualtyTypeComboBoxItemStateChanged
         // TODO add your handling code here:
-        if(casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
+        
+        try {
+            if(casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
             lblInjuryCount.setVisible(false);
             txtInjuryCount.setVisible(false);
             lblKillCount.setVisible(false);
@@ -427,6 +429,10 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             lblEmailID.setVisible(true);
             txtEmailID.setVisible(true);
         }
+        } catch (Exception e) {
+        }
+        
+        
     }//GEN-LAST:event_casualtyTypeComboBoxItemStateChanged
 
     private void btnSaveInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveInfoMouseClicked
@@ -437,7 +443,9 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
 
     private void btnSaveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveInfoActionPerformed
         // TODO add your handling code here:
-        SiteReportingEmployee site = new SiteReportingEmployee();
+        
+        try {
+            SiteReportingEmployee site = new SiteReportingEmployee();
         InjuryKilledCasualties inj = new InjuryKilledCasualties();
         
         if (casualtyTypeComboBox.getSelectedItem().toString().equals("Missing")){
@@ -485,12 +493,10 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
             
         }
         
+        } catch (Exception e) {
+        }
         
        
-       
-        
-       
-        
         
     }//GEN-LAST:event_btnSaveInfoActionPerformed
 
@@ -629,7 +635,9 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTableinSiteMngmt() {
-        DefaultTableModel model = (DefaultTableModel)DisasterjTableSiteMngmt.getModel();
+        
+        try {
+            DefaultTableModel model = (DefaultTableModel)DisasterjTableSiteMngmt.getModel();
         model.setRowCount(0);
         
         if(disDir.getDisasterList()!=null){
@@ -644,18 +652,34 @@ public class SiteManagementWorkspacePanel extends javax.swing.JPanel {
                 model.addRow(ro);
             }
         }
+        } catch (Exception e) {
+        }
+        
+        
     }
 
     private void vanishDataForMissingCasualty() {
-        txtName.setText("");
+        
+        try {
+            txtName.setText("");
         txtAge.setText("");
         txtPhoneNumber.setText("");
         txtEmailID.setText("");
+        } catch (Exception e) {
+        }
+        
+        
     }
 
     private void vanishDataForInjuredKilledCasualty() {
-        txtInjuryCount.setText("");
+        
+        try {
+            txtInjuryCount.setText("");
         txtKillCount.setText("");
+        } catch (Exception e) {
+        }
+        
+        
     }
 
     //TEST
