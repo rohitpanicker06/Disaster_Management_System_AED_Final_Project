@@ -334,6 +334,7 @@ public class PatientCrud extends javax.swing.JPanel {
         jLabel4.setText("Image");
 
         photoLabel.setBackground(new java.awt.Color(255, 255, 255));
+        photoLabel.setOpaque(true);
 
         browseButton.setText("Browse");
         browseButton.addActionListener(new java.awt.event.ActionListener() {

@@ -10,6 +10,7 @@ import CivilResponse.Navy.NavyEmployee;
 import CivilResponse.Navy.NavyEmployeeDirectory;
 import CivilResponse.Police.PoliceEmployee;
 import CivilResponse.Police.PoliceEmployeeDirectory;
+import Disaster.Disaster;
 import model.doctor.Doctor;
 import model.doctor.DoctorDirectory;
 import model.hospital.Hospital;
@@ -17,6 +18,7 @@ import model.hospital.HospitalDirectory;
 import house.House;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import model.fundraiser.DisasterFundRaiser;
 import model.state.city.community.CommunityDirectory;
 import model.patient.Patient;
 import model.patient.PatientDirectory;
@@ -102,15 +104,16 @@ public class PopulateData {
         
         */
         // Images = 
-        String image_one = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_two = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_three = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_four = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_five = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_six = "/Users/rohitpanicker/Downloads/hospital (1).png";
-        String image_seven = "/Users/rohitpanicker/Downloads/hospital (1).png";
+        String image_one = "/Users/rohitpanicker/Downloads/pick1.jpeg";
+        String image_two = "/Users/rohitpanicker/Downloads/pick2.jpeg";
+        String image_three = "/Users/rohitpanicker/Downloads/pick3.jpeg";
+        String image_four = "/Users/rohitpanicker/Downloads/pick4.jpeg";
+        String image_five = "/Users/rohitpanicker/Downloads/pick5.jpeg";
+        String image_six = "/Users/rohitpanicker/Downloads/pick6.jpeg";
+        String image_seven = "/Users/rohitpanicker/Downloads/pick7.jpeg";
         String image_eight = "/Users/rohitpanicker/Downloads/hospital (1).png";
         String image_nine = "/Users/rohitpanicker/Downloads/hospital (1).png";
+        
                  
         
         
@@ -496,6 +499,9 @@ public class PopulateData {
           PersonDirectory.personList.add(navyOffFour);
           NavyEmployee navy_Off_Four = new NavyEmployee("1130",navyOffFour, "Boston");
           NavyEmployeeDirectory.empList.add(navy_Off_Four);
+          
+          
+    
           
     
     }
