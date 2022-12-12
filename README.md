@@ -6,6 +6,7 @@
 
 **CONTEXT**
 
+#### Disaster Immediate Response
 
 Our Disaster Management System application is designed to aid society to find quick safety from natural disasters in their locality. Disasters can range from Hurricanes to Tornadoes. The application allows us to record disasters happening around any area, the date the disaster happened and enable us to view all disasters recorded. 
 
@@ -19,7 +20,12 @@ On login, the Army officer can view his profile details and also a list of assig
 
 The Navy Head gets the civil response report if assigned by the Civil Response Head and he will then assign one or more employees/officers to work on the task. Now, the Navy officer views the assigned task by the Navy head and will begin his activity. Similarly, the Police Head gets the civil response reports assigned by the Civil Response Head and he will then assign one or more employees/officers to work on the task. Now, the Police officer views the assigned task by the Navy head and will begin his activity. 
 
-The Fund Raising Head can create new fund raisers for all the disasters reported and can raise funds in any currency and will be able to publish to television, radio and social media. There is a charity entity that can choose a disaster for which funds raising was announced based on. The charity can then donate funds to the fund raising event based on the medium they heard about the fund raising which is through television, radio or social media or a mix of these mediums. Once the funds are donated, the charity enitty can view the bar for how much money the donations was made against how much money the fund raiser has requested. So now the fund raising head will be able to view a report on how much money was donated to the fund raiser for a disaster and against how much the fund raiser had requested. The report can be represented statistically in the form of a bar chart.
+
+#### Disaster Recovery 
+
+The Fund Raising Head can create new fund raisers for all the disasters reported and can raise funds in any currency. The same will be published to television, radio and social media for audience attention. After users have donated, the fund raising head will be able to view an analytics report on how much money was donated to the fund raiser for a disaster and against how much the fund raiser had requested. The report can be represented statistically in the form of a bar chart. 
+
+There is a charity entity in which a user can choose a disaster for which funds raising was announced and donate funds to the fund raising event based on the medium they heard about the fund raising which is through television, radio or social media or a mix of these mediums. Once the funds are donated, the charity entity user can view the bar for how much money the donations was made against how much money the fund raiser has requested. The donation will be available for the Fund Raising Head for analytics.
 
 The hospital is an organization that consists of Doctors, Patients and Pharmacies. A Doctor can write prescriptions for all the patients affected by the disaster; they can write medicines to them. Next, a pharmacy can get the prescription written to the patient affected by the disaster and can approve the prescription and bill the amount due by the patient. The bill will be emailed to the user's mobile phone and he can view the patient and their medicines prescribed by the doctor and view the price of the medicines. Within the hospital organization, there is a hospital admin who can view all hospitals, delete a certain hospital, view all doctors within the selected hospital, and can view all patients within a hospital as well.
 
