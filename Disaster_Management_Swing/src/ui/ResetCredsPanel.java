@@ -32,7 +32,7 @@ public class ResetCredsPanel extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -129,92 +129,187 @@ public class ResetCredsPanel extends javax.swing.JPanel {
 
         String userName = userNameTxtField.getText();
         Person person = null;
-        if(UserListDirectory.getUserNameToPersonMap().containsKey(userName))
-        {   
+        if (UserListDirectory.getUserNameToPersonMap().containsKey(userName)) {
             person = UserListDirectory.getUserNameToPersonMap().get(userName);
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "Entered userName not found");
             return;
         }
-         person = UserListDirectory.getUserNameToPersonMap().get(userName);
-         User user = findUser(person);
-         String password= user.getPassword();
+        person = UserListDirectory.getUserNameToPersonMap().get(userName);
+        User user = findUser(person);
+        String password = user.getPassword();
         try {
-            SendEmail.sendEmail("Username: "+userName +"\n" +" Password: " +password+" \n", person.getEmailid());
+            SendEmail.sendEmail("Username: " + userName + "\n" + " Password: " + password + " \n", person.getEmailid());
         } catch (MessagingException ex) {
             Logger.getLogger(ResetCredsPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         JOptionPane.showMessageDialog(this, "Your password has been emailed to " + person.getEmailid());
-        
-         MainJFrame.mainPanel.removeAll();
+
+        MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new LoginPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
-       
-        
+
+
     }//GEN-LAST:event_resetButtonActionPerformed
-public  User findUser(Person person) {
+    public User findUser(Person person) {
         User userog = null;
-        while(userog == null){
-        for(User user: UserListDirectory.getCommunityAdminList())
-        {
-           if(user.getPerson().equals(person))
-           {
-               userog=user;
-               return userog;
-               
-           }
-               
+        while (userog == null) {
+            for (User user : UserListDirectory.getCommunityAdminList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+
+            for (User user : UserListDirectory.getDoctorUserList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+
+            for (User user : UserListDirectory.getHospitalAdminList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+
+            for (User user : UserListDirectory.getPatientList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+
+            for (User user : UserListDirectory.getSystemAdminList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getCommunityAdminList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getEventReportingList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            for (User user : UserListDirectory.getFundRaiserList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPharmacyList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getDonor()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getCivilResponseList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getArmyHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getArmyEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            for (User user : UserListDirectory.getNavyHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getNavyEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPoliceHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPoliceEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+
         }
-        
-        for(User user: UserListDirectory.getDoctorUserList())
-        {
-           if(user.getPerson().equals(person))
-           {
-              userog=user;
-               return userog;
-               
-           }
-               
-        }
-        
-         for(User user: UserListDirectory.getHospitalAdminList())
-        {
-           if(user.getPerson().equals(person))
-           {
-              userog=user;
-               return userog;
-               
-           }
-               
-        }
-         
-          for(User user: UserListDirectory.getPatientList())
-        {
-           if(user.getPerson().equals(person))
-           {
-               userog=user;
-               return userog;
-               
-           }
-               
-        }
-          
-           for(User user: UserListDirectory.getSystemAdminList())
-        {
-           if(user.getPerson().equals(person))
-           {
-              userog=user;
-               return userog;
-               
-           }
-               
-        }
-        
-        
-    }
         return null;
     }
 
