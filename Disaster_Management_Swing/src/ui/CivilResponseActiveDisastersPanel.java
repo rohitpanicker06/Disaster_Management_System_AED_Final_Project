@@ -404,97 +404,100 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
     private void btnSubmitResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitResponseActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = DisasterjTable.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a disaster for initiation");
-            return;
-        }
+        try {
+            int selectedRowIndex = DisasterjTable.getSelectedRow();
 
-        Disaster selectedDisaster = (Disaster) DisasterjTable.getValueAt(selectedRowIndex, 0);
-
-        String reportId = txtReportId.getText();
-        String levelOfSeverity = txtLevelOfSeverity.getText();
-        String levelOfRisk = txtLevelOfRisk.getText();
-        boolean armyAssigned = ArmyjCheckBox1.isSelected();
-        boolean navyAssigned = NavyjCheckBox2.isSelected();
-        boolean policeAssigned = PolicejCheckBox3.isSelected();
-
-        //    Array of all the  validation errors
-        ArrayList<String> errList = new ArrayList<>();
-        int errCount = 0;
-
-        if(!reportId.matches("[0-9]+")){
-            errList.add("Please input a valid Report ID");
-            errCount++;
-        }
-        if ("".equals(levelOfSeverity)) {
-            errList.add("Please input level of Severity.");
-            errCount++;
-        }
-
-        if ("".equals(levelOfRisk)) {
-            errList.add("Please input level of Risk.");
-            errCount++;
-        }
-
-        if (!armyAssigned && !navyAssigned && !policeAssigned) {
-            errList.add("Please select one or more Forces.");
-            errCount++;
-        }
-
-        String errMessageFinal = "";
-        if (errCount > 0) {
-            for (int i = 0; i < errList.size(); i++) {
-                errMessageFinal = errMessageFinal + errList.get(i) + "\n";
-            }
-            JOptionPane.showMessageDialog(this, errMessageFinal);
-        } else {
-            try {
-                CivilResponseReport report = crDir.addNewReport();
-
-                report.setCrDisaster(selectedDisaster);
-                report.setCrReportId(reportId);
-                report.setLvlOfSeverity(levelOfSeverity);
-                report.setLvlOfRisk(levelOfRisk);
-                report.setArmyAssigned(armyAssigned);
-                report.setNavyAssigned(navyAssigned);
-                report.setPoliceAssigned(policeAssigned);
-
-                JOptionPane.showMessageDialog(this, "New Report Created. The forces will be informed.");
-
-                if (ArmyjCheckBox1.isSelected()) {
-                    ArmyReportDirectory.crReport.add(report);
-                }
-
-                if (NavyjCheckBox2.isSelected()) {
-                    NavyReportDirectory.crReport.add(report);
-                }
-
-                if (PolicejCheckBox3.isSelected()) {
-                    PoliceReportDirectory.crReport.add(report);
-                }
-
-                //            Remove the disaster from CivilResponse Disaster List
-                CivilResponseDisasterList.CrDisasterArrayList.remove(selectedDisaster);
-                populateTable();
-
-            } catch (Exception e) {
-                //  Block of code to handle errors
-                JOptionPane.showMessageDialog(this, "Error in creating a Response Report" + e);
-
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a disaster for initiation");
+                return;
             }
 
-            txtDisasterEvent.setText("");
-            txtDisasterId.setText("");
-            txtLevelOfRisk.setText("");
-            txtLevelOfSeverity.setText("");
-            txtReportId.setText("");
-            ArmyjCheckBox1.setSelected(false);
-            NavyjCheckBox2.setSelected(false);
-            PolicejCheckBox3.setSelected(false);
+            Disaster selectedDisaster = (Disaster) DisasterjTable.getValueAt(selectedRowIndex, 0);
 
+            String reportId = txtReportId.getText();
+            String levelOfSeverity = txtLevelOfSeverity.getText();
+            String levelOfRisk = txtLevelOfRisk.getText();
+            boolean armyAssigned = ArmyjCheckBox1.isSelected();
+            boolean navyAssigned = NavyjCheckBox2.isSelected();
+            boolean policeAssigned = PolicejCheckBox3.isSelected();
+
+            //    Array of all the  validation errors
+            ArrayList<String> errList = new ArrayList<>();
+            int errCount = 0;
+
+            if (!reportId.matches("[0-9]+")) {
+                errList.add("Please input a valid Report ID");
+                errCount++;
+            }
+            if ("".equals(levelOfSeverity)) {
+                errList.add("Please input level of Severity.");
+                errCount++;
+            }
+
+            if ("".equals(levelOfRisk)) {
+                errList.add("Please input level of Risk.");
+                errCount++;
+            }
+
+            if (!armyAssigned && !navyAssigned && !policeAssigned) {
+                errList.add("Please select one or more Forces.");
+                errCount++;
+            }
+
+            String errMessageFinal = "";
+            if (errCount > 0) {
+                for (int i = 0; i < errList.size(); i++) {
+                    errMessageFinal = errMessageFinal + errList.get(i) + "\n";
+                }
+                JOptionPane.showMessageDialog(this, errMessageFinal);
+            } else {
+                try {
+                    CivilResponseReport report = crDir.addNewReport();
+
+                    report.setCrDisaster(selectedDisaster);
+                    report.setCrReportId(reportId);
+                    report.setLvlOfSeverity(levelOfSeverity);
+                    report.setLvlOfRisk(levelOfRisk);
+                    report.setArmyAssigned(armyAssigned);
+                    report.setNavyAssigned(navyAssigned);
+                    report.setPoliceAssigned(policeAssigned);
+
+                    JOptionPane.showMessageDialog(this, "New Report Created. The forces will be informed.");
+
+                    if (ArmyjCheckBox1.isSelected()) {
+                        ArmyReportDirectory.crReport.add(report);
+                    }
+
+                    if (NavyjCheckBox2.isSelected()) {
+                        NavyReportDirectory.crReport.add(report);
+                    }
+
+                    if (PolicejCheckBox3.isSelected()) {
+                        PoliceReportDirectory.crReport.add(report);
+                    }
+
+                    //            Remove the disaster from CivilResponse Disaster List
+                    CivilResponseDisasterList.CrDisasterArrayList.remove(selectedDisaster);
+                    populateTable();
+
+                } catch (Exception e) {
+                   
+                }
+
+            }
+
+        } catch (Exception e) {
         }
+
+        txtDisasterEvent.setText("");
+        txtDisasterId.setText("");
+        txtLevelOfRisk.setText("");
+        txtLevelOfSeverity.setText("");
+        txtReportId.setText("");
+        ArmyjCheckBox1.setSelected(false);
+        NavyjCheckBox2.setSelected(false);
+        PolicejCheckBox3.setSelected(false);
 
     }//GEN-LAST:event_btnSubmitResponseActionPerformed
 

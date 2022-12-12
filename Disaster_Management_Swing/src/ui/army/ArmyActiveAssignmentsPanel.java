@@ -285,44 +285,42 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
 
 
     private void btnSaveAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAssignmentActionPerformed
+// TODO add your handling code here:
 
-        // TODO add your handling code here:
-        int selectedRowIndex = ReportjTable.getSelectedRow();
-        int selectedRowIndexOfficer = OfficerTable.getSelectedRow();
+        try {
+            int selectedRowIndex = ReportjTable.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a report to take Action");
-            return;
-        } else if (jComboBoxViewOfficers.getItemCount() == 0){
-            JOptionPane.showMessageDialog(this, "Please select one or more Officers");
-            return;
-        }
-
-        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
-        CivilResponseReport cv = null;
-        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
-            if (cr.getCrReportId().equals(crReportID)) {
-                cv = cr;
-                break;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a report to take Action");
+                return;
+            } else if (jComboBoxViewOfficers.getItemCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Please select one or more Officers");
+                return;
             }
-        }
-        
-        String msg = cv.getCrReportId();
-        
-        JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: "+msg);
 
-        
+            String crReportID = (String) ReportjTable.getValueAt(selectedRowIndex, 0);
+            CivilResponseReport cv = null;
+            for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+                if (cr.getCrReportId().equals(crReportID)) {
+                    cv = cr;
+                    break;
+                }
+            }
+
+            String msg = cv.getCrReportId();
+
+            JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: " + msg);
+
+            ArmyReportDirectory.crReport.remove(cv);
+            populateTable();
+
+        } catch (Exception e) {
+        }
+
         txtDisasterEvent.setText("");
         txtReportId.setText("");
         jComboBoxViewOfficers.removeAllItems();
-        
-        ArmyReportDirectory.crReport.remove(cv);
-        populateTable();
 
-        
-        
-        
-       
 
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
 
@@ -361,39 +359,42 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
 
-        int selectedRowIndex = OfficerTable.getSelectedRow();
+        try {
+            int selectedRowIndex = OfficerTable.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select an Officer");
-            return;
-        }
-
-        String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
-        
-        int selectedRowIndexforReport = ReportjTable.getSelectedRow();
-
-        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
-        CivilResponseReport cv = null;
-        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
-            if (cr.getCrReportId().equals(crReportID)) {
-                cv = cr;
-                break;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select an Officer");
+                return;
             }
-        }
 
-        ArmyEmployee armyemp = null;
-        for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
-            if (armyEmp.getEmpId().equals(OfficerID)) {
-                armyemp = armyEmp;
-                break;
+            String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
+
+            int selectedRowIndexforReport = ReportjTable.getSelectedRow();
+
+            String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
+            CivilResponseReport cv = null;
+            for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+                if (cr.getCrReportId().equals(crReportID)) {
+                    cv = cr;
+                    break;
+                }
             }
+
+            ArmyEmployee armyemp = null;
+            for (ArmyEmployee armyEmp : ArmyEmployeeDirectory.armyEmpList) {
+                if (armyEmp.getEmpId().equals(OfficerID)) {
+                    armyemp = armyEmp;
+                    break;
+                }
+            }
+
+            jComboBoxViewOfficers.addItem(armyemp.getPerson().getName());
+            armyemp.getCrReportList().add(cv);
+            officersAdded.add(armyemp);
+
+        } catch (Exception e) {
         }
 
-        jComboBoxViewOfficers.addItem(armyemp.getPerson().getName());
-        armyemp.getCrReportList().add(cv);
-
-        officersAdded.add(armyemp);
-        
 
     }//GEN-LAST:event_btnAddActionPerformed
 

@@ -293,7 +293,7 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
             return;
-        } else if (jComboBoxViewOfficers.getItemCount() == 0){
+        } else if (jComboBoxViewOfficers.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "Please select one or more Officers");
             return;
         }
@@ -309,16 +309,13 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         String msg = cv.getCrReportId();
 
         JOptionPane.showMessageDialog(this, "Task force assigned for Civil Response Report ID: " + msg);
-        
-        
 
         txtDisasterEvent.setText("");
         txtReportId.setText("");
         jComboBoxViewOfficers.removeAllItems();
-        
+
         PoliceReportDirectory.crReport.remove(cv);
         populateTable();
-
 
 
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
@@ -356,35 +353,40 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
 
-        int selectedRowIndex = OfficerTable.getSelectedRow();
+        try {
+            int selectedRowIndex = OfficerTable.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select an Officer");
-            return;
-        }
-
-        String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
-
-        int selectedRowIndexforReport = ReportjTable.getSelectedRow();
-
-        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
-        CivilResponseReport cv = null;
-        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
-            if (cr.getCrReportId().equals(crReportID)) {
-                cv = cr;
-                break;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select an Officer");
+                return;
             }
-        }
 
-        PoliceEmployee policeEmp = null;
-        for (PoliceEmployee police_Emp : PoliceEmployeeDirectory.policeEmpList) {
-            if (police_Emp.getEmpId().equals(OfficerID)) {
-                policeEmp = police_Emp;
+            String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
+
+            int selectedRowIndexforReport = ReportjTable.getSelectedRow();
+
+            String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
+            CivilResponseReport cv = null;
+            for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+                if (cr.getCrReportId().equals(crReportID)) {
+                    cv = cr;
+                    break;
+                }
             }
+
+            PoliceEmployee policeEmp = null;
+            for (PoliceEmployee police_Emp : PoliceEmployeeDirectory.policeEmpList) {
+                if (police_Emp.getEmpId().equals(OfficerID)) {
+                    policeEmp = police_Emp;
+                }
+            }
+
+            jComboBoxViewOfficers.addItem(policeEmp.getPerson().getName());
+            policeEmp.getReportList().add(cv);
+        } catch (Exception e) {
         }
 
-        jComboBoxViewOfficers.addItem(policeEmp.getPerson().getName());
-        policeEmp.getReportList().add(cv);
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void logoutLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel3MousePressed
