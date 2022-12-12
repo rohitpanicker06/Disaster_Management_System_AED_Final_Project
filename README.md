@@ -48,6 +48,8 @@ Attaching two UML Diagram that explains the enterprises, organizations and the r
 3. Architectural Diagram for Hospital Enterprise (If Intrested)
 ![ClassDiagram drawio-5](https://user-images.githubusercontent.com/66110853/206954822-d6543c15-3edb-4b53-b2c2-083f92426787.png)
 
+4. 3. Sequence Diagram 
+![FlowDiagram](https://user-images.githubusercontent.com/66110853/206960105-e416a5aa-9fc2-4027-b17f-2f6046600ba7.png)
 
 
 **SCREENSHOTS OF PRINT FUNCTION IN SiteReportingWorkspacePanel**
@@ -64,8 +66,6 @@ Attaching two UML Diagram that explains the enterprises, organizations and the r
 
 ![image](https://user-images.githubusercontent.com/114315272/206955860-74716f34-1dda-4a46-8569-cb38cf984088.png)
 
-3. Sequence Diagram 
-![FlowDiagram](https://user-images.githubusercontent.com/66110853/206960105-e416a5aa-9fc2-4027-b17f-2f6046600ba7.png)
 
 
 
