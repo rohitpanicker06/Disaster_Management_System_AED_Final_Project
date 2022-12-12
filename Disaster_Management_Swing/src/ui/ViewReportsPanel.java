@@ -38,9 +38,13 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         //populateMissingCasualtiesTable();
         //populateInjuredKilledCasualtiesTable();
         setOpaque(false);
-        for (Disaster d : disDir.getDisasterList()){
+        try {
+            for (Disaster d : disDir.getDisasterList()){
             chooseDisasterBox.addItem(d.toString());
         }
+        } catch (Exception e) {
+        }
+        
         
         
         
