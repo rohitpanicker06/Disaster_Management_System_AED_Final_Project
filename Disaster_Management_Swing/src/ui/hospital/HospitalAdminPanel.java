@@ -236,7 +236,7 @@ public class HospitalAdminPanel extends javax.swing.JPanel {
                             .addComponent(viewPatientsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewAllDoctorsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewDetailsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -378,6 +378,7 @@ private void setSearchComponentsVisibility(boolean value)
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
 
+        try{
         String txt = updateBtn.getText();
         int selectedRowIndex = tblRecords.getSelectedRow();
         if (selectedRowIndex == -1) {
@@ -405,11 +406,16 @@ private void setSearchComponentsVisibility(boolean value)
             changePanel(patientCrud);
             
         }
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void createHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createHospitalBtnActionPerformed
         // TODO add your handling code here:
 
+        try{
         String txt = createHospitalBtn.getText();
         if(txt.contains("Patient"))
         {
@@ -425,17 +431,27 @@ private void setSearchComponentsVisibility(boolean value)
             changePanel(hospitalCrud);
             
         }
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_createHospitalBtnActionPerformed
 private void deleteRecord(Patient patient){
+    try{
    this.hospital.getPatientList().remove(patient);
    
 
         JOptionPane.showMessageDialog(this, "Record deleted successfully");
+        }catch(Exception e)
+        {
+            
+        }
         
 }
     private void deleteHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteHospitalBtnActionPerformed
         // TODO add your handling code here:
 
+        try{
         String txt = deleteHospitalBtn.getText();
         int selectedRowIndex = tblRecords.getSelectedRow();
 
@@ -463,7 +479,10 @@ private void deleteRecord(Patient patient){
             deleteHospitalRecord(hospital);
             populateTableWithHospitalRecords();
         }
-
+}catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_deleteHospitalBtnActionPerformed
 
     private void populateTableWithDoctorRecords() {
@@ -537,15 +556,25 @@ private void deleteRecord(Patient patient){
 
     private void deleteDoctorRecord(Doctor doctor)
     {
+        try{
       this.hospital.getDoctorList().remove(doctor);
        JOptionPane.showMessageDialog(this, "Record deleted successfully");
+       }catch(Exception e)
+        {
+            
+        }
       
     }
 
   private void deleteHospitalRecord(Hospital hospital)
    {
+       try{
        HospitalDirectory.hospitalList.remove(hospital);
        JOptionPane.showMessageDialog(this, "Record deleted successfully");
+       }catch(Exception e)
+        {
+            
+        }
       
    }
 
@@ -621,6 +650,7 @@ private void deleteRecord(Patient patient){
     private void viewAllDoctorsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllDoctorsBtnActionPerformed
         // TODO add your handling code here:
 
+        try{
         updateBtn.setText("Update Doctor Record");
         createHospitalBtn.setText("Create Doctor Record");
         deleteHospitalBtn.setText("Delete Doctor Record");
@@ -636,6 +666,10 @@ private void deleteRecord(Patient patient){
         Hospital hospital = (Hospital) tableModel.getValueAt(selectedRowIndex, 0);
         this.hospital = hospital;
         populateDoctorRecords(hospital.getDoctorList());
+        }catch(Exception e)
+        {
+            
+        }
 
     }//GEN-LAST:event_viewAllDoctorsBtnActionPerformed
  private void populateDoctorRecords(ArrayList<Doctor> doctorList)
@@ -674,6 +708,7 @@ private void deleteRecord(Patient patient){
     }
     private void viewPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientsBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateBtn.setText("Update Patient Record");
         createHospitalBtn.setText("Create Patient Record");
         deleteHospitalBtn.setText("Delete Patient Record");
@@ -688,6 +723,10 @@ private void deleteRecord(Patient patient){
         Hospital hospital = (Hospital) tableModel.getValueAt(selectedRowIndex, 0);
         this.hospital = hospital;
         populatePatientRecords(hospital.getPatientList());
+        }catch(Exception e)
+        {
+            
+        }
 
     }//GEN-LAST:event_viewPatientsBtnActionPerformed
 private void populatePatientRecords(ArrayList<Patient> patientList)
@@ -730,6 +769,7 @@ private void populatePatientRecords(ArrayList<Patient> patientList)
     private void goBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBtnActionPerformed
         // TODO add your handling code here:
 
+        try{
         String selectedIndex = (String) searchByComboBox.getSelectedItem();
         String searchText = searchTxtField.getText();
 
@@ -747,10 +787,14 @@ private void populatePatientRecords(ArrayList<Patient> patientList)
             result = searchByCommunity(searchText, result);
         }
         populateHospitalTable(result);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_goBtnActionPerformed
 private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
      
-        
+        try{
         
         for(Hospital hospital: HospitalDirectory.hospitalList){
          if(hospital.getHospitalId() == Integer.parseInt(id)){
@@ -760,6 +804,10 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
              return result;
          }
      }
+        }catch(Exception e)
+        {
+            
+        }
         return result;
     }
     
@@ -767,7 +815,7 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
     
     private ArrayList<Hospital> searchByCity(String city, ArrayList<Hospital> result) {
      
-        
+        try{
         
         for(Hospital hospital: HospitalDirectory.hospitalList){
          if(hospital.getCommunity().getCity().getName().contains(city)){
@@ -776,6 +824,10 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
              
          }
      }
+        }catch(Exception e)
+        {
+            
+        }
         return result;
     }
     
@@ -783,7 +835,7 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
     private ArrayList<Hospital> searchByName(String name, ArrayList<Hospital> result) {
      
         
-        
+        try{
         for(Hospital hospital: HospitalDirectory.hospitalList){
          if(hospital.getHospitalName().contains(name)){
              
@@ -791,13 +843,17 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
              
          }
      }
+        }catch(Exception e)
+        {
+            
+        }
         return result;
     }
     
       private ArrayList<Hospital> searchByCommunity(String community, ArrayList<Hospital> result) {
      
         
-        
+        try{
         for(Hospital hospital: HospitalDirectory.hospitalList){
          if(hospital.getCommunity().getCommunityName().contains(community)){
              
@@ -805,6 +861,10 @@ private ArrayList<Hospital> searchById(String id, ArrayList<Hospital> result) {
              
          }
      }
+        }catch(Exception e)
+        {
+            
+        }
         return result;
     }
     private void searchByComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByComboBoxActionPerformed

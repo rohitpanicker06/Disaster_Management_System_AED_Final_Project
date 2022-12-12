@@ -50,6 +50,7 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
     
     public void populateComboBox()
     {   
+        try{
         disasterComboBox.removeAllItems();
         for(Disaster disaster: new DisasterDirectory().getDisasterList())
         {
@@ -61,6 +62,10 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         for(String cur: currencyList)
         {
             currencyComboBox.addItem(cur);
+        }
+        }catch(Exception e)
+        {
+            
         }
         
     }
@@ -300,7 +305,7 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        
+        try{
         String name = (String) disasterComboBox.getSelectedItem();
         Disaster event = getDisasterEventFromName(name);
         String currency = (String)currencyComboBox.getSelectedItem();
@@ -320,11 +325,36 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         {
            SocialMediaFundRaisingDept.fundRaisingRequest.add(fundRaiser); 
         }
-        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser);
+        if(!checkDisasterFundRaiser(fundRaiser))
+        {
+            FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser);
         JOptionPane.showMessageDialog(this, "Fund Raising Request published Successfully");
+        }else{
+            JOptionPane.showMessageDialog(this, "Fund Raiser for this event already exists");
+        }
         
+        }
+        catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
-
+    private boolean checkDisasterFundRaiser(DisasterFundRaiser fundRaiser)
+    {   
+        try{
+        for(DisasterFundRaiser fr: FundRaiserDirectory.fundRaiserDirectory)
+        {
+            if(fr.getDisaster().getDisasterId() == fundRaiser.getDisaster().getDisasterId())
+            {
+                return true;
+            }
+        }
+        }catch(Exception e)
+        {
+            
+        }
+        return false;
+    }
     private void radioCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioCheckBoxActionPerformed
@@ -355,7 +385,7 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
 
     private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
         // TODO add your handling code here:
-
+ try{
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         rbacApplicationContext.setRoleContext(null);
         rbacApplicationContext.setUser(null);
@@ -364,6 +394,10 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new LoginPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+ }catch(Exception e)
+ {
+     
+ }
 
     }//GEN-LAST:event_logoutLabelMousePressed
 
@@ -397,12 +431,18 @@ public class CreateNewFundRaiserPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private Disaster getDisasterEventFromName(String name) {
+        try{
         for(Disaster disaster : new DisasterDirectory().getDisasterList())
         {
             if(disaster.getDisasterEvent().equals(name))
             {
                 return disaster;
             }
+        }
+        }
+        catch(Exception e)
+        {
+            
         }
         
         return null;

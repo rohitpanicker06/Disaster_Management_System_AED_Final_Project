@@ -321,7 +321,9 @@ public class DoctorPanel extends javax.swing.JPanel {
     }
     private ArrayList<Patient> searchById(String id) {
        
+        
         ArrayList<Patient> patientResult = new ArrayList<>();
+        try{
         for(Patient patient : PatientDirectory.patientList)
         {
             if(patient.getPerson().getId().equals(id))
@@ -330,12 +332,17 @@ public class DoctorPanel extends javax.swing.JPanel {
                 return patientResult;
             }
         }
+        }catch(Exception e)
+        {
+            
+        }
         
         return patientResult;
     }
 
     private ArrayList<Patient> searchByName(String name) {
        ArrayList<Patient> patientResult = new ArrayList<>();
+       try{
         for(Patient patient : PatientDirectory.patientList)
         {
             if(patient.getPerson().getName().contains(name))
@@ -344,6 +351,10 @@ public class DoctorPanel extends javax.swing.JPanel {
                 
             }
         }
+        }catch(Exception e)
+        {
+            
+        }
         
         return patientResult;
     }
@@ -351,6 +362,7 @@ public class DoctorPanel extends javax.swing.JPanel {
     private ArrayList<Patient> searchByInsuranceID(String insuranceId) {
          
          ArrayList<Patient> patientResult = new ArrayList<>();
+         try{
         for(Patient patient : PatientDirectory.patientList)
         {
             if(patient.getInsuranceId() == Integer.parseInt(insuranceId))
@@ -360,6 +372,10 @@ public class DoctorPanel extends javax.swing.JPanel {
                 
             }
         }
+        }catch(Exception e)
+        {
+            
+        }
         
         return patientResult;
         
@@ -367,6 +383,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
     private ArrayList<Patient> searchByMobileNumber(String mobileNumber) {
           ArrayList<Patient> patientResult = new ArrayList<>();
+          try{
         for(Patient patient : PatientDirectory.patientList)
         {
             if(patient.getPerson().getPhoneNumber()== Long.parseLong(mobileNumber))
@@ -376,12 +393,17 @@ public class DoctorPanel extends javax.swing.JPanel {
                 
             }
         }
+        }catch(Exception e)
+        {
+            
+        }
         
         return patientResult;
     }
 
     private ArrayList<Patient> searchByAge(String age) {
         ArrayList<Patient> patientResult = new ArrayList<>();
+        try{
         for(Patient patient : PatientDirectory.patientList)
         {
             if(patient.getPerson().getAge()== Integer.parseInt(age))
@@ -390,6 +412,10 @@ public class DoctorPanel extends javax.swing.JPanel {
                
                 
             }
+        }
+        }catch(Exception e)
+        {
+            
         }
         
         return patientResult;
@@ -782,6 +808,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
     private void encounterHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encounterHistoryButtonActionPerformed
         // TODO add your handling code here:
+        try{
         disappearVitalLabels();
         makeTxtFieldsDisappear();
         int selectedRowIndex = tblRecords.getSelectedRow();
@@ -791,18 +818,28 @@ public class DoctorPanel extends javax.swing.JPanel {
         }
         Patient patient = (Patient) tblRecords.getValueAt(selectedRowIndex, 0);
         populateTableRecordsWithEncounterHistory(patient);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_encounterHistoryButtonActionPerformed
 
     private void viewAllPatientsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllPatientsButtonActionPerformed
         // TODO add your handling code here:
+        try{
         disappearVitalLabels();
         searchByLabel.setVisible(false);
         makeTxtFieldsDisappear();
         populateAndFillRecordsTable();
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_viewAllPatientsButtonActionPerformed
 
     private void recordEncounterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordEncounterButtonActionPerformed
         // TODO add your handling code here:
+        try{
         makeLabelsDisappear(false);
         clearTxtFields();
 
@@ -828,6 +865,10 @@ public class DoctorPanel extends javax.swing.JPanel {
         addressLabel.setVisible(true);
         
         makeVitalTxtFieldsAppear();
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_recordEncounterButtonActionPerformed
 
     private void searchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextFieldActionPerformed
@@ -836,7 +877,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         // TODO add your handling code here:
-
+try{
         int userTypeIndex = searchComboBox.getSelectedIndex();
         String txtSearch = searchTextField.getText();
 
@@ -870,10 +911,15 @@ public class DoctorPanel extends javax.swing.JPanel {
         }
 
         populatePatientsTable(patientList);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_goButtonActionPerformed
 
     private void saveVariableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveVariableActionPerformed
         // TODO add your handling code here:
+        try{
         int errorCount = 0;
         int pulseRate =0, respirationRate=0, bodyTemp=0;
         String bloodPressure = null;
@@ -938,6 +984,10 @@ public class DoctorPanel extends javax.swing.JPanel {
                 clearTxtFields();
 
             }
+            }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_saveVariableActionPerformed
 
     private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
@@ -955,6 +1005,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
     private void writePrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writePrescriptionActionPerformed
 
+        try{
         makeLabelsDisappear(false);
         clearTxtFields();
 
@@ -974,6 +1025,10 @@ public class DoctorPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new PrescriptionPanel(patient,doc));
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }catch(Exception e)
+        {
+            
+        }
         
         
     }//GEN-LAST:event_writePrescriptionActionPerformed
