@@ -45,4 +45,6 @@ Attaching two UML Diagram that explains the enterprises, organizations and the r
 2. Architectural UML Diagram for Disaster Management 
 ![UML Diagram](https://user-images.githubusercontent.com/66110853/206954725-24acd55a-260f-43ce-9ab1-0cb864385e90.png)
 
+3. Architectural Diagram for Hospital Enterprise (If Intrested)
+![ClassDiagram drawio-5](https://user-images.githubusercontent.com/66110853/206954822-d6543c15-3edb-4b53-b2c2-083f92426787.png)
 
