@@ -45,7 +45,7 @@ public class PieChartPanel extends javax.swing.JPanel {
             index++;
         }
     }
-     public Color[] color = new Color[]{Color.yellow, Color.red, Color.green, Color.blue, Color.ORANGE};
+     public Color[] color = new Color[]{Color.yellow, Color.red, Color.green, Color.blue, Color.ORANGE, Color.darkGray};
         
     private Color getColor(int index)
     {

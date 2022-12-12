@@ -599,17 +599,20 @@ private void deleteRecord(Patient patient){
             Patient patient = (Patient) tblRecords.getValueAt(selectedRowIndex, 0);
 
             PatientCrud patientCrud = new PatientCrud(patient, "pv");
+            changePanel(patientCrud);
            
         }else if(txt.contains("Doctor")){
 
             Doctor doctor = (Doctor) tblRecords.getValueAt(selectedRowIndex, 0);
             PatientCrud patientCrud = new PatientCrud(doctor, "dv");
+            changePanel(patientCrud);
            
 
         }else if(txt.contains("Hospital"))
         {
             Hospital hospital = (Hospital) tblRecords.getValueAt(selectedRowIndex, 0);
             HospitalCrud hospitalCrud = new HospitalCrud(hospital,"populate");
+            changePanel(hospitalCrud);
            
 
         }

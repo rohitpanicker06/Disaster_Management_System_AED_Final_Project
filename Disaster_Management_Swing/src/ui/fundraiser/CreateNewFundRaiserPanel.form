@@ -64,9 +64,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="socialMediaCheckBox" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="televisionCheckBox" min="-2" pref="109" max="-2" attributes="0"/>
                               <Component id="radioCheckBox" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="socialMediaCheckBox" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
