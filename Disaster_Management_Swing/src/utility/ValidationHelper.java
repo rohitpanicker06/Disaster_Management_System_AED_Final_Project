@@ -53,4 +53,11 @@ public class ValidationHelper {
            return false;
        }
     }
+    public static boolean checkStrongPassword(String password){
+        return RegexCheckHelper.dynamicRegexCheckHelper(RegexConstants.STRONG_PASSWORD_REGEX, password);
+    }
+    
+    public static boolean checkUsername(String username) {
+        return RegexCheckHelper.dynamicRegexCheckHelper(RegexConstants.USERNAME_REGEX, username);
+    }
 }

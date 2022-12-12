@@ -114,9 +114,9 @@
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="lblOfAllocation" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtReportId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblReportId" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="txtReportId" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">

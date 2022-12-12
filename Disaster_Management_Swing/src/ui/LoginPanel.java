@@ -384,6 +384,11 @@ String userName = userNameTextField.getText();
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         boolean checkuserValidation = false;
         
+        if (userName.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter credentials");
+            return;
+
+        }
         //if(QueryExecutor.validateCreds(userName, password))
         if(userListDirectory.checkUserValidation(userName, password, userTypeIndex))
         {

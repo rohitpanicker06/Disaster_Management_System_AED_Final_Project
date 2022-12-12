@@ -212,6 +212,112 @@ public  User findUser(Person person) {
            }
                
         }
+           for (User user : UserListDirectory.getCommunityAdminList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getEventReportingList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            for (User user : UserListDirectory.getFundRaiserList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPharmacyList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getDonor()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getCivilResponseList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getArmyHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getArmyEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            for (User user : UserListDirectory.getNavyHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getNavyEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPoliceHeadList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
+            for (User user : UserListDirectory.getPoliceEmployeeList()) {
+                if (user.getPerson().equals(person)) {
+                    userog = user;
+                    return userog;
+
+                }
+
+            }
+            
         
         
     }

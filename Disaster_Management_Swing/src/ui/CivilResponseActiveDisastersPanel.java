@@ -389,7 +389,8 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        int selectedRowIndex = DisasterjTable.getSelectedRow();
+        try {
+            int selectedRowIndex = DisasterjTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a disaster for initiation");
@@ -400,6 +401,9 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
         txtDisasterId.setText(String.valueOf(selectedDisaster.getDisasterId()));
         txtDisasterEvent.setText(selectedDisaster.getDisasterEvent());
+        } catch (Exception e) {
+        }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -427,7 +431,8 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
 
     private void btnSubmitResponseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitResponseActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = DisasterjTable.getSelectedRow();
+        try {
+            int selectedRowIndex = DisasterjTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a disaster for initiation");
@@ -518,6 +523,9 @@ public class CivilResponseActiveDisastersPanel extends javax.swing.JPanel {
             PolicejCheckBox3.setSelected(false);
 
         }
+        } catch (Exception e) {
+        }
+        
 
     }//GEN-LAST:event_btnSubmitResponseActionPerformed
 
