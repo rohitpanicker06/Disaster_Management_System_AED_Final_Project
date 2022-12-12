@@ -260,7 +260,8 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
     private void btnSaveDisasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveDisasterMouseClicked
         // TODO add your handling code here:
         
-        Disaster disas = new Disaster();
+        try {
+            Disaster disas = new Disaster();
 
         disas.setDisasterId(Integer.parseInt(txtDisasterId.getText()));
         disas.setDisasterEvent(txtDisasterEvent.getText());
@@ -281,6 +282,11 @@ public class ManageDisasterWorkspacePanel extends javax.swing.JPanel {
         vanishDataInDisasterCreation();
         
         CivilResponseDisasterList.CrDisasterArrayList.add(disas);
+            
+        } catch (Exception e) {
+        }
+        
+        
         
     }//GEN-LAST:event_btnSaveDisasterMouseClicked
 

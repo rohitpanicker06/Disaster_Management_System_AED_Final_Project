@@ -228,8 +228,8 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
 
     private void btnViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewMouseClicked
         // TODO add your handling code here:
-        
-        int selectedRowIndex = DisasterjTable.getSelectedRow();
+        try {
+            int selectedRowIndex = DisasterjTable.getSelectedRow();
         
         if(selectedRowIndex < 0){
             JOptionPane.showMessageDialog(this, "Please select a row to view.");
@@ -256,6 +256,10 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
         txtDisasterDate.setText(selectedDis.getDisasterDate());
         txtDisasterLocation.setText(selectedDis.getDisasterLocation());
         txtDisasterCoordinates.setText(selectedDis.getDisasterCoordinates());
+        } catch (Exception e) {
+        }
+        
+        
         
     }//GEN-LAST:event_btnViewMouseClicked
 
@@ -291,7 +295,9 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel)DisasterjTable.getModel();
+        
+        try {
+            DefaultTableModel model = (DefaultTableModel)DisasterjTable.getModel();
         model.setRowCount(0);
         
         if(disDir.getDisasterList()!= null){
@@ -310,5 +316,9 @@ public class ViewDisasterPanel extends javax.swing.JPanel {
             }
             
         }
+        } catch (Exception e) {
+        }
+        
+        
     }
 }
