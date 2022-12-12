@@ -31,6 +31,7 @@ public class PieChartPanel extends javax.swing.JPanel {
        generatePieChard();
     }
      private void generatePieChard() {
+         try{
         int index=0;
         long amountRaised = getAmountRaised();
         long totalTargetx = getTargetAmount();
@@ -44,20 +45,30 @@ public class PieChartPanel extends javax.swing.JPanel {
             pieChart1.addData(new ModelPieChart(event,raisedSoFar,getColor(index)));
             index++;
         }
+        }catch(Exception e)
+        {
+            
+        }
     }
-     public Color[] color = new Color[]{Color.yellow, Color.red, Color.green, Color.blue, Color.ORANGE, Color.darkGray};
+     public Color[] color = new Color[]{Color.yellow, Color.red, Color.green, Color.blue, Color.ORANGE, Color.darkGray, Color.CYAN, Color.MAGENTA, Color.pink, Color.LIGHT_GRAY};
         
     private Color getColor(int index)
     {
+        
        return color[index];
     }
 
     private long getAmountRaised() {
         long sum = 0;
+        try{
       for(DisasterFundRaiser fr: FundRaiserDirectory.fundRaiserDirectory)
       {
          sum+=fr.getAmountRaisedSoFar();
       }
+      }catch(Exception e)
+        {
+            
+        }
       return sum;
     }
     @Override
@@ -197,10 +208,15 @@ public class PieChartPanel extends javax.swing.JPanel {
 
     private long getTargetAmount() {
         long sum = 0;
+        try{
       for(DisasterFundRaiser fr: FundRaiserDirectory.fundRaiserDirectory)
       {
          sum+=fr.getTargetAmount();
       }
+      }catch(Exception e)
+        {
+            
+        }
       return sum;
     }
     

@@ -48,6 +48,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
     
     public void populateComboBox()
     {   
+        try{
         disasterComboBox.removeAllItems();
         for(Disaster disaster: new DisasterDirectory().getDisasterList())
         {
@@ -59,6 +60,10 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         for(String cur: currencyList)
         {
             currencyComboBox.addItem(cur);
+        }
+        }catch(Exception e)
+        {
+            
         }
         
     }
@@ -331,12 +336,17 @@ public class DonateFundsPanel extends javax.swing.JPanel {
 
     private void donateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateBtnActionPerformed
         // TODO add your handling code here:
+        try{
         String disaster = (String) disasterComboBox.getSelectedItem();
         Disaster event = getDisasterEventFromName(disaster);
         DisasterFundRaiser fundraiser = getDisasterFundRaiser(event);
        long amountRaised = Long.parseLong(currencyAmountTxtBox.getText());
        fundraiser.setAmountRaisedSoFar(fundraiser.getAmountRaisedSoFar()+amountRaised);
        JOptionPane.showMessageDialog(this, "Amount Donated Successfuly");
+        }catch(Exception e)
+        {
+            
+        }
        
        
     }//GEN-LAST:event_donateBtnActionPerformed
@@ -367,7 +377,8 @@ public class DonateFundsPanel extends javax.swing.JPanel {
 
     private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
         // TODO add your handling code here:
-
+        
+        try{
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         rbacApplicationContext.setRoleContext(null);
         rbacApplicationContext.setUser(null);
@@ -376,6 +387,10 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new LoginPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_logoutLabelMousePressed
 
 
@@ -399,6 +414,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private DisasterFundRaiser getDisasterFundRaiser(Disaster disaster) {
+        try{
         ArrayList<DisasterFundRaiser> al = FundRaiserDirectory.fundRaiserDirectory;
      for(DisasterFundRaiser fundRaiser: al){
          
@@ -408,17 +424,26 @@ public class DonateFundsPanel extends javax.swing.JPanel {
          }
      
     }
+        }catch(Exception e)
+        {
+            
+        }
     return null;
     
 }
 
    private Disaster getDisasterEventFromName(String name) {
+       try{
         for(Disaster disaster : new DisasterDirectory().getDisasterList())
         {
             if(disaster.getDisasterEvent().equals(name))
             {
                 return disaster;
             }
+        }
+       }catch(Exception e)
+        {
+            
         }
         
         return null;
@@ -440,6 +465,7 @@ public class DonateFundsPanel extends javax.swing.JPanel {
     }
 
     private void setProgressBar() {
+        try{
       
         String disaster = (String) disasterComboBox.getSelectedItem();
         Disaster event = getDisasterEventFromName(disaster);
@@ -455,7 +481,12 @@ public class DonateFundsPanel extends javax.swing.JPanel {
         
         progressBar.setValue(val);
         progressBar.setStringPainted(true);
+        
     }
+        }catch(Exception e)
+        {
+            
+        }
 }
     
     /*public static void main(String[] args) {

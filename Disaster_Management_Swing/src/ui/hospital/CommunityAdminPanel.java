@@ -169,10 +169,15 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
     }
 
     private void populateComboBox() {
+        try{
         communityNameSearchComboBox.removeAllItems();
         for(Community community: CommunityDirectory.communityList)
         {
             communityNameSearchComboBox.addItem(community.getCommunityName());
+        }
+        }catch(Exception e)
+        {
+            
         }
     }
 
@@ -393,16 +398,26 @@ public class CommunityAdminPanel extends javax.swing.JPanel {
 
     private void allHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allHospitalBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateBtn.setText("Update Hospital Record");
         String searchText= communityNameSearchComboBox.getItemAt(communityNameSearchComboBox.getSelectedIndex());
         populateHospitalTable(HospitalDirectory.hospitalList, searchText);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_allHospitalBtnActionPerformed
 
     private void allDoctorsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allDoctorsBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateBtn.setText("Update Doctor Record");
         String searchText= communityNameSearchComboBox.getItemAt(communityNameSearchComboBox.getSelectedIndex());
         populateDoctorTable(DoctorDirectory.doctorList, searchText);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_allDoctorsBtnActionPerformed
 private void changePanel(Component comp)
  {
@@ -413,21 +428,31 @@ private void changePanel(Component comp)
  }
     private void allPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPatientsBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateBtn.setText("Update Patient Record");
         String searchText= communityNameSearchComboBox.getItemAt(communityNameSearchComboBox.getSelectedIndex());
         populatePatientTable(PatientDirectory.patientList, searchText);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_allPatientsBtnActionPerformed
 
     private void allPersonsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allPersonsBtnActionPerformed
         // TODO add your handling code here:
+        try{
         updateBtn.setText("Update Person Record");
         String searchText= communityNameSearchComboBox.getItemAt(communityNameSearchComboBox.getSelectedIndex());
         populateAllPersons(PersonDirectory.personList, searchText);
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_allPersonsBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-
+        try{
         String txt = updateBtn.getText();
         int selectedRowIndex = tblRecords.getSelectedRow();
         if (selectedRowIndex == -1) {
@@ -458,6 +483,10 @@ private void changePanel(Component comp)
         }else if(txt.contains("Person"))
         {
            
+        }
+        }catch(Exception e)
+        {
+            
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 

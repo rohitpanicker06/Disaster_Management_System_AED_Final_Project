@@ -166,17 +166,22 @@ public class FundRaiserPanel extends javax.swing.JPanel {
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
-        
+        try{
          MainJFrame.mainPanel.removeAll();
       // MainJFrame.mainPanel.add(new SignupPanel());
       MainJFrame.mainPanel.add(new CreateNewFundRaiserPanel());
        MainJFrame.mainPanel.repaint();
        MainJFrame.mainPanel.revalidate();
+       }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_jLabel1MousePressed
 
     private void logoutLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMousePressed
         // TODO add your handling code here:
 
+        try{
         RbacApplicationContext rbacApplicationContext = RbacApplicationContext.getInstance();
         rbacApplicationContext.setRoleContext(null);
         rbacApplicationContext.setUser(null);
@@ -185,16 +190,25 @@ public class FundRaiserPanel extends javax.swing.JPanel {
         MainJFrame.mainPanel.add(new LoginPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }catch(Exception e)
+        {
+            
+        }
        
         
     }//GEN-LAST:event_logoutLabelMousePressed
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         // TODO add your handling code here:
+        try{
         MainJFrame.mainPanel.removeAll();
         MainJFrame.mainPanel.add(new PieChartPanel());
         MainJFrame.mainPanel.repaint();
         MainJFrame.mainPanel.revalidate();
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_jLabel3MousePressed
 
 
