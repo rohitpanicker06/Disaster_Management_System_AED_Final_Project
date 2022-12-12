@@ -43,5 +43,6 @@ Attaching two UML Diagram that explains the enterprises, organizations and the r
 
 
 2. Architectural UML Diagram for Disaster Management 
-![UML AED](https://user-images.githubusercontent.com/66110853/206954423-e11bd4b8-94b2-446a-9b6d-77e19e905aeb.jpeg)
+![UML Diagram](https://user-images.githubusercontent.com/66110853/206954725-24acd55a-260f-43ce-9ab1-0cb864385e90.png)
+
 
