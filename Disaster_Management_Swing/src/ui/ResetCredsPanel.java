@@ -157,7 +157,7 @@ public class ResetCredsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_resetButtonActionPerformed
 public  User findUser(Person person) {
         User userog = null;
-        while(userog == null){
+       
         for(User user: UserListDirectory.getCommunityAdminList())
         {
            if(user.getPerson().equals(person))
@@ -320,7 +320,7 @@ public  User findUser(Person person) {
             
         
         
-    }
+    
         return null;
     }
 

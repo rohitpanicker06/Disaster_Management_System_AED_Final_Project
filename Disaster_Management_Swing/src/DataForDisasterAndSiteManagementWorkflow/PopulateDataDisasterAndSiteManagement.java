@@ -10,6 +10,8 @@ import Disaster.DisasterDirectory;
 import ReportingManagement.InjuryKilledCasualties;
 import ReportingManagement.SiteManagementAndReporting;
 import ReportingManagement.SiteReportingEmployee;
+import model.fundraiser.DisasterFundRaiser;
+import model.fundraiser.FundRaiserDirectory;
 
 /**
  *
@@ -69,6 +71,43 @@ public class PopulateDataDisasterAndSiteManagement {
        
         
         
+        String currency = "INR";
+        long amount = 2500000;
+        DisasterFundRaiser fundRaiser = new DisasterFundRaiser(disaster,currency,amount);
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser);
+        
+        String currency1 = "USD";
+        long amount1 = 3500000;
+        DisasterFundRaiser fundRaiser1 = new DisasterFundRaiser(disaster_new_value,currency1,amount1);
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser1);
+        
+        
+        String currency2 = "EUR";
+        long amount2 = 4500000;
+        DisasterFundRaiser fundRaiser2 = new DisasterFundRaiser(disaster_new_value2,currency2,amount2);
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser2);
+        
+        String currency3 = "YEN";
+        long amount3 = 5500000;
+        DisasterFundRaiser fundRaiser3 = new DisasterFundRaiser(disaster_new_value3,currency3,amount3);
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser3);
+        
+        String currency4 = "CSD";
+        long amount4 = 6500000;
+        DisasterFundRaiser fundRaiser4 = new DisasterFundRaiser(disaster_new_value4,currency4,amount4);
+        FundRaiserDirectory.fundRaiserDirectory.add(fundRaiser4);
+        
+        
+        
+        
+        fundRaiser.setAmountRaisedSoFar(fundRaiser.getAmountRaisedSoFar()+35000);
+        fundRaiser1.setAmountRaisedSoFar(fundRaiser1.getAmountRaisedSoFar()+45000);
+        fundRaiser2.setAmountRaisedSoFar(fundRaiser2.getAmountRaisedSoFar()+55000);
+        fundRaiser3.setAmountRaisedSoFar(fundRaiser3.getAmountRaisedSoFar()+65000);
+        fundRaiser4.setAmountRaisedSoFar(fundRaiser4.getAmountRaisedSoFar()+75000);
+        
+        
+       
         
         
         
