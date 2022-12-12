@@ -50,3 +50,22 @@ Attaching two UML Diagram that explains the enterprises, organizations and the r
 Link1:
 Link2:
 
+
+
+**SCREENSHOTS OF PRINT FUNCTION IN SiteReportingWorkspacePanel**
+
+1. Printing a missing report:
+
+![image](https://user-images.githubusercontent.com/114315272/206955768-d039a22f-abea-4856-b3be-f06cfb4f9eae.png)
+
+![image](https://user-images.githubusercontent.com/114315272/206955790-f17974cd-1d86-443e-9960-0fa2349755ba.png)
+
+![image](https://user-images.githubusercontent.com/114315272/206955807-49c0839e-b82c-436f-b927-76f1f63b0a5d.png)
+
+2. Saved the report as a PDF document:
+
+![image](https://user-images.githubusercontent.com/114315272/206955860-74716f34-1dda-4a46-8569-cb38cf984088.png)
+
+
+
+
