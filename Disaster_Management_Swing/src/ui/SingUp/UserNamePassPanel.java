@@ -199,7 +199,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          int errorCount =0;
        StringBuffer errorNotifier = new StringBuffer();
-        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex))
+        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex) && ValidationHelper.checkUsername(userNameTxtField1.getText()))
             {
                 userName = userNameTxtField1.getText();
             }else{
@@ -207,7 +207,7 @@ public class UserNamePassPanel extends javax.swing.JPanel {
                 errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
             }       
         
-        if(passwordTxtField.getText()!= null)
+        if(passwordTxtField.getText()!= null && ValidationHelper.checkStrongPassword(passwordTxtField.getText()))
             {
                 password = passwordTxtField.getText();
             }else{
