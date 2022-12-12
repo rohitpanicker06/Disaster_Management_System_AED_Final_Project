@@ -259,9 +259,9 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
                 .addGap(42, 42, 42)
                 .addComponent(lblOfAllocation)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReportId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtReportId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterEvent)
@@ -309,7 +309,8 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
 
     private void btnSaveAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAssignmentActionPerformed
 
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
         int selectedRowIndex = ReportjTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
@@ -341,6 +342,9 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
         PoliceReportDirectory.crReport.remove(cv);
         populateTable();
 
+        } catch (Exception e) {
+        }
+        
 
 
     }//GEN-LAST:event_btnSaveAssignmentActionPerformed
@@ -377,6 +381,40 @@ public class PoliceActiveAssignmentsPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            int selectedRowIndex = OfficerTable.getSelectedRow();
+
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an Officer");
+            return;
+        }
+
+        String OfficerID = (String) OfficerTable.getValueAt(selectedRowIndex, 0);
+
+        int selectedRowIndexforReport = ReportjTable.getSelectedRow();
+
+        String crReportID = (String) ReportjTable.getValueAt(selectedRowIndexforReport, 0);
+        CivilResponseReport cv = null;
+        for (CivilResponseReport cr : CivilResponseReportDirectory.crReportList) {
+            if (cr.getCrReportId().equals(crReportID)) {
+                cv = cr;
+                break;
+            }
+        }
+
+        PoliceEmployee policeEmp = null;
+        for (PoliceEmployee police_Emp : PoliceEmployeeDirectory.policeEmpList) {
+            if (police_Emp.getEmpId().equals(OfficerID)) {
+                policeEmp = police_Emp;
+            }
+        }
+
+        jComboBoxViewOfficers.addItem(policeEmp.getPerson().getName());
+        policeEmp.getReportList().add(cv);
+
+        } catch (Exception e) {
+        }
 
         int selectedRowIndex = OfficerTable.getSelectedRow();
 

@@ -303,7 +303,8 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
     private void btnSaveAssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAssignmentActionPerformed
 
         // TODO add your handling code here:
-        int selectedRowIndex = ReportjTable.getSelectedRow();
+        try {
+            int selectedRowIndex = ReportjTable.getSelectedRow();
         int selectedRowIndexOfficer = OfficerTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
@@ -334,6 +335,10 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         
         ArmyReportDirectory.crReport.remove(cv);
         populateTable();
+        } catch (Exception e) {
+        }
+        
+        
 
         
         
@@ -353,7 +358,8 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
 
     private void btnTakeActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakeActionActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = ReportjTable.getSelectedRow();
+        try {
+            int selectedRowIndex = ReportjTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a report to take Action");
@@ -371,13 +377,16 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
 
         txtReportId.setText(cv.getCrReportId());
         txtDisasterEvent.setText(cv.getCrDisaster().getDisasterEvent());
+        } catch (Exception e) {
+        }
+        
 
     }//GEN-LAST:event_btnTakeActionActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-
-        int selectedRowIndex = OfficerTable.getSelectedRow();
+        try {
+            int selectedRowIndex = OfficerTable.getSelectedRow();
 
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select an Officer");
@@ -409,6 +418,10 @@ public class ArmyActiveAssignmentsPanel extends javax.swing.JPanel {
         armyemp.getCrReportList().add(cv);
 
         officersAdded.add(armyemp);
+        
+        } catch (Exception e) {
+        }
+
         
 
     }//GEN-LAST:event_btnAddActionPerformed

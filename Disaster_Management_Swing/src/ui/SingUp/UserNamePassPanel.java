@@ -199,21 +199,40 @@ public class UserNamePassPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          int errorCount =0;
        StringBuffer errorNotifier = new StringBuffer();
-        if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex))
+       
+
+        if(ValidationHelper.checkUsername(userNameTxtField1.getText())){
+            
+         if(ValidationHelper.checkIfUserNameIsUnique(userNameTxtField1.getText(), selectedIndex))
             {
                 userName = userNameTxtField1.getText();
             }else{
                  errorCount++;
-                errorNotifier.append(errorCount).append(". This userName already exists, please choose another\n");
-            }       
+                errorNotifier.append(errorCount).append(". This username already exists, please choose another\n");
+            }
+        }
+         else{
+                    
+           errorCount++;
+        errorNotifier.append(errorCount).append("Please enter a valid username. It cannot start with a number.\n");
         
+                 }
+            
+
         if(passwordTxtField.getText()!= null)
             {
-                password = passwordTxtField.getText();
+                if(ValidationHelper.checkStrongPassword(passwordTxtField.getText())){
+                    password = passwordTxtField.getText();
+                } else {
+                    errorCount++;
+                errorNotifier.append(errorCount).append(". Please enter password with one uppercase, one lowercase, one digit and one special character\n");
+                }
+                
             }else{
                  errorCount++;
                 errorNotifier.append(errorCount).append(". Please enter password\n");
             }
+        
          if(errorCount > 0 )
             {
                 JOptionPane.showMessageDialog(this, errorNotifier.toString());
