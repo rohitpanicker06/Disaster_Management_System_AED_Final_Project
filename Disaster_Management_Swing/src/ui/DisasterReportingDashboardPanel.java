@@ -58,11 +58,13 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         btnSiteManagementWorkspace = new javax.swing.JButton();
         logoutLabel = new javax.swing.JLabel();
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("~ Disaster Reporting Dashboard ~");
+        lblTitle.setText(" Disaster Reporting Dashboard ");
+        lblTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        btnDisasterWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnDisasterWorkspace.setBackground(new java.awt.Color(255, 0, 0));
+        btnDisasterWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         btnDisasterWorkspace.setForeground(new java.awt.Color(255, 255, 255));
         btnDisasterWorkspace.setText("Disaster Workspace");
         btnDisasterWorkspace.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,7 +73,8 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSiteManagementWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSiteManagementWorkspace.setBackground(new java.awt.Color(255, 0, 0));
+        btnSiteManagementWorkspace.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         btnSiteManagementWorkspace.setForeground(new java.awt.Color(255, 255, 255));
         btnSiteManagementWorkspace.setText("Site Management Workspace");
         btnSiteManagementWorkspace.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,22 +97,18 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(181, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSiteManagementWorkspace)
-                            .addComponent(btnDisasterWorkspace))
-                        .addGap(299, 299, 299))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(67, 67, 67)
-                        .addComponent(logoutLabel)
-                        .addGap(38, 38, 38))))
+                .addContainerGap(334, Short.MAX_VALUE)
+                .addComponent(lblTitle)
+                .addGap(190, 190, 190)
+                .addComponent(logoutLabel)
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(397, 397, 397)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDisasterWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSiteManagementWorkspace, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDisasterWorkspace, btnSiteManagementWorkspace});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -117,11 +116,11 @@ public class DisasterReportingDashboardPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
                     .addComponent(logoutLabel))
-                .addGap(117, 117, 117)
+                .addGap(120, 120, 120)
                 .addComponent(btnDisasterWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
+                .addGap(140, 140, 140)
                 .addComponent(btnSiteManagementWorkspace, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

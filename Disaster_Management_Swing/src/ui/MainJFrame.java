@@ -14,14 +14,13 @@ import java.awt.Color;
 public class MainJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainJFrame
+     * Creates new form MainFrame
      */
     public MainJFrame() {
         initComponents();
         setBackground(new Color(0,0,0,0));
         PopulateDataDisasterAndSiteManagement.populateDataDisasterAndSiteManagement();
         configuration.data.PopulateData.populateData();
-
     }
 
     /**
@@ -34,135 +33,30 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        civilResponseDashboardPanel1 = new ui.CivilResponseDashboardPanel();
-        civilResponseActiveDisastersPanel1 = new ui.CivilResponseActiveDisastersPanel();
-        civilResponseViewAllDisastersPanel1 = new ui.CivilResponseViewAllDisastersPanel();
-        armyEmpDashboardPanel1 = new ui.army.ArmyEmpDashboardPanel();
-        armyActiveAssignmentsPanel1 = new ui.army.ArmyActiveAssignmentsPanel();
-        armyAllDisasterPanel1 = new ui.army.ArmyAllDisasterPanel();
-        armyDashboardPanel1 = new ui.army.ArmyDashboardPanel();
-        navyActiveAssignmentsPanel1 = new ui.navy.NavyActiveAssignmentsPanel();
-        navyAllDisasterPanel1 = new ui.navy.NavyAllDisasterPanel();
-        navyDashboardPanel1 = new ui.navy.NavyDashboardPanel();
-        navyEmpDashboardPanel1 = new ui.navy.NavyEmpDashboardPanel();
-        policeActiveAssignmentsPanel1 = new ui.police.PoliceActiveAssignmentsPanel();
-        policeAllDisasterPanel1 = new ui.police.PoliceAllDisasterPanel();
-        policeDashboardPanel1 = new ui.police.PoliceDashboardPanel();
-        policeEmpDashboardPanel1 = new ui.police.PoliceEmpDashboardPanel();
-
         loginPanel1 = new ui.LoginPanel();
-        manageDisasterWorkspacePanel1 = new ui.ManageDisasterWorkspacePanel();
-        siteManagementWorkspacePanel1 = new ui.SiteManagementWorkspacePanel();
-        viewDisasterPanel1 = new ui.ViewDisasterPanel();
-        fundRaiserPanel1 = new ui.fundraiser.FundRaiserPanel();
-        donateFundsPanel1 = new ui.fundraiser.DonateFundsPanel();
-        createNewFundRaiserPanel1 = new ui.fundraiser.CreateNewFundRaiserPanel();
-        patientPanel1 = new ui.hospital.PatientPanel();
-        doctorPanel1 = new ui.hospital.DoctorPanel();
-        doctorPanelT1 = new ui.hospital.DoctorPanel();
-        communityAdminPanel1 = new ui.hospital.CommunityAdminPanel();
-        hospitalAdminPanel1 = new ui.hospital.HospitalAdminPanel();
-        encounterHistoryPanel1 = new ui.hospital.cruds.EncounterHistoryPanel();
-        hospitalCrud1 = new ui.hospital.cruds.HospitalCrud();
-        patientCrud1 = new ui.hospital.cruds.PatientCrud();
-        pieChartPanel1 = new ui.fundraiser.PieChartPanel();
-        prescriptionPanel1 = new ui.hospital.PrescriptionPanel();
-        pharmacyPanel1 = new ui.hospital.PharmacyPanel();
-        roleSignUpPanel1 = new ui.SingUp.RoleSignUpPanel();
-        resetCredsPanel1 = new ui.ResetCredsPanel();
-        resetCredsPanel2 = new ui.ResetCredsPanel();
-        systemAdminPanel1 = new ui.hospital.SystemAdminPanel();
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1200, 780));
+        setMaximumSize(new java.awt.Dimension(1200, 800));
+        setMinimumSize(new java.awt.Dimension(1200, 800));
         setUndecorated(true);
 
-        mainPanel.setMaximumSize(new java.awt.Dimension(1200, 800));
-        mainPanel.setMinimumSize(new java.awt.Dimension(1200, 800));
-        mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
         mainPanel.setLayout(new java.awt.CardLayout());
-        mainPanel.add(civilResponseDashboardPanel1, "card5");
-        mainPanel.add(civilResponseActiveDisastersPanel1, "card6");
-        mainPanel.add(civilResponseViewAllDisastersPanel1, "card7");
-        mainPanel.add(armyEmpDashboardPanel1, "card8");
-        mainPanel.add(armyActiveAssignmentsPanel1, "card6");
-        mainPanel.add(armyAllDisasterPanel1, "card7");
-        mainPanel.add(armyDashboardPanel1, "card8");
-        mainPanel.add(navyActiveAssignmentsPanel1, "card9");
-        mainPanel.add(navyAllDisasterPanel1, "card10");
-        mainPanel.add(navyDashboardPanel1, "card11");
-        mainPanel.add(navyEmpDashboardPanel1, "card12");
-        mainPanel.add(policeActiveAssignmentsPanel1, "card13");
-        mainPanel.add(policeAllDisasterPanel1, "card14");
-        mainPanel.add(policeDashboardPanel1, "card15");
-        mainPanel.add(policeEmpDashboardPanel1, "card16");
-
-        mainPanel.add(loginPanel1, "card24");
-        mainPanel.add(manageDisasterWorkspacePanel1, "card5");
-        mainPanel.add(siteManagementWorkspacePanel1, "card6");
-        mainPanel.add(viewDisasterPanel1, "card7");
-        mainPanel.add(fundRaiserPanel1, "card8");
-        mainPanel.add(donateFundsPanel1, "card9");
-        mainPanel.add(createNewFundRaiserPanel1, "card10");
-        mainPanel.add(patientPanel1, "card11");
-
-        javax.swing.GroupLayout doctorPanel1Layout = new javax.swing.GroupLayout(doctorPanel1);
-        doctorPanel1.setLayout(doctorPanel1Layout);
-        doctorPanel1Layout.setHorizontalGroup(
-            doctorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, doctorPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(doctorPanelT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        doctorPanel1Layout.setVerticalGroup(
-            doctorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(doctorPanel1Layout.createSequentialGroup()
-                .addComponent(doctorPanelT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 127, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(doctorPanel1, "card12");
-        mainPanel.add(communityAdminPanel1, "card13");
-        mainPanel.add(hospitalAdminPanel1, "card14");
-        mainPanel.add(encounterHistoryPanel1, "card15");
-        mainPanel.add(hospitalCrud1, "card16");
-        mainPanel.add(patientCrud1, "card17");
-        mainPanel.add(pieChartPanel1, "card18");
-        mainPanel.add(prescriptionPanel1, "card19");
-        mainPanel.add(pharmacyPanel1, "card20");
-        mainPanel.add(roleSignUpPanel1, "card21");
-        mainPanel.add(resetCredsPanel1, "card22");
-        mainPanel.add(resetCredsPanel2, "card23");
-        mainPanel.add(systemAdminPanel1, "card23");
+        mainPanel.add(loginPanel1, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1218, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginPanel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginPanel2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginPanel2KeyPressed
-
-    private void manageDisasterWorkspacePanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageDisasterWorkspacePanel1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manageDisasterWorkspacePanel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -190,6 +84,7 @@ public class MainJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -200,51 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
-    private ui.army.ArmyActiveAssignmentsPanel armyActiveAssignmentsPanel1;
-    private ui.army.ArmyAllDisasterPanel armyAllDisasterPanel1;
-    private ui.army.ArmyDashboardPanel armyDashboardPanel1;
-    private ui.army.ArmyEmpDashboardPanel armyEmpDashboardPanel1;
-    private ui.CivilResponseActiveDisastersPanel civilResponseActiveDisastersPanel1;
-    private ui.CivilResponseDashboardPanel civilResponseDashboardPanel1;
-    private ui.CivilResponseViewAllDisastersPanel civilResponseViewAllDisastersPanel1;
-    public static javax.swing.JPanel mainPanel;
-    private ui.navy.NavyActiveAssignmentsPanel navyActiveAssignmentsPanel1;
-    private ui.navy.NavyAllDisasterPanel navyAllDisasterPanel1;
-    private ui.navy.NavyDashboardPanel navyDashboardPanel1;
-    private ui.navy.NavyEmpDashboardPanel navyEmpDashboardPanel1;
-    private ui.police.PoliceActiveAssignmentsPanel policeActiveAssignmentsPanel1;
-    private ui.police.PoliceAllDisasterPanel policeAllDisasterPanel1;
-    private ui.police.PoliceDashboardPanel policeDashboardPanel1;
-    private ui.police.PoliceEmpDashboardPanel policeEmpDashboardPanel1;
-
-
-    private ui.hospital.CommunityAdminPanel communityAdminPanel1;
-    private ui.fundraiser.CreateNewFundRaiserPanel createNewFundRaiserPanel1;
-    private ui.hospital.DoctorPanel doctorPanel1;
-    private ui.hospital.DoctorPanel doctorPanelT1;
-    private ui.fundraiser.DonateFundsPanel donateFundsPanel1;
-    private ui.hospital.cruds.EncounterHistoryPanel encounterHistoryPanel1;
-    private ui.fundraiser.FundRaiserPanel fundRaiserPanel1;
-    private ui.hospital.HospitalAdminPanel hospitalAdminPanel1;
-    private ui.hospital.cruds.HospitalCrud hospitalCrud1;
     private ui.LoginPanel loginPanel1;
-   
-    private ui.ManageDisasterWorkspacePanel manageDisasterWorkspacePanel1;
-    private ui.hospital.cruds.PatientCrud patientCrud1;
-    private ui.hospital.PatientPanel patientPanel1;
-    private ui.hospital.PharmacyPanel pharmacyPanel1;
-    private ui.fundraiser.PieChartPanel pieChartPanel1;
-    private ui.hospital.PrescriptionPanel prescriptionPanel1;
-    private ui.ResetCredsPanel resetCredsPanel1;
-    private ui.ResetCredsPanel resetCredsPanel2;
-    private ui.SingUp.RoleSignUpPanel roleSignUpPanel1;
-    private ui.SiteManagementWorkspacePanel siteManagementWorkspacePanel1;
-    private ui.hospital.SystemAdminPanel systemAdminPanel1;
-    private ui.ViewDisasterPanel viewDisasterPanel1;
-
-   
-
-
+    public static javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }

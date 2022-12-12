@@ -57,12 +57,14 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        lblTitlePoliceDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitlePoliceDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitlePoliceDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblTitlePoliceDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitlePoliceDashboard.setText("~ Police Dashboard ~");
+        lblTitlePoliceDashboard.setText(" Police Dashboard");
+        lblTitlePoliceDashboard.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        jBtnActiveAssignments.setText("Active Assignments");
+        jBtnActiveAssignments.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jBtnActiveAssignments.setText("ACTIVE ASSIGNMENTS");
         jBtnActiveAssignments.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnActiveAssignmentsMouseClicked(evt);
@@ -74,7 +76,8 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        jBtnAllDisasters.setText("All Disasters");
+        jBtnAllDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jBtnAllDisasters.setText("ALL DISASTERS");
         jBtnAllDisasters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnAllDisastersMouseClicked(evt);
@@ -100,18 +103,17 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTitlePoliceDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitlePoliceDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(178, 178, 178)
                 .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,10 +123,10 @@ public class PoliceDashboardPanel extends javax.swing.JPanel {
                     .addComponent(lblTitlePoliceDashboard)
                     .addComponent(logoutLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(138, 138, 138)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(521, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnActiveAssignments, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(jBtnAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -58,12 +58,13 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
         jPanel2.setAutoscrolls(true);
         jPanel2.setOpaque(false);
 
-        lblTitleCivilResponseDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitleCivilResponseDashboard.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitleCivilResponseDashboard.setForeground(new java.awt.Color(255, 255, 255));
         lblTitleCivilResponseDashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleCivilResponseDashboard.setText("~ Civil Response Dashboard ~");
+        lblTitleCivilResponseDashboard.setText(" Civil Response Dashboard");
+        lblTitleCivilResponseDashboard.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        jBtnActiveDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jBtnActiveDisasters.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters.setText("Active Disasters");
         jBtnActiveDisasters.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,7 +78,7 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        jBtnActiveDisasters1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jBtnActiveDisasters1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jBtnActiveDisasters1.setForeground(new java.awt.Color(255, 255, 255));
         jBtnActiveDisasters1.setText("All Disasters");
         jBtnActiveDisasters1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,30 +106,30 @@ public class CivilResponseDashboardPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(lblTitleCivilResponseDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitleCivilResponseDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(294, 294, 294)
+                .addGap(439, 439, 439)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBtnActiveDisasters1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnActiveDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addGap(498, 498, 498))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitleCivilResponseDashboard)
                     .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(116, 116, 116)
-                .addComponent(jBtnActiveDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jBtnActiveDisasters1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addComponent(jBtnActiveDisasters, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156)
+                .addComponent(jBtnActiveDisasters1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

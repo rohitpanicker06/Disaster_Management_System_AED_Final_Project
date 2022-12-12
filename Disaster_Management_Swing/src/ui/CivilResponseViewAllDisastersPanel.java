@@ -77,7 +77,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         lblTitleCivilResponseAllDisasters.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
         lblTitleCivilResponseAllDisasters.setForeground(new java.awt.Color(255, 255, 255));
         lblTitleCivilResponseAllDisasters.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleCivilResponseAllDisasters.setText("~ All Disasters ~");
+        lblTitleCivilResponseAllDisasters.setText(" All Disasters ");
 
         DisasterjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,6 +100,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(DisasterjTable);
 
+        btnView.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnView.setText("View Disaster");
         btnView.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,6 +113,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBack.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,27 +126,45 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
             }
         });
 
+        txtDisasterTime.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterDate.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterDate.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterDate.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterDate.setText("Disaster Date:");
 
+        txtDisasterDate.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterLocation.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterLocation.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterLocation.setText("Disaster Location:");
 
+        txtDisasterLocation.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterCoordinates.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterCoordinates.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterCoordinates.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterCoordinates.setText("Disaster Coordinates:");
 
         lblDisasterId.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterId.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterId.setText("Disaster ID:");
 
+        txtDisasterCoordinates.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
+        txtDisasterId.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterEvent.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterEvent.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterEvent.setText("Disaster Event:");
 
+        txtDisasterEvent.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+
         lblDisasterTime.setBackground(new java.awt.Color(255, 255, 255));
+        lblDisasterTime.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblDisasterTime.setForeground(new java.awt.Color(255, 255, 255));
         lblDisasterTime.setText("Disaster Time:");
 
@@ -165,51 +185,49 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+                        .addComponent(lblTitleCivilResponseAllDisasters, javax.swing.GroupLayout.DEFAULT_SIZE, 1099, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(logoutLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnView)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnBack))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(115, 115, 115)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblDisasterLocation)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDisasterEvent, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDisasterId, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(38, 38, 38)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtDisasterId)
-                                            .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDisasterId)
+                                    .addComponent(lblDisasterEvent)
+                                    .addComponent(lblDisasterLocation))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtDisasterId)
+                                        .addComponent(txtDisasterEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblDisasterCoordinates)
                                         .addGap(38, 38, 38)
                                         .addComponent(txtDisasterCoordinates))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblDisasterTime)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(txtDisasterTime, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblDisasterDate)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(txtDisasterDate)))))
+                                        .addGap(90, 90, 90)
+                                        .addComponent(txtDisasterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblDisasterTime)
+                                        .addGap(87, 87, 87)
+                                        .addComponent(txtDisasterTime, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(96, 96, 96)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1068, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +239,7 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnView)
-                    .addComponent(btnBack))
+                .addComponent(btnView)
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDisasterId)
@@ -242,7 +258,9 @@ public class CivilResponseViewAllDisastersPanel extends javax.swing.JPanel {
                     .addComponent(txtDisasterLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDisasterCoordinates)
                     .addComponent(txtDisasterCoordinates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addComponent(btnBack)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

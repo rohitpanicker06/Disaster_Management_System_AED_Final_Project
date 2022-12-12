@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 public class MedicineDirectory {
       public static ArrayList<Medicine> medicineDirectory = new ArrayList<>();
       
-      /*static{
+      static{
           try {
               ResultSet rs = QueryExecutor.executeQuery("SELECT * FROM MEDICINES");
               while(rs.next())
@@ -33,7 +33,7 @@ public class MedicineDirectory {
               Logger.getLogger(MedicineDirectory.class.getName()).log(Level.SEVERE, null, ex);
           }
           
-      }*/
+      }
     
     public static Medicine getMedicineByName(String name)
     {
