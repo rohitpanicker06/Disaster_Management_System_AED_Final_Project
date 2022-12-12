@@ -92,10 +92,13 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         chooseDisasterBox = new javax.swing.JComboBox<>();
         btnPrintInjuredKilled = new javax.swing.JButton();
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 30)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Segoe UI Variable", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setText("~ View Site Reports ~");
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText(" View Site Reports ");
+        lblTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
+        lblMissingReport.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblMissingReport.setForeground(new java.awt.Color(255, 255, 255));
         lblMissingReport.setText("Missing Report:");
 
@@ -125,6 +128,7 @@ public class ViewReportsPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(missingCasualtiesjTable);
 
+        lblInjuredKilledReport.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblInjuredKilledReport.setForeground(new java.awt.Color(255, 255, 255));
         lblInjuredKilledReport.setText("Injured/Killed Report:");
 
@@ -196,6 +200,7 @@ public class ViewReportsPanel extends javax.swing.JPanel {
             }
         });
 
+        chooseDisasterBox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         chooseDisasterBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chooseDisasterBoxItemStateChanged(evt);
@@ -226,7 +231,7 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(lblMissingReport))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 432, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,21 +245,20 @@ public class ViewReportsPanel extends javax.swing.JPanel {
                         .addComponent(btnPrintInjuredKilled)
                         .addGap(47, 47, 47))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(309, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(384, 384, 384))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(222, 222, 222))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(384, 384, 384))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(34, 34, 34)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(chooseDisasterBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblMissingReport)
